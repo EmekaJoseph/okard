@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
-    <section class="section bg-blog bg-light" id="services">
+    <section class="section bg-blog bg-light" id="Services">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -7,16 +11,16 @@
                         <h6 class="theme-text mb-0 text-uppercase">Our Services</h6>
                         <h3 class="title-heading text-capitalize">What we have to offer you</h3>
                         <div class="title-border"></div>
-                        <p class="text-muted mt-3 mx-md-5"> </p>
+                        <p class="text-muted mt-3 mx-md-5">Select to continue</p>
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
             <div class="row gy-4">
                 <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card">
-                        <img src="@/assets/images/serv1.jpeg" alt="01" class="img-fluid rounded-top">
+                    <RouterLink class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card"
+                        to="request_for_bill_of_quantity">
+
+                        <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body mt-2">
                             <a href="#" class="h5">
@@ -25,14 +29,13 @@
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>
                         </div>
-                        <!--end blog-content-->
-                    </div>
-                    <!--end blog-->
+                    </RouterLink>
+
                 </div>
-                <!--end col-->
                 <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card">
-                        <img src="@/assets/images/serv2.jpeg" alt="02" class="img-fluid rounded-top">
+                    <RouterLink to="request_for_building_plan"
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card">
+                        <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
                         <div class="blog-content card-body mt-2">
 
                             <a href="#" class="h5">
@@ -41,14 +44,11 @@
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>
                         </div>
-                        <!--end blog-content-->
-                    </div>
-                    <!--end blog-->
+                    </RouterLink>
                 </div>
-                <!--end col-->
                 <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
-                        <img src="@/assets/images/serv3.jpeg" alt="03" class="img-fluid rounded-top">
+                    <RouterLink to="buy_property" class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
+                        <img src="@/assets/images/serv_property.jpeg" alt="03" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body mt-2">
                             <a href="#" class="h5">
@@ -57,13 +57,11 @@
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>
                         </div>
-                        <!--end blog-content-->
-                    </div>
-                    <!--end blog-->
+                    </RouterLink>
                 </div>
                 <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
-                        <img src="@/assets/images/serv4.jpg" alt="03" class="img-fluid rounded-top">
+                    <RouterLink to="buy_building_materials" class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
+                        <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body mt-2">
                             <a href="#" class="h5">
@@ -72,15 +70,10 @@
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>
                         </div>
-                        <!--end blog-content-->
-                    </div>
-                    <!--end blog-->
+                    </RouterLink>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
         </div>
-        <!--end container-->
     </section>
 </template>
 
@@ -103,6 +96,7 @@ svg {
 img {
     overflow-clip-margin: content-box;
     overflow: clip;
+    /* filter: grayscale(100%); */
 }
 
 .blog {
@@ -170,7 +164,7 @@ h6 {
 
 .service-card {
     cursor: pointer;
-    transition: 0.8s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 
 .service-card:hover {
@@ -181,5 +175,19 @@ h6 {
 
 .service-card:hover a {
     color: var(--theme-color)
+}
+
+
+
+
+@media (min-width: 994px) {
+
+    img {
+        filter: grayscale(100%);
+    }
+
+    .service-card:hover img {
+        filter: grayscale(0%);
+    }
 }
 </style>

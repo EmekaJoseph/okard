@@ -1,9 +1,5 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-    <div class="hero" id="top">
+    <div class="hero" id="Home">
         <div class="trans-lay">
             <div class="container content-lay">
                 <div class="row justify-content-center">
@@ -23,8 +19,8 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-lg btn-warning mt-3 mt-lg-4">
-                                take action
+                            <button class="btn btn-lg theme-btn mt-3 mt-lg-4">
+                                Connect With Us
                             </button>
                         </div>
                     </div>
@@ -50,7 +46,7 @@
 }
 
 .trans-lay {
-    background-color: rgba(13, 15, 21, 0.75);
+    background-color: rgba(13, 15, 21, 0.651);
     min-height: inherit;
     padding-top: 200px;
     padding-bottom: 100px;

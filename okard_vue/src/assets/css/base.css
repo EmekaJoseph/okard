@@ -41,6 +41,8 @@
 
   --theme-color: #f15825;
   --theme-color-faint: #f1582533;
+
+  --theme-color2: #d84f21;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,21 +79,9 @@ html * {
 }
 
 body {
+  margin: 0;
   position: relative;
   min-height: 100vh;
-  /* color: var(--color-text); */
   background: var(--color-background);
-  /* line-height: 1.6; */
   font-size: 15px;
-
-  /* margin-bottom: 180px; */
-
-}
-
-.theme-text {
-  color: var(--theme-color) !important;
-}
-
-a:hover {
-  color: var(--theme-color) !important;
 }

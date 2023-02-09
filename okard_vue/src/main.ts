@@ -10,8 +10,21 @@ import 'bootstrap/dist/js/bootstrap.min.js'
 
 import './assets/css/main.css'
 
+import 'vue3-carousel/dist/carousel.css';
+
 const app = createApp(App)
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css';
+app.component('Datepicker', Datepicker);
+
+import HeaderComponent from '@/components/HeaderComponent.vue'
+app.component('HeaderComponent', HeaderComponent);
+
+app.use(VueSweetalert2);
 app.use(createPinia())
 app.use(router)
 

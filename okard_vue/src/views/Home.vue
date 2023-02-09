@@ -3,18 +3,20 @@ import { onMounted, ref, reactive } from 'vue';
 import HeroSection from '@/components/Hompage/HeroComponent.vue'
 import AboutSection from '@/components/Hompage/AboutComponent.vue'
 import ServicesSection from '@/components/Hompage/ServicesComponent.vue'
+import ContactSection from '@/components/Hompage/ContactComponent.vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
-onMounted(() => {
-  console.log('mounted')
-})
+
+onMounted(() => window.scrollTo(0, 0))
 </script>
 
 <template>
   <div>
     <HeaderComponent />
+
     <HeroSection />
     <AboutSection />
     <ServicesSection />
+    <ContactSection />
   </div>
 </template>
 
@@ -52,14 +54,7 @@ h3 {
   margin-top: 1rem !important;
 }
 
-.row>* {
-  flex-shrink: 0;
-  width: 100%;
-  max-width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * .5);
-  padding-left: calc(var(--bs-gutter-x) * .5);
-  margin-top: var(--bs-gutter-y);
-}
+
 
 .mb-5 {
   margin-bottom: 3rem !important;

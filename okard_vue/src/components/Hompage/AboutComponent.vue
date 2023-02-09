@@ -1,5 +1,5 @@
 <template>
-    <section class="section" id="about">
+    <section class="section" id="About Us">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -65,22 +65,6 @@
                                             ever since unknown printer took a galley of
                                             type and it to make a type specimen book.
                                         </p>
-                                        <div class="d-flex">
-                                            <div class="about-social">
-                                                <a href="#" class="theme-text">
-                                                    <i class="mdi mdi-facebook"></i>
-                                                </a>
-                                            </div>
-                                            <div class="about-social mx-2">
-                                                <a href="#" class="theme-text"><i class="mdi mdi-google"></i> </a>
-                                            </div>
-                                            <div class="about-social">
-                                                <a href="#" class="theme-text"><i class="mdi mdi-instagram"></i> </a>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <a href="#" class="theme-text">Learn More <span class="f-20">→</span></a>
-                                        </div>
                                     </div>
                                     <!--end card-->
                                 </div>
@@ -101,7 +85,6 @@
                                             ever since unknown printer took a galley of
                                             type and it to make a type specimen book.
                                         </p>
-                                        <a href="#" class="theme-text">Learn More <span class="f-20">→</span></a>
                                     </div>
                                     <!--end card-->
                                 </div>
@@ -259,14 +242,15 @@ em {
 }
 
 .tab-content .mission-tab .mission-box .mission-icon {
-    width: 75px;
-    height: 75px;
-    line-height: 75px;
+    /* width: 50px;
+    height: 50px; */
+    /* line-height: 75px; */
     font-size: 27px;
-    color: var(--theme-color);
+    color: var(--theme-color-faint);
     text-align: center;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.125);
+    /* border-radius: 50%; */
+    /* border: 1px solid rgba(0, 0, 0, 0.125); */
+    padding: 0px 20px
 }
 
 .about-tab .nav-item .nav-link {

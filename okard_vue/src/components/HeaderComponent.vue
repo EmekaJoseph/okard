@@ -1,6 +1,17 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { RouterLink } from 'vue-router';
+import { ref, onMounted, watch } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
+
+const route = useRoute()
+
+const toggler: any = ref(null)
+watch(() => route.hash, () => {
+    if (route.hash) {
+        if (window.innerWidth <= 994) {
+            toggler.value.click()
+        }
+    }
+})
 
 const scrollAxis = ref(0)
 
@@ -10,10 +21,7 @@ onMounted(() => {
     })
 })
 
-function link_to(name: any) {
-    //@ts-ignore
-    window.location = `#${name}`
-}
+const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
 
 </script>
 
@@ -21,34 +29,27 @@ function link_to(name: any) {
     <nav class="navbar fixed-top navbar-expand-lg"
         :class="{ 'header-white': scrollAxis > 100, 'shadow-sm': scrollAxis > 100 }">
         <div class="container-fluid">
-            <a class="navbar-brand text-warning" href="#">OKARD-HGV</a>
-            <button class="navbar-toggler border-0 btn-sm" type="button" data-bs-toggle="collapse"
-                data-bs-target="#nav-link-lists" aria-controls="nav-link-lists" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <RouterLink class="navbar-brand text-warning" to="/">OKARD-HGV</RouterLink>
+            <button v-if="route.name == 'Home'" ref="toggler" class="navbar-toggler border-0 btn-sm" type="button"
+                data-bs-toggle="collapse" data-bs-target="#nav-link-lists" aria-controls="nav-link-lists"
+                aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="container">
+        <div class="container" v-if="route.name == 'Home'">
             <div class="collapse navbar-collapse" id="nav-link-lists">
-                <ul class="navbar-nav mb-2 mb-lg-0" data-bs-toggle="collapse" data-bs-target="#nav-link-lists">
-                    <li class="nav-item me-lg-3" @click="link_to('top')">
-                        <RouterLink class="nav-link" to="/">Home</RouterLink>
-                        <!-- <a class="nav-link " aria-current="page" href="#">Home</a> -->
+                <ul class="navbar-nav mb-2 mb-lg-0">
+
+                    <li v-for="li in list_li" class="nav-item me-lg-3">
+                        <a class="nav-link" :href="'#' + li">{{ li }}</a>
                     </li>
-                    <li class="nav-item me-lg-3" @click="link_to('about')">
-                        <a class="nav-link" href="#">About Us</a>
-                    </li>
-                    <li class="nav-item me-lg-3" @click="link_to('services')">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
+
                     <li class="nav-item me-lg-3">
-                        <a class="nav-link" href="#">Porfolio</a>
-                    </li>
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link" href="#">Blog</a>
+                        <RouterLink class="nav-link" to="/blog">Blog</RouterLink>
+                        <!-- <a class="nav-link" href="#"></a> -->
                     </li>
                     <li class="nav-item me-lg-5">
-                        <a class="nav-link" href="#">CONTACT US</a>
+                        <a class="nav-link-btn btn btn-sm p-1 px-3 theme-btn" href="#Contact">Contact Us</a>
                     </li>
 
                 </ul>
@@ -85,5 +86,14 @@ function link_to(name: any) {
 .header-white ul li a {
     color: black;
 
+}
+
+
+.navbar .navbar-nav .nav-item .nav-link.active {
+    color: #f15825 !important;
+}
+
+.nav-link-btn:hover {
+    color: #fff !important;
 }
 </style>
