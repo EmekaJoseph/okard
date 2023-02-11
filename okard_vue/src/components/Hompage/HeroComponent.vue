@@ -19,9 +19,9 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <button class="btn btn-lg theme-btn mt-3 mt-lg-4">
+                            <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4">
                                 Connect With Us
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

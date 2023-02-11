@@ -27,7 +27,7 @@ const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
 
 <template>
     <nav class="navbar fixed-top navbar-expand-lg"
-        :class="{ 'header-white': scrollAxis > 100, 'shadow-sm': scrollAxis > 100 }">
+        :class="{ 'header-white': scrollAxis > 50, 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
         <div class="container-fluid">
             <RouterLink class="navbar-brand text-warning" to="/">OKARD-HGV</RouterLink>
             <button v-if="route.name == 'Home'" ref="toggler" class="navbar-toggler border-0 btn-sm" type="button"

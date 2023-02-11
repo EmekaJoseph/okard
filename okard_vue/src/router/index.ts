@@ -4,7 +4,7 @@ import BuyPropertyView from '../views/Buy_Property.vue'
 import BuyBuildingMaterialView from '../views/Buy_Building_Materials.vue'
 import RequestForBillView from '../views/Request_for_Bill.vue'
 import RequestForPlanView from '../views/Request_for_Building_Plan.vue'
-import BlogView from '../views/Blog.vue'
+import BlogLayout from '../views/Blog/_layout.vue'
 
 
 const router = createRouter({
@@ -15,17 +15,16 @@ const router = createRouter({
     { path: '/buy_building_materials', name: 'Buy Building Materials', component: BuyBuildingMaterialView },
     { path: '/request_for_building_plan', name: 'Request for Building Plan', component: RequestForPlanView },
     { path: '/request_for_bill_of_quantity', name: 'Request for Bill of Quantity', component: RequestForBillView },
-    { path: '/blog', name: 'Blog', component: BlogView },
-
 
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
-    }
+      path: '/blog',
+      component: BlogLayout,
+      children: [
+        { path: '', alias: 'home', name: 'Blog', component: () => import('../views/Blog/list.vue') },
+        { path: 'details', name: 'Blog_Details', component: () => import('../views/Blog/details.vue'), props: route => ({ query: route.query }), },
+
+      ],
+    },
   ]
 })
 

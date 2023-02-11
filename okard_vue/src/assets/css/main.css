@@ -56,42 +56,8 @@ a:hover {
     border-color: var(--theme-color);
 }
 
-
 /* end of form -check */
 
-
-/* transition */
-
-.xSlide-enter-active {
-    transition: all 0.7s ease;
+.bi {
+    color: inherit;
 }
-
-.xSlide-enter-from,
-.xSlide-leave-to {
-    transform: translateX(-20px);
-    opacity: 0;
-}
-
-
-.ySlide-enter-active {
-    transition: all 0.2s ease;
-}
-
-.ySlide-enter-from,
-.ySlide-leave-to {
-    transform: translateY(-20px);
-    opacity: 0;
-}
-
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
-}
-
-/* end of transition */

@@ -5,11 +5,16 @@ import FooterComponent from '@/components/FooterComponent.vue'
 
 <template>
   <div class="whole-site">
-    <RouterView v-slot="{ Component, route }">
+
+
+    <!-- <RouterView v-slot="{ Component, route }">
       <transition name="fade">
         <component :is="Component" :key="route.path" />
       </transition>
-    </RouterView>
+    </RouterView> -->
+
+
+    <RouterView />
     <FooterComponent />
   </div>
 </template>

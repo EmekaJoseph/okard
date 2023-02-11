@@ -42,3 +42,59 @@
         transform: translateY(-10px);
     }
 }
+
+
+
+/* transition */
+
+.xSlide-enter-active {
+    transition: all 0.7s ease;
+}
+
+.xSlide-enter-from,
+.xSlide-leave-to {
+    transform: translateX(-20px);
+    opacity: 0;
+}
+
+
+.ySlide-enter-active {
+    transition: all 0.2s ease;
+}
+
+.ySlide-enter-from,
+.ySlide-leave-to {
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.hover-tiltX {
+    transition: all ease-in-out 0.4s;
+}
+
+
+.hover-tiltX:hover {
+    transform: translateX(5px);
+}
+
+.hover-tiltY {
+    transition: all ease-in-out 0.4s;
+}
+
+
+.hover-tiltY:hover {
+    transform: translateY(-5px);
+}
+
+/* end of transition */

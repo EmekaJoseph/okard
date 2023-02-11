@@ -16,34 +16,34 @@
             </div>
           </div>
           <div class="col-lg-12 mb-5">
-            <fieldset class="border rounded-3 p-3 px-lg-5 bg-light">
+            <fieldset class="border rounded-3 py-1 px-4 px-lg-5 pb-3 bg-light">
               <legend class="text-muted float-none small p-0 px-2 w-auto">Categories</legend>
               <div class="row g-2 gy-4 justify-content-center">
-                <div class="form-check col-6 col-lg-3">
-                  <input class="form-check-input" type="checkbox" value="All" id="All" v-model="allIsChecked">
-                  <label class="form-check-label" for="All">
-                    All
-                  </label>
+
+                <div class="form-check form-check-inlin col-6 col-lg-3">
+                  <input class="form-check-input " type="radio" id="All" value="All" v-model="selectedCategory">
+                  <label class="form-check-label" for="All">All</label>
                 </div>
 
-                <div v-for="(category, index) in categories" :key="index" class="form-check col-6 col-lg-3">
-                  <input class="form-check-input" :disabled="allIsChecked" type="checkbox" :value="category"
-                    :id="category" v-model="checkedCategories">
-                  <label class="form-check-label" :for="category">
-                    {{ category }}
-                  </label>
+                <div v-for="(category, index) in images.materialCategories" :key="index"
+                  class="form-check form-check-inlin col-6 col-lg-3">
+                  <input class="form-check-input " type="radio" :id="category" :value="category"
+                    v-model="selectedCategory">
+                  <label class="form-check-label" :for="category">{{ category }}</label>
                 </div>
               </div>
             </fieldset>
           </div>
 
           <div class="col-lg-12">
-            <div class="card">
+            <div class="card bg-light">
               <div class="card-body">
                 <div class="row g-2">
-                  <div @click="openRequestModal(show)" v-for="(show, i) in galleryShow" :key="i"
-                    class="col-6 col-lg-2 col-md-4 image-holder">
-                    <img class="img-fluid" :src="`slides/materials/${show.img}`" alt="">
+                  <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
+                    class="col-6 col-lg-2 col-md-4 ">
+                    <div class="image-holder">
+                      <img class="img-fluid" :src="`slides/materials/${show.img}`" alt="">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -52,74 +52,56 @@
         </div>
       </section>
     </div>
+
     <requestModal :item="selectedImage" imageFolder="materials" />
     <button class="d-none" ref="modalButton" data-bs-toggle="modal" data-bs-target="#requestModal"></button>
+
   </div>
 </template>
 
 
 <script setup lang="ts">
-import { onMounted, ref, watchEffect, computed } from 'vue';
-import { useImageStore } from '@/stores/imageStore'
+import { onMounted, ref, computed } from 'vue';
+import { useImageSlides } from '@/stores/imageSlides'
 import requestModal from '@/components/modals/requestModal.vue';
 
 onMounted(() => window.scrollTo(0, 0))
 
 // get images from store
-const images = useImageStore()
+const images = useImageSlides()
 
-const checkedCategories = ref<string[]>([])
-const allIsChecked = ref(true)
+const selectedCategory = ref('All')
 const modalButton: any = ref(null)
-const selectedImage = ref({})
-
-// get category name only
-const categories = computed(() => {
-  let cats: string[] = [];
-  if (images.materials) {
-    let names = images.materials.map(x => x.category)
-    cats = [...new Set(names)];
-  }
-  return cats;
-})
+const selectedImage = ref({});
 
 // populate images according to seletion
-const galleryShow = computed(() => {
+const gallery = computed(() => {
   let imgBlocks: any = []
-  images.materials.forEach((imgObject: { category: string; img: any; }) => {
-    if (checkedCategories.value.some(x => x == imgObject.category)) {
-      imgBlocks.push(imgObject)
-    }
-  })
-  return imgBlocks;
-})
-
-// watch for selection, then update
-watchEffect(() => {
-  if (allIsChecked.value) {
-    categories.value.forEach(x => {
-      if (checkedCategories.value.indexOf(x) === -1) {
-        checkedCategories.value.push(x);
+  if (selectedCategory.value == 'All') {
+    imgBlocks = images.materials
+  }
+  else {
+    images.materials.forEach((imgObject: { category: string; img: any; }) => {
+      if (imgObject.category == selectedCategory.value) {
+        imgBlocks.push(imgObject)
       }
     })
   }
+  return imgBlocks;
 })
+
 
 // open the modal on image click
 function openRequestModal(img: any) {
   selectedImage.value = img
   modalButton.value.click()
-
 }
-
 </script>
 
 
 <style scoped>
-.form-check-input {
-  width: 20px;
-  /* height: 20px; */
-
+.form-check-input:checked[type=radio] {
+  background-image: none;
 }
 
 .form-check-label:hover {
@@ -141,21 +123,23 @@ function openRequestModal(img: any) {
 .image-holder {
   cursor: pointer;
   transition: all 0.5s ease;
-  /* height: 150px;
-  width: auto; */
+  height: 150px;
+  width: auto;
 }
 
 .image-holder:hover {
   transform: scale(0.97);
 }
 
-/* img {
+img {
   vertical-align: middle;
-} */
+}
 
-/* img {
+img {
   overflow-clip-margin: content-box;
   overflow: clip;
-} */
+
+  object-fit: cover;
+}
 </style>
 

@@ -15,9 +15,9 @@
               </p>
             </div>
           </div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6">
             <Carousel :autoplay="3000" :wrap-around="true">
-              <Slide v-for="slide in billImages" :key="slide">
+              <Slide v-for="slide in images.plan" :key="slide">
                 <img class="carousel__item" :src="`slides/buildingPlan/${slide}`" alt="">
               </Slide>
 
@@ -87,10 +87,10 @@
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import { useImageSlides } from '@/stores/imageSlides'
 onMounted(() => window.scrollTo(0, 0))
 
-
-const billImages = ref<string[]>(['plan1.jpeg'])
+const images = useImageSlides()
 </script>
 
 
