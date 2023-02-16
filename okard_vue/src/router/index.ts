@@ -6,9 +6,19 @@ import RequestForBillView from '../views/Request_for_Bill.vue'
 import RequestForPlanView from '../views/Request_for_Building_Plan.vue'
 import BlogLayout from '../views/Blog/_layout.vue'
 
+import AdminLoginView from '../views/Admin/Login.vue'
+import AdminLayout from '../views/Admin/_layout.vue'
+import AdminDashboard from '../views/Admin/Dashboard.vue'
+import AdminRequests from '../views/Admin/Requests.vue'
+import AdminEnquiries from '../views/Admin/Enquiries.vue'
+import AdminVisitors from '../views/Admin/Visitors.vue'
+import AdminUploads from '../views/Admin/Uploads.vue'
+import AdminAccount from '../views/Admin/Account.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  linkActiveClass: 'active',
   routes: [
     { path: '/', name: 'Home', component: HomeView },
     { path: '/buy_property', name: 'Buy Property', component: BuyPropertyView },
@@ -24,8 +34,32 @@ const router = createRouter({
         { path: 'details', name: 'Blog_Details', component: () => import('../views/Blog/details.vue'), props: route => ({ query: route.query }) }
       ],
     },
+
+    { path: '/admin', alias: '/admin-login', name: 'Admin', component: AdminLoginView },
+    {
+      path: '/admin/account',
+      component: AdminLayout,
+      children: [
+        { path: 'dashboard', alias: '', name: 'Dashboard', component: AdminDashboard },
+        { path: 'enquiries', name: 'Enquiries', component: AdminEnquiries },
+        { path: 'requests', name: 'Requests', component: AdminRequests },
+        { path: 'visitors', name: 'Visitors', component: AdminVisitors },
+        { path: 'uploads', name: 'Uploads', component: AdminUploads },
+        { path: 'account', name: 'Account', component: AdminAccount },
+      ],
+    },
+
+
+    {
+      path: '/:pathMatch(.*)*',
+      name: '404',
+      component: () => import('../views/404Page.vue')
+    },
+
   ]
 })
+
+
 
 router.afterEach((to, from) => {
   document.title = 'OKARD-HGV | ' + to.name?.toString();
