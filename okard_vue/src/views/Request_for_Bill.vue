@@ -28,51 +28,56 @@
             </Carousel>
           </div>
           <div class="col-lg-6">
+
             <form class="form mt-4 mt-lg-0">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <input type="text" class="form-control form-control-lg" placeholder="Your Name">
-                  </div>
-                </div>
-                <!--end col-->
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <input type="tel" class="form-control form-control-lg" placeholder="Phone Number">
-                  </div>
+              <div class="row gy-4">
+                <div class="col-md-12">
+                  <input v-model="form.name" type="text" class="form-control form-control-lg" placeholder="Your Name">
                 </div>
 
                 <div class="col-lg-12">
-                  <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Email">
-                  </div>
-                </div>
-                <!--end col-->
-                <div class="col-lg-12">
-                  <div class="mb-3">
-                    <textarea class="form-control " placeholder="Leave a message here" style="height: 80px;"></textarea>
-                  </div>
+                  <input v-model="form.contact" type="email" class="form-control form-control-lg"
+                    placeholder="Email or Phone">
                 </div>
 
                 <div class="col-lg-12">
-                  <div class="mb-3">
-                    <label>Include a file?: (Image/PDF/Word Document.. etc)</label>
-                    <input type="file" ref="fileBtn"
-                      accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
-                      class="form-control form-control-lg">
+                  <textarea v-model="form.message" class="form-control " placeholder="Leave a message here"
+                    style="height: 100px;"></textarea>
+                </div>
+
+
+                <form ref="fileForm" class="d-none">
+                  <input type="file" ref="fileBtn"
+                    accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
+                    class="form-control form-control-lg" @change="fileUploadFn">
+                </form>
+
+
+                <div class="col-lg-12">
+                  <label class="fs-5">Add a picture, PDF or Word Document ?</label>
+                  <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
+                    <i class="bi bi-file-earmark-text"></i> Click Here
+                  </div>
+                  <div v-else class="fileBtnFake theme-bg">
+                    <span>
+                      <span class="theme-text">
+                        <i class="bi bi-check-circle-fill"></i> {{ newFile.name }}
+                      </span>
+                      <span @click="fileFormR" class="fw-bold float-end theme-text"> REMOVE</span>
+                    </span>
                   </div>
                 </div>
 
-                <div class="col-lg-12">
-                  <div class="mb-3">
-                    <label>Add voice note?</label>
-                    <button type="button" class="btn"> <i class="bi bi-mic"></i> </button>
+                <div class="col-lg-12 d-sm-none">
+                  <label class="fs-5">Add a Voice Note?</label>
+                  <input ref="recordBtn" type="file" accept="audio/*" capture hidden />
+                  <div @click="recordBtn.click()" class="fileBtnFake"><i class="bi bi-mic"></i> Record
                   </div>
                 </div>
 
               </div>
               <!--end row-->
-              <button type="button" class="btn float-end theme-btn">Send
+              <button @click="submitForm" type="button" class="btn float-end theme-btn mt-5">Send
                 Message</button>
             </form>
           </div>
@@ -85,12 +90,65 @@
 
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, reactive } from 'vue';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import { useImageSlides } from '@/stores/imageSlides'
+import { fileUploader } from '@/stores/functions/fileUploader'
+import useFunction from '@/stores/functions/useFunction';
+
 onMounted(() => window.scrollTo(0, 0))
 
+const fxn = useFunction.fx
+
+let { fileUploadFn, fileURL, newFile, fileSize } = fileUploader();
+
 const images = useImageSlides()
+
+const fileBtn = ref<any>(null);
+const recordBtn = ref<any>(null);
+const fileForm = ref<any>(null);
+
+function fileFormR() {
+  fileURL.value = ''
+  newFile.value = ''
+  fileForm.value.reset()
+}
+
+
+const form = reactive({
+  name: '',
+  // phone: '',
+  contact: '',
+  message: '',
+  file: ''
+})
+
+function submitForm() {
+  if (!form.name) {
+    fxn.Toast('please tell us your name', 'warning')
+    return
+  }
+  if (!form.contact) {
+    fxn.Toast('enter your email or phone', 'warning')
+    return
+  }
+  if (!form.message && !newFile.value) {
+    fxn.Toast('leave a message or include a file', 'warning')
+    return
+  }
+
+  let $form = new FormData
+  $form.append('name', form.name);
+  $form.append('contact', form.contact);
+  $form.append('message', form.message);
+  $form.append('file', newFile.value);
+  sendbillRequest($form)
+}
+
+
+function sendbillRequest($form: FormData) {
+
+}
 
 </script>
 
@@ -111,6 +169,20 @@ const images = useImageSlides()
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.fileBtnFake {
+  background-color: var(--bs-light);
+  padding: 15px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.fileBtnFake:hover {
+  background-color: #eee;
+  /* color: var(--theme-color); */
 }
 </style>
 

@@ -1,6 +1,4 @@
 <template>
-
-
   <div class="col-md-8">
     <div class="mb-4" v-if="!blog.list.length">
       <span class="h4 text-muted">No updates to show now, comeback later</span>

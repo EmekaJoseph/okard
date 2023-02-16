@@ -38,6 +38,11 @@ a:hover {
     background-color: var(--theme-color2) !important;
 }
 
+.theme-bg {
+    background-color: var(--theme-color-bg) !important;
+}
+
+
 .action-section {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -60,4 +65,8 @@ a:hover {
 
 .bi {
     color: inherit;
+}
+
+.xsmall {
+    font-size: 16px;
 }

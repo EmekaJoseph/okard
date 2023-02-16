@@ -35,7 +35,7 @@ export const useImageSlides = defineStore('slides', () => {
 
   // #####################################
 
-  const bill = ref<string[]>(['bill1.jpeg'])
+  const bill = ref<string[]>(['bill1.jpeg', 'bill2.jpeg'])
   const plan = ref<string[]>(['plan1.jpeg'])
 
   const properties = ref<any[]>([

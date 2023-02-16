@@ -8,11 +8,13 @@
                             Okard Height Global Ventures Limited
                         </p>
                         <h1 class="text-white text-center hero-heading">
-                            Bulding Construction & Sales, Building Materials Merchandise
+                            Bulding Construction & Sales (Real Estate
+                            Developers), Production, Building Materials Merchandise
+                            <!-- ▪︎ -->
                         </h1>
 
                         <div class="text-center text-light">
-                            We are <span class="text-white">REAL ESTATE DEVELOPERS</span>, we produce building
+                            We produce building
                             materials
                             like Rebar,
                             We sell building materials like Tiles, POP cements, Roofing-sheets, etc.

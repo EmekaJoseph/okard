@@ -1,4 +1,5 @@
 import { reactive } from 'vue'
+import Swal from 'sweetalert2'
 
 const fx = reactive({
 
@@ -7,10 +8,6 @@ const fx = reactive({
         return regex.test(email)
     },
 
-    testPassword: (password: any) => {
-        var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-        return regex.test(password)
-    },
 
     isExtension: (fileName: string, requiredFormats: string[]) => {
         let regex = new RegExp('[^.]+$');
@@ -28,7 +25,21 @@ const fx = reactive({
         } else {
             return str;
         }
-    }
+    },
+
+    Toast: (text: string, icon: any) => {
+        Swal.fire({
+            toast: true,
+            icon: `${icon}`,
+            text: `${text}`,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: false,
+            padding: 10,
+            background: '#f8f8f8',
+        })
+    },
 })
 
 export default {

@@ -1,10 +1,10 @@
 <template>
   <div class="col-md-8 ">
-    <div class="bg-white p-3">
+    <div class="bg-whit p-3">
       <h2>{{ thisBlog.topic }}</h2>
       <div class="text-muted">{{ thisBlog.text }}</div>
 
-      <div class="row g-2 mt-3">
+      <div v-if="thisBlog.images.length" class="row g-2 mt-3">
         <div v-for="(img, i) in thisBlog.images" :key="i" class="col-6 col-md-4 ">
           <div class="image-holder">
             <img class="img-fluid" :src="`/blog-images/${img}`" alt="">

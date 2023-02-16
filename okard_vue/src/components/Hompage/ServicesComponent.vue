@@ -23,7 +23,7 @@ import { RouterLink } from 'vue-router';
 
                         <div class="blog-content card-body mt-2">
                             <RouterLink to="request_for_bill_of_quantity" class="h5">
-                                Request for Bill of Quantity (Building cost estimates)
+                                Request for Bill of Quantity (Building cost estimates) & Construction.
                             </RouterLink>
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>

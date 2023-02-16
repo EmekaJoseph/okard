@@ -21,8 +21,7 @@ const router = createRouter({
       component: BlogLayout,
       children: [
         { path: '', alias: 'home', name: 'Blog', component: () => import('../views/Blog/list.vue') },
-        { path: 'details', name: 'Blog_Details', component: () => import('../views/Blog/details.vue'), props: route => ({ query: route.query }), },
-
+        { path: 'details', name: 'Blog_Details', component: () => import('../views/Blog/details.vue'), props: route => ({ query: route.query }) }
       ],
     },
   ]

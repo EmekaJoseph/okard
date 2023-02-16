@@ -1,12 +1,12 @@
 import { ref, watch, reactive, computed } from 'vue'
 
 export function fileUploader() {
-    const mainFile = ref<any>('')
+    const newFile = ref<any>('')
     const fileURL = ref<any>('')
 
     const fileSize: any = reactive({
         kb: computed(() => {
-            return (mainFile.value.size / 1024).toFixed(2)
+            return (newFile.value.size / 1024).toFixed(2)
         }),
         mb: computed(() => {
             return (fileSize.kb / 1024).toFixed(2)
@@ -15,23 +15,23 @@ export function fileUploader() {
 
     function fileUploadFn(event: any) {
         if (event.target.files.length === 0) {
-            mainFile.value = ''
+            newFile.value = ''
             fileURL.value = ''
             return
         }
-        mainFile.value = event.target.files[0]
+        newFile.value = event.target.files[0]
     }
 
-    watch(mainFile, (mainFile) => {
-        if (!(mainFile instanceof File)) {
+    watch(newFile, (newFile) => {
+        if (!(newFile instanceof File)) {
             return;
         }
         let fileReader = new FileReader
-        fileReader.readAsDataURL(mainFile)
+        fileReader.readAsDataURL(newFile)
         fileReader.addEventListener('load', () => {
             fileURL.value = fileReader.result
         })
     })
 
-    return { fileUploadFn, fileURL, mainFile, fileSize }
+    return { fileUploadFn, fileURL, newFile, fileSize }
 }

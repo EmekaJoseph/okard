@@ -4,7 +4,7 @@
         <div class="container">
             <section class="action-section">
                 <div class="row justify-content-center gy-3">
-                    <div class="col-md-12 mb-4">
+                    <div v-if="route.name == 'Blog'" class="col-md-12 mb-4">
                         <div class="topic-card">
                             <div class="topic-overlay">
                                 <span>
@@ -22,9 +22,10 @@
 
                             <div class="col-md-4">
                                 <div class="col-md-12 bg-white p-4 mb-3">
-                                    <div v-if="route.name !== 'Blog'">
-                                        <router-link class=" text-decoration-none fw-bold theme-text" to="/blog">Back to
-                                            List</router-link>
+                                    <div v-if="route.name !== 'Blog'" class="py-5">
+                                        <router-link class=" text-decoration-none fw-bold theme-text" to="/blog">
+                                            <i class="bi bi-arrow-left"></i> Back to Blog
+                                        </router-link>
                                     </div>
                                     <div v-else>
                                         <div class="fs-6 mb-0 fw-bolder">Categories</div>
