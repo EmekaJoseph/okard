@@ -18,7 +18,7 @@
           <div class="col-lg-6 ">
             <Carousel :autoplay="3000" :wrap-around="true">
               <Slide v-for="slide in images.bill" :key="slide">
-                <img class="carousel__item" :src="`slides/billOfQuantity/${slide}`" alt="">
+                <img class="carousel__item" :src="`slides/${slide}`" alt="">
               </Slide>
 
               <template #addons>
@@ -61,9 +61,11 @@
                   <div v-else class="fileBtnFake theme-bg">
                     <span>
                       <span class="theme-text">
-                        <i class="bi bi-check-circle-fill"></i> {{ newFile.name }}
+                        {{ newFile.name }}
                       </span>
-                      <span @click="fileFormR" class="fw-bold float-end theme-text"> REMOVE</span>
+                      <span @click="fileFormR" class="fw-bold float-end theme-text">
+                        <i class="bi bi-x-circle-fill"></i>
+                      </span>
                     </span>
                   </div>
                 </div>

@@ -50,7 +50,7 @@
                   <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
                     class="col-6 col-lg-4 col-md-4 ">
                     <div class="image-holder fill">
-                      <img class="img-fluid" :src="`slides/property/${show.img}`" alt="">
+                      <img class="img-fluid" :src="`slides/${show.img}`" alt="">
                       <div class="details-overlay">
                         <div class="text-warning">{{ show.name }}</div>
                         <div class="text-white">{{ show.desc }}</div>
@@ -66,8 +66,8 @@
       </section>
     </div>
 
-    <requestModal :item="selectedImage" imageFolder="property" />
-    <button class="d-none" ref="modalButton" data-bs-toggle="modal" data-bs-target="#requestModal"></button>
+    <enquiryModal :item="selectedImage" />
+    <button class="d-none" ref="modalButton" data-bs-toggle="modal" data-bs-target="#enquiryModal"></button>
 
   </div>
 </template>
@@ -76,7 +76,7 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
 import { useImageSlides } from '@/stores/imageSlides'
-import requestModal from '@/components/modals/requestModal.vue';
+import enquiryModal from '@/components/modals/enquiryModal.vue';
 
 onMounted(() => window.scrollTo(0, 0))
 

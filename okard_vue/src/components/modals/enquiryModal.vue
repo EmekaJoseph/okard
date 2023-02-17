@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="modal fade" id="requestModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        <div class="modal fade" id="enquiryModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content">
@@ -18,15 +18,13 @@
                                     {{ item.desc }}
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input type="text" class="form-control form-control-lg" placeholder="your name..">
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control form-control-lg" placeholder="phone number">
-                            </div>
                             <div class="col-md-12">
-                                <input type="email" class="form-control form-control-lg" placeholder="email">
+                                <input type="text" class="form-control form-control-lg" placeholder="email or phone">
                             </div>
+
                             <div class="col-md-12">
                                 <button type="button" class="btn btn-lg theme-btn w-100">Make Enquriry</button>
                             </div>
@@ -47,12 +45,6 @@ const prop = defineProps({
     item: {
         type: Object,
         default: {},
-        required: true
-    },
-
-    imageFolder: {
-        type: String,
-        default: '',
         required: true
     }
 })

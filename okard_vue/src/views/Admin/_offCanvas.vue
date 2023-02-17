@@ -6,19 +6,33 @@
                 aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-0">
-            <!-- <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
-                lists, etc.
-            </div> -->
-
             <ul class="menu-list" data-bs-dismiss="offcanvas">
-                <li> <router-link to="/admin/account/dashboard">Dashboard</router-link> </li>
-                <li> <router-link to="/admin/account/requests">Requests</router-link> </li>
-                <li> <router-link to="/admin/account/enquiries">Enquiries</router-link> </li>
-                <li> <router-link to="/admin/account/visitors">Visitors</router-link> </li>
-                <li> <router-link to="/admin/account/uploads">Uploads</router-link> </li>
-                <li> <router-link to="/admin/account/account">Account</router-link> </li>
-                <li> <router-link to="/admin">Logout</router-link> </li>
+                <li>
+                    <router-link to="/admin/account/dashboard">
+                        <i class="bi bi-menu-app"></i> Dashboard
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/account/requests">
+                        <i class="bi bi-chat-left-text"></i> Requests
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/account/uploads">
+                        <i class="bi bi-cloud-upload"></i> Uploads
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/account/blogpost">
+                        <i class="bi bi-newspaper"></i> Blog
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/admin/account/account">
+                        <i class="bi bi-person-gear"></i> Account
+                    </router-link>
+                </li>
+                <li> <router-link to="/admin" class="btn logout-btn py-0">Logout</router-link> </li>
 
             </ul>
 
@@ -35,7 +49,6 @@ const closeBtn = ref<any>(null)
 onBeforeRouteLeave(() => {
     closeBtn.value.click()
 })
-
 </script>
 
 <style scoped>
@@ -67,5 +80,10 @@ li a {
     .menu-list li {
         font-size: 14px;
     }
+}
+
+.logout-btn {
+    background-color: var(--theme-color);
+    color: #fff;
 }
 </style>

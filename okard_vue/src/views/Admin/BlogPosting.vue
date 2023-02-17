@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard">
-        <h1 class="text-center">Hello Enquiries</h1>
+        <h1 class="text-center">Hello Blog</h1>
     </div>
 </template>
 
