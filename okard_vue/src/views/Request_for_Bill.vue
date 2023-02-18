@@ -18,7 +18,7 @@
           <div class="col-lg-6 ">
             <Carousel :autoplay="3000" :wrap-around="true">
               <Slide v-for="slide in images.bill" :key="slide">
-                <img class="carousel__item" :src="`slides/${slide}`" alt="">
+                <img class="carousel__item" :src="`${hostURL}/slides/${slide}`" alt="">
               </Slide>
 
               <template #addons>
@@ -92,11 +92,13 @@
 
 
 <script setup lang="ts">
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, ref, reactive, inject } from 'vue';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import { useImageSlides } from '@/stores/imageSlides'
 import { fileUploader } from '@/stores/functions/fileUploader'
 import useFunction from '@/stores/functions/useFunction';
+
+const hostURL = inject('hostURL')
 
 onMounted(() => window.scrollTo(0, 0))
 

@@ -50,10 +50,10 @@
                   <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
                     class="col-6 col-lg-4 col-md-4 ">
                     <div class="image-holder fill">
-                      <img class="img-fluid" :src="`/slides/${show.img}`" alt="">
+                      <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
                       <div class="details-overlay">
                         <div class="text-warning">{{ show.name }}</div>
-                        <div class="text-white">{{ show.desc }}</div>
+                        <div class="text-white">{{ show.description }}</div>
                       </div>
                     </div>
                   </div>
@@ -74,11 +74,16 @@
 
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, inject } from 'vue';
 import { useImageSlides } from '@/stores/imageSlides'
 import enquiryModal from '@/components/modals/enquiryModal.vue';
 
-onMounted(() => window.scrollTo(0, 0))
+const hostURL = inject('hostURL')
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+  images.getImages()
+})
 
 // get images from store
 const images = useImageSlides()

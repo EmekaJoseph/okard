@@ -2,8 +2,9 @@
     <div class="dashboard">
         <div class="container">
             <h5 class="mb-2">
-                Uploads:
-                <!-- <span v-if="typeSelect == 'Property' || typeSelect == 'Materials'"
+                Upload Images
+                <!-- <span v-if="typeSelect == 'Property' || typeSelect == 'Materials
+                '"
                     class="float-end btn btn-sm theme-btn m-0 p-0 px-2">new Category</span> -->
             </h5>
 
@@ -15,9 +16,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-1">Select Type:</div>
                                     <select v-model="typeSelect" class="form-control form-select">
-                                        <option value="" selected>select</option>
-                                        <option value="Property">Buy Properties</option>
-                                        <option value="Materials">Buy Building Materials</option>
+                                        <option value="Property">Properties</option>
+                                        <option value="Material">Building Materials</option>
                                     </select>
                                 </div>
 
@@ -27,7 +27,7 @@
                                             data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i
                                                 class="bi bi-plus"></i></span>
                                     </div>
-                                    <select class="form-control  form-select">
+                                    <select v-model="categorySelect" class="form-control  form-select">
                                         <option v-for="option in cateDropDown" :value="option.name">
                                             {{ option.name }}
                                         </option>
@@ -39,7 +39,7 @@
                                         accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
                                         class="form-control form-control-lg" @change="fileUploadFn">
                                 </form>
-                                <div v-if="typeSelect" class="col-lg-12">
+                                <div v-if="categorySelect" class="col-lg-12">
                                     <div class="mb-1">Upload Image:</div>
                                     <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
                                         <i class="bi bi-file-earmark-text"></i> Click Here
@@ -70,20 +70,22 @@
 
                                 <div class="col-md-6" :class="{ 'col-md-12': typeSelect != 'Property' }">
                                     <div>Name:</div>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input v-model="newImage.name" type="text" class="form-control form-control-lg">
                                 </div>
                                 <div v-if="typeSelect == 'Property'" class="col-md-6">
                                     <div>Location:</div>
-                                    <input type="text" class="form-control form-control-lg">
+                                    <input v-model="newImage.location" type="text" class="form-control form-control-lg">
                                 </div>
 
                                 <div class="col-lg-12">
                                     <div>Description:</div>
-                                    <textarea class="form-control" rows="5"></textarea>
+                                    <textarea v-model="newImage.description" class="form-control" rows="5"></textarea>
                                 </div>
 
                                 <div class="col-lg-12">
-                                    <button class="btn theme-btn w-100 btn-lg">Save Image</button>
+                                    <button v-if="!isSaving" @click="saveImage" class="btn theme-btn w-100 btn-lg">Save
+                                        Image</button>
+                                    <button v-else class="btn btn-secondary w-100 btn-lg" disabled>Saving..</button>
                                 </div>
                             </div>
                         </div>
@@ -92,26 +94,44 @@
                 </div>
             </div>
         </div>
-        <addCategoryModal />
+        <addCategoryModal :type="typeSelect" @added="updateCate" />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, type Ref } from 'vue';
+import { ref, computed, onMounted, reactive, inject } from 'vue';
 import addCategoryModal from '@/components/modals/addCategoryModal.vue'
 import { fileUploader } from '@/stores/functions/fileUploader'
 import useFunction from '@/stores/functions/useFunction';
+import { getCategories, saveImageSlide } from '@/stores/functions/axiosInstance';
+
+const hostURL = inject('hostURL')
+
+onMounted(() => {
+    window.scrollTo(0, 0);
+    updateCate()
+})
 
 let { fileUploadFn, fileURL, newFile, fileSize } = fileUploader();
 
 const typeSelect = ref<string>('')
-// const categories = ref<any>([])
+const categorySelect = ref<string>('')
+const categories = ref<any>([])
+const fileBtn = ref<any>(null);
+const fileForm = ref<any>(null);
+const isSaving = ref<boolean>(false)
+const fxn = useFunction.fx
+
+const newImage = reactive({
+    name: '',
+    description: '',
+    location: '',
+})
+
+
 const cateDropDown = computed(() => {
     return categories.value.filter((item: any) => item.type == typeSelect.value)
 })
-
-const fileBtn = ref<any>(null);
-const fileForm = ref<any>(null);
 
 function fileFormR() {
     fileURL.value = ''
@@ -119,35 +139,45 @@ function fileFormR() {
     fileForm.value.reset()
 }
 
+async function updateCate() {
+    let { data } = await getCategories();
+    categories.value = data
+}
+
+function saveImage() {
 
 
-const categories = ref<any>([
-    {
-        id: '1',
-        type: 'Property',
-        name: 'Residential'
-    },
-    {
-        id: '2',
-        type: 'Property',
-        name: 'Commercial'
-    },
-    {
-        id: '3',
-        type: 'Materials',
-        name: 'POP'
-    },
-    {
-        id: '4',
-        type: 'Materials',
-        name: 'Tiles'
-    },
-    {
-        id: '3',
-        type: 'Materials',
-        name: 'Roofing Sheets'
-    },
-])
+    if (!newImage.name || !newImage.description) {
+        fxn.Toast('Name & Description is important', 'warning')
+        return;
+    }
+    isSaving.value = true
+    let imgObj = new FormData()
+    imgObj.append('name', newImage.name)
+    imgObj.append('description', newImage.description)
+    if (newImage.location) { imgObj.append('location', newImage.location) }
+    imgObj.append('type', typeSelect.value)
+    imgObj.append('category', categorySelect.value)
+    imgObj.append('img', newFile.value)
+    sendImage(imgObj);
+}
+
+async function sendImage(obj: any) {
+    try {
+        let resp = await saveImageSlide(obj)
+        if (resp.status == 200) {
+            fxn.Toast('saved', 'success')
+            newImage.name = ''
+            newImage.location = ''
+            newImage.description = ''
+            fileFormR();
+            isSaving.value = false
+        }
+    } catch (error) {
+        isSaving.value = false
+    }
+}
+
 </script>
 
 <style scoped>

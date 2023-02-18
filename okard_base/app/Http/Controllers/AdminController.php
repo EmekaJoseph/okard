@@ -74,7 +74,7 @@ class AdminController extends BaseController
     }
 
 
-    public function saveImageSlide(Request $req): JsonResponse
+    public function saveImageSlide(Request $req)
     {
         $image = new ImageSlideModel();
 
@@ -83,6 +83,8 @@ class AdminController extends BaseController
         $image->description = $req->input('description');
         $image->location = $req->input('location');
         $image->type = $req->input('type');
+        $image->img = '';
+
 
         if ($req->file('img')) {
             $file = $req->file('img');
@@ -139,6 +141,6 @@ class AdminController extends BaseController
     public function getCategories()
     {
         $categories = DB::table('tbl_categories')->get();
-        return response()->json(['data' => $categories], 200);
+        return response()->json($categories, 200);
     }
 }

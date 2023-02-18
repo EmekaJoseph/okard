@@ -11,6 +11,7 @@ use Illuminate\Http\JsonResponse;
 
 use App\Models\RequestModel;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends BaseController
 {
@@ -49,5 +50,15 @@ class UserController extends BaseController
         $userReq->save();
 
         return response()->json(['message' => 'saved'], 200);
+    }
+
+
+    public function isVisitor(Request $req)
+    {
+        DB::table('tbl_visitors')
+            ->updateOrInsert(
+                ['ip_addr' => $req->ip()],
+                ['ip_addr' => $req->ip()]
+            );
     }
 }

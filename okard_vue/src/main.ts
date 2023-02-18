@@ -24,6 +24,11 @@ app.component('Datepicker', Datepicker);
 import HeaderComponent from '@/components/HeaderComponent.vue'
 app.component('HeaderComponent', HeaderComponent);
 
+
+app.provide('hostURL', 'http://127.0.0.1:8000') //dev
+// app.provide('hostURL', '') //build
+
+
 app.use(VueSweetalert2);
 app.use(createPinia())
 app.use(router)

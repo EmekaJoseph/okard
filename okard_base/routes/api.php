@@ -26,13 +26,16 @@ Route::controller(AdminController::class)->group(function () {
     Route::delete('deleteRequest/{id}',  'deleteRequest');
 
     Route::post('saveImageSlide',  'saveImageSlide');
-    Route::get('getImageSlides',  'getImageSlides');
+    // Route::get('getImageSlides',  'getImageSlides');
     Route::delete('deleteImageSlide/{id}',  'deleteImageSlide');
 
     Route::post('newCategory',  'newCategory');
     Route::get('getCategories',  'getCategories');
 });
 
+
+Route::get('getImageSlides', [AdminController::class, 'getImageSlides']);
 Route::controller(UserController::class)->group(function () {
     Route::post('sendRequest',  'sendRequest');
+    Route::post('isVisitor',  'isVisitor');
 });
