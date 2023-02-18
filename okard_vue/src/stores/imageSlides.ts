@@ -45,7 +45,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Residential',
       img: 'resid1.jpeg',
       desc: 'info for resid1.jpeg under Resid',
-      location: 'location'
+      location: 'location',
+      type: 'Property'
     },
     {
       id: 2,
@@ -53,7 +54,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Residential',
       img: 'resid2.jpeg',
       desc: 'info for resid2.jpeg under Resid',
-      location: 'location'
+      location: 'location',
+      type: 'Property'
     },
     {
       id: 3,
@@ -61,7 +63,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Commercial',
       img: 'comm1.jpeg',
       desc: 'info for comm1.jpeg under Comm',
-      location: 'location'
+      location: 'location',
+      type: 'Property'
     },
     {
       id: 4,
@@ -69,7 +72,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Lands',
       img: 'land1.jpeg',
       desc: 'info for land1.jpeg under Land',
-      location: 'location'
+      location: 'location',
+      type: 'Property'
     },
   ])
 
@@ -80,7 +84,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Doors',
       img: 'door1.jpeg',
       desc: 'info for resid1.jpeg under Resid',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 2,
@@ -88,7 +93,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Plunbing Fittings',
       img: 'plumb1.jpeg',
       desc: 'info for resid2.jpeg under Resid',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 3,
@@ -96,7 +102,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Plunbing Fittings',
       img: 'plumb2.jpeg',
       desc: 'info for resid2.jpeg under Resid',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 4,
@@ -104,7 +111,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'POP Cement',
       img: 'pop1.jpeg',
       desc: 'info for comm1.jpeg under Comm',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 5,
@@ -112,7 +120,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'POP Cement',
       img: 'pop2.jpeg',
       desc: 'info for comm1.jpeg under Comm',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 6,
@@ -120,7 +129,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Rods',
       img: 'rod1.jpeg',
       desc: 'info for land1.jpeg under Land',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 7,
@@ -128,7 +138,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Tiles',
       img: 'tile1.jpeg',
       desc: 'info for land1.jpeg under Land',
-      location: null
+      location: null,
+      type: 'Material'
     },
     {
       id: 8,
@@ -136,7 +147,8 @@ export const useImageSlides = defineStore('slides', () => {
       category: 'Roofing',
       img: 'roof1.jpeg',
       desc: 'info for land1.jpeg under Land',
-      location: null
+      location: null,
+      type: 'Material'
     },
   ])
 

@@ -16,14 +16,12 @@
                                     <div class="mb-1">Select Type:</div>
                                     <select v-model="typeSelect" class="form-control form-select">
                                         <option value="" selected>select</option>
-                                        <option value="Bill">Bill of Quantity</option>
-                                        <option value="Plan">Building Plan</option>
                                         <option value="Property">Buy Properties</option>
                                         <option value="Materials">Buy Building Materials</option>
                                     </select>
                                 </div>
 
-                                <div v-if="typeSelect == 'Property' || typeSelect == 'Materials'" class="col-md-12">
+                                <div v-if="typeSelect" class="col-md-12">
                                     <div class="mb-1">Category under <span class="fw-bold">{{ typeSelect }}</span>
                                         <span class="float-end btn btn-secondary m-0 p-0 px-2 btn-sm"
                                             data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i
@@ -41,7 +39,7 @@
                                         accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
                                         class="form-control form-control-lg" @change="fileUploadFn">
                                 </form>
-                                <div class="col-lg-12">
+                                <div v-if="typeSelect" class="col-lg-12">
                                     <div class="mb-1">Upload Image:</div>
                                     <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
                                         <i class="bi bi-file-earmark-text"></i> Click Here
@@ -70,7 +68,7 @@
                                     <h6>Image Details:</h6>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6" :class="{ 'col-md-12': typeSelect != 'Property' }">
                                     <div>Name:</div>
                                     <input type="text" class="form-control form-control-lg">
                                 </div>
@@ -85,12 +83,12 @@
                                 </div>
 
                                 <div class="col-lg-12">
-                                    <button class="btn theme-btn float-end">Save Image</button>
+                                    <button class="btn theme-btn w-100 btn-lg">Save Image</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -193,8 +191,9 @@ const categories = ref<any>([
     cursor: pointer;
     margin: 0 auto 30px;
     background-size: contain;
-    /* background-position: center center; */
-    /* border-radius: 100%; */
+    background-position: center center;
+    /* border-radius: 50%; */
+    /* background-color: #eee; */
 }
 </style>
 
