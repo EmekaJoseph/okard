@@ -52,8 +52,8 @@
                     <div class="image-holder fill">
                       <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
                       <div class="details-overlay">
-                        <div class="text-warning">{{ show.name }}</div>
-                        <div class="text-white">{{ show.description }}</div>
+                        <div class="text-warning text-capitalize">{{ show.name }}</div>
+                        <div class="text-white xsmall">{{ show.description }}</div>
                       </div>
                     </div>
                   </div>
@@ -179,7 +179,7 @@ img {
 
 .details-overlay {
   position: absolute;
-  height: 35%;
+  height: 50%;
   width: 100%;
   bottom: 0;
   /* left: 0; */
@@ -198,7 +198,7 @@ img {
   }
 
   .image-holder {
-    height: 250px;
+    height: 200px;
     width: 100%;
   }
 }

@@ -108,7 +108,18 @@ class AdminController extends BaseController
     }
 
 
-    public function deleteImageSlide($id)
+    public function deleteImageSlide($ids)
+    {
+        $idsArr = explode(',', $ids);
+        foreach ($idsArr as $id) {
+            $this->deleteSlide($id);
+        }
+
+        return response()->json(['success' => 'deleted'], 200);
+    }
+
+
+    public function deleteSlide($id)
     {
         $image = ImageSlideModel::find($id);
 
@@ -120,8 +131,6 @@ class AdminController extends BaseController
 
             $image->delete();
         }
-
-        return response()->json(['success' => 'deleted'], 200);
     }
 
     public function newCategory(Request $req)

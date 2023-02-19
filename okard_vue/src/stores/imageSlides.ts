@@ -18,10 +18,10 @@ export const useImageSlides = defineStore('slides', () => {
   const materialCategories = computed(() => {
     return materials.value.length ? [...new Set(materials.value.map(x => x.category))] : [];
   })
+
   const propertiesCategories = computed(() => {
     return properties.value.length ? [...new Set(properties.value.map(x => x.category))] : [];
   })
-
 
   async function getImages() {
     let { data } = await getImageSlides();

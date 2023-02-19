@@ -53,7 +53,7 @@ const fx = reactive({
             confirmButtonColor: '#f15825',
             reverseButtons: true,
             width: '350px',
-            position: 'bottom',
+            // position: 'bottom',
         })
     },
 })

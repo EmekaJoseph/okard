@@ -52,7 +52,7 @@ function getDetails(id: any) {
 }
 
 function deleteRequest(id: any) {
-    fxn.Confirm(``, 'Confirm delete', 'warning',)
+    fxn.Confirm(``, 'Confirm delete', 'warning')
         .then(async (result) => {
             if (result.isConfirmed) {
 

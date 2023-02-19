@@ -1,17 +1,15 @@
 <template>
     <div class="dashboard">
         <div class="container">
-            <h5 class="mb-2">
+            <h6 class="mb-2">
                 Upload Images
-                <!-- <span v-if="typeSelect == 'Property' || typeSelect == 'Materials
-                '"
-                    class="float-end btn btn-sm theme-btn m-0 p-0 px-2">new Category</span> -->
-            </h5>
+                <!-- <span class="float-end btn btn-sm btn-secondary m-0 p-0 px-2">view list</span> -->
+            </h6>
 
             <div class="card main">
                 <div class="card-body pt-5 p-lg-5">
                     <div class="row gy-3">
-                        <div class="col-md-6">
+                        <div class="col-md-6 px-lg-4">
                             <div class="row gy-4">
                                 <div class="col-md-12">
                                     <div class="mb-1">Select Type:</div>
@@ -60,34 +58,30 @@
                                         :style="{ 'background-image': `url(${fileURL})` }">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div v-show="fileURL" class="col-md-6 bg-light p-3">
-                            <div class="row gy-4">
-                                <div class="col-lg-12">
-                                    <h6>Image Details:</h6>
-                                </div>
 
-                                <div class="col-md-6" :class="{ 'col-md-12': typeSelect != 'Property' }">
-                                    <div>Name:</div>
+                                <div v-if="fileURL" class="col-md-6" :class="{ 'col-md-12': typeSelect != 'Property' }">
+                                    <div>Image Name:</div>
                                     <input v-model="newImage.name" type="text" class="form-control form-control-lg">
                                 </div>
-                                <div v-if="typeSelect == 'Property'" class="col-md-6">
+                                <div v-if="typeSelect == 'Property' && fileURL" class="col-md-6">
                                     <div>Location:</div>
                                     <input v-model="newImage.location" type="text" class="form-control form-control-lg">
                                 </div>
 
-                                <div class="col-lg-12">
+                                <div v-if="fileURL" class="col-lg-12">
                                     <div>Description:</div>
                                     <textarea v-model="newImage.description" class="form-control" rows="5"></textarea>
                                 </div>
 
-                                <div class="col-lg-12">
+                                <div v-if="fileURL" class="col-lg-12">
                                     <button v-if="!isSaving" @click="saveImage" class="btn theme-btn w-100 btn-lg">Save
                                         Image</button>
                                     <button v-else class="btn btn-secondary w-100 btn-lg" disabled>Saving..</button>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-6 bg-light p-3">
+                            <UploadList />
                         </div>
                     </div>
 
@@ -99,18 +93,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, reactive, inject } from 'vue';
+import { ref, computed, onMounted, reactive } from 'vue';
 import addCategoryModal from '@/components/modals/addCategoryModal.vue'
 import { fileUploader } from '@/stores/functions/fileUploader'
 import useFunction from '@/stores/functions/useFunction';
 import { getCategories, saveImageSlide } from '@/stores/functions/axiosInstance';
+import { useImageSlides } from '@/stores/imageSlides';
+import UploadList from './UploadList.vue';
 
-const hostURL = inject('hostURL')
 
 onMounted(() => {
     window.scrollTo(0, 0);
     updateCate()
 })
+
+const images = useImageSlides()
 
 let { fileUploadFn, fileURL, newFile, fileSize } = fileUploader();
 
@@ -145,8 +142,6 @@ async function updateCate() {
 }
 
 function saveImage() {
-
-
     if (!newImage.name || !newImage.description) {
         fxn.Toast('Name & Description is important', 'warning')
         return;
@@ -172,6 +167,7 @@ async function sendImage(obj: any) {
             newImage.description = ''
             fileFormR();
             isSaving.value = false
+            images.getImages()
         }
     } catch (error) {
         isSaving.value = false
