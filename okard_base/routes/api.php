@@ -21,6 +21,12 @@ use App\Http\Controllers\UserController;
 // });
 
 Route::controller(AdminController::class)->group(function () {
+    Route::post('admin/login',  'login');
+    Route::get('admin/overview',  'overview');
+    Route::post('admin/passwordChange',  'passwordChange');
+
+
+
     Route::get('getRequests',  'getRequests');
     Route::get('requestDetails/{id}',  'requestDetails');
     Route::delete('deleteRequest/{id}',  'deleteRequest');

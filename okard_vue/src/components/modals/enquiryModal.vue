@@ -5,7 +5,8 @@
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0 bg-light">
-                        <span class="fw-bold">{{ item.name }}</span>
+                        <!-- <span class="fw-bold">{{ item.name }}</span> -->
+                        <span class="fw-bold">{{ item.type }}</span>
                         <span class="float-end">
                             <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal"
                                 aria-label="Close"></button>
@@ -14,19 +15,34 @@
                     <div class="modal-body p-sm-4">
                         <div class="row justify-content-center gy-3">
                             <div class="col-md-12">
-                                <div class="card info-panel">
-                                    {{ item.desc }}
+                                <div v-if="item.img" class="image-holder fill">
+                                    <img class="img-fluid" :src="`${hostURL}/slides/${item.img}`" alt="">
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control form-control-lg" placeholder="your name..">
-                            </div>
-                            <div class="col-md-12">
-                                <input type="text" class="form-control form-control-lg" placeholder="email or phone">
+                            <div class="col-md-12 ">
+                                <div class="bg-light p-2">
+                                    <div class="mb-1"><b>Name:</b> {{ item.name }}</div>
+                                    <div class="mb-1"> <b>Description</b>: {{ item.description }}</div>
+                                    <div v-if="item.location"><b>Location</b>: {{ item.location }}</div>
+                                </div>
                             </div>
 
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-lg theme-btn w-100">Make Enquriry</button>
+                                <div class="row">
+                                    <div class="col-7">
+                                        <button v-if="!item.inCart" @click="addToCart" type="button"
+                                            class="btn theme-btn w-100 btn-sm">
+                                            <i class="bi bi-cart3"></i> Add To Cart
+                                        </button>
+                                        <button v-else @click="addToCart" type="button"
+                                            class="btn btn-dark w-100 btn-sm">
+                                            <i class="bi bi-cart-x"></i> Remove from cart
+                                        </button>
+                                    </div>
+                                    <div class="col-5"><button @click="showCart" type="button"
+                                            class="btn btn-outline-dark w-100 btn-sm">View Cart</button></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -37,9 +53,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, inject, reactive } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
+import useFunction from '@/stores/functions/useFunction';
+import { sendRequest } from '@/stores/functions/axiosInstance';
 
+
+const fxn = useFunction.fx
+
+const hostURL = inject('hostURL')
+
+const emit = defineEmits(['showCart'])
 
 const prop = defineProps({
     item: {
@@ -49,11 +73,68 @@ const prop = defineProps({
     }
 })
 
+const field = reactive({
+    name: '',
+    contact: '',
+    message: '',
+    isSending: false
+})
+
+
+
+function saveReq() {
+
+    if (!field.name) {
+        fxn.Toast('Please tell us your name', 'warning')
+        return;
+    }
+
+    if (!field.contact) {
+        fxn.Toast('Enter your phone/email or both', 'warning')
+        return;
+    }
+
+    let obj = {
+        name: field.name,
+        contact: field.contact,
+        message: !field.message.length ? null : field.message,
+        refImage: prop.item.id,
+        type: prop.item.type
+    }
+    sendReq(obj);
+}
+
+async function sendReq(obj: any) {
+    field.isSending = true
+    try {
+        let resp = await sendRequest(obj)
+        if (resp.status == 200) {
+            field.isSending = false
+            fxn.Toast('Thank You, We will contact you shortly', 'success')
+            btnX.value.click()
+        }
+    } catch (error) {
+        field.isSending = true
+        fxn.Toast('Sorry, Error occoured, try again', 'error')
+        btnX.value.click()
+    }
+}
+
+function addToCart() {
+    prop.item.inCart = !prop.item.inCart
+    btnX.value.click()
+}
+
+function showCart() {
+    btnX.value.click()
+    emit('showCart')
+}
+
+
 const btnX: any = ref(null)
 onBeforeRouteLeave(() => {
     btnX.value.click()
 })
-
 </script>
 
 <style scoped>

@@ -7,7 +7,6 @@
             </button>
         </div>
         <div class="card-body list-scroll">
-
             <div class="card-title mb-3">
                 <span class="tabb" :class="{ 'active-tabb': nowShowing == 'Property' }"
                     @click="nowShowing = 'Property'">Properties
@@ -17,13 +16,19 @@
                 </span>
             </div>
 
-            <div class="row gy-4 ">
-                <div @click="" v-for="(show, i) in gallery" :key="i" class="col-6 col-lg-4 col-md-4 ">
+            <div v-if="images.loading" class="p-4">
+                <PageLoading />
+            </div>
+
+
+            <div v-else class="row gy-4 ">
+                <div @click="show.isChecked = !show.isChecked" v-for="(show, i) in gallery" :key="i"
+                    class="col-6 col-md-4">
                     <div class="image-holder fill">
                         <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
                         <div class="details-overlay">
                             <div class="text-white small mt-4 text-capitalize show-name">{{ show.name }}</div>
-                            <div class="check-bi" @click="show.isChecked = !show.isChecked">
+                            <div class="check-bi">
                                 <i v-if="show.isChecked" class="text-white h5 bi bi-check-square-fill"></i>
                                 <i v-else class="text-white h5 bi bi-square"></i>
                             </div>

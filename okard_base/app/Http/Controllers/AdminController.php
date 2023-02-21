@@ -22,14 +22,14 @@ class AdminController extends BaseController
 
     public function getRequests(): JsonResponse
     {
-        $list =  RequestModel::select('id', 'name', 'contact', 'created_at')
+        $list =  RequestModel::select('id', 'name', 'contact', 'isRead', 'created_at')
             ->orderBy('created_at', 'desc')->get();
         if (sizeof($list) > 0) {
             foreach ($list as $line) {
                 $line->sent = (Carbon::parse($line->created_at))->diffForHumans();
             }
         }
-        return response()->json(['data' => $list], 200);
+        return response()->json($list, 200);
     }
 
     public function requestDetails($id): JsonResponse
@@ -40,12 +40,13 @@ class AdminController extends BaseController
             $userReq->save();
 
             if ($userReq->refImage) {
-                $img = ImageSlideModel::find($userReq->refImage);
-                $userReq->refImage =  $img->img;
+                $ids = explode(',', $userReq->refImage);
+                $imgs = ImageSlideModel::find($ids);
+                $userReq->refImage =  $imgs;
             }
         }
 
-        return response()->json(['data' => $userReq], 200);
+        return response()->json($userReq, 200);
     }
 
 
@@ -119,7 +120,7 @@ class AdminController extends BaseController
     }
 
 
-    public function deleteSlide($id)
+    private function deleteSlide($id)
     {
         $image = ImageSlideModel::find($id);
 

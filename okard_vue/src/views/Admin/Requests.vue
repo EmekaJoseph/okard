@@ -6,11 +6,11 @@
             </h5>
             <div class="card main">
                 <div class="card-body pt-5">
-                    <div class="table-responsive table-sm text-nowrap ">
+                    <div v-if="!requests.list.length" class="text-center my-5">No Messages here</div>
+                    <div v-else class="table-responsive table-sm text-nowrap ">
                         <table class="table">
                             <tbody>
-                                <tr :class="{ 'unread-line': line.isRead == '0' }"
-                                    v-for="(line, index) in requests.list">
+                                <tr :class="{ 'unread-line': !line.isRead }" v-for="(line, index) in requests.list">
                                     <td>
                                         <i v-if="line.isRead == '0'" class="bi bi-envelope-fill"></i>
                                         <i v-else class="bi bi-envelope-open"></i>
@@ -18,7 +18,7 @@
                                     <td @click="getDetails(line.id)">{{ line.name }}</td>
                                     <td @click="getDetails(line.id)">{{ line.contact }}</td>
                                     <th class="text-muted xsmall">{{ line.sent }}</th>
-                                    <td @click="deleteRequest(line.id)">
+                                    <td @click="deleteReq(line.id)">
                                         <button class="btn btn-sm p-0 m-0 text-danger">
                                             <i class="bi bi-trash3"></i>
                                         </button>
@@ -36,29 +36,38 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import { useRequests } from '@/stores/admin/requests';
 import requestDetailsModal from '@/components/modals/requestDetailsModal.vue';
-import { ref } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
+import { requestDetails, deleteRequest } from '@/stores/functions/axiosInstance';
+
+
+onMounted(() => {
+    window.scrollTo(0, 0);
+    requests.getList()
+})
 
 const requests = useRequests()
 const modalButton = ref<any>(null)
 const fxn = useFunction.fx
 
-function getDetails(id: any) {
-    // get details from api
-    // update onBoard
+async function getDetails(id: any) {
+    let { data } = await requestDetails(id)
+    requests.onBoard = data
+    requests.getList()
     modalButton.value.click()
 }
 
-function deleteRequest(id: any) {
+function deleteReq(id: any) {
     fxn.Confirm(``, 'Confirm delete', 'warning')
         .then(async (result) => {
             if (result.isConfirmed) {
-
+                await deleteRequest(id)
+                fxn.Toast('deleted', 'success')
+                requests.getList()
             }
         })
-    // swall
 }
 
 </script>
@@ -90,7 +99,7 @@ tr:hover {
 
 .unread-line td {
     font-weight: bold;
-    color: var(--theme-color);
+    /* color: var(--theme-color); */
 }
 
 .deleteBtn {

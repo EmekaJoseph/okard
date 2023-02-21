@@ -7,6 +7,8 @@ export const useImageSlides = defineStore('slides', () => {
   const bill = ref<string[]>(['bill1.jpeg', 'bill2.jpeg'])
   const plan = ref<string[]>(['plan1.jpeg'])
 
+  const loading = ref<boolean>(true)
+
   const properties = computed(() => {
     return imageSlides.value.filter(img => img.type == 'Property')
   })
@@ -23,19 +25,26 @@ export const useImageSlides = defineStore('slides', () => {
     return properties.value.length ? [...new Set(properties.value.map(x => x.category))] : [];
   })
 
+  const cart = computed(() => {
+    return imageSlides.value.filter(x => x.inCart);
+  })
+
   async function getImages() {
     let { data } = await getImageSlides();
+    loading.value = false
     imageSlides.value = data
   }
 
   return {
+    loading,
     properties,
     materials,
     bill,
     plan,
     materialCategories,
     propertiesCategories,
-    getImages
+    getImages,
+    cart,
+    imageSlides
   }
-
 })

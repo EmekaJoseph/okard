@@ -54,8 +54,6 @@ h3 {
   margin-top: 1rem !important;
 }
 
-
-
 .mb-5 {
   margin-bottom: 3rem !important;
 }

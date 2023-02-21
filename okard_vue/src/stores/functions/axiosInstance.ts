@@ -3,8 +3,8 @@ import axios from 'axios'
 
 
 
-const base = 'http://127.0.0.1:8000/api/'//local
-// const base = '/api/'//build
+const base = 'http://127.0.0.1:8000/api/' //dev
+// const base = '/api/' //build
 
 const $ax = axios.create({
     baseURL: base,
@@ -37,7 +37,7 @@ const $axForm = axios.create({
 
 
 
-function sendRequest(data: FormData) {
+function sendRequest(data: any) {
     return $axForm.post(`sendRequest`, data)
 }
 function getRequests() {

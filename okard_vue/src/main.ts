@@ -17,12 +17,15 @@ const app = createApp(App)
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-import Datepicker from '@vuepic/vue-datepicker';
-import '@vuepic/vue-datepicker/dist/main.css';
-app.component('Datepicker', Datepicker);
+// import Datepicker from '@vuepic/vue-datepicker';
+// import '@vuepic/vue-datepicker/dist/main.css';
+// app.component('Datepicker', Datepicker);
 
 import HeaderComponent from '@/components/HeaderComponent.vue'
 app.component('HeaderComponent', HeaderComponent);
+
+import PageLoading from '@/components/PageLoading.vue'
+app.component('PageLoading', PageLoading);
 
 
 app.provide('hostURL', 'http://127.0.0.1:8000') //dev

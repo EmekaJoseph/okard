@@ -16,14 +16,29 @@
                         <div class="row gy-3">
                             <div v-if="requests.onBoard.refImage" class="col-12">
                                 <label class="mb-3">Enquiry made for:</label>
-                                <div class="image-holder fill">
-                                    <img :src="`/slides/${requests.onBoard.refImage}`" alt="okard-hgv">
+                                <div class=" theme-bg p-2">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <tbody>
+                                                <tr v-for="(item, i) in requests.onBoard.refImage" :key="i">
+                                                    <th class="fw-bold">{{(i + 1)}}</th>
+                                                    <td>{{ item.name }}<span v-if="item.location">, {{
+                                                        item.location
+                                                    }}</span>.</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                                <!-- <div class="image-holder fill">
+                                    <img :src="`${hostURL}/slides/${requests.onBoard.refImage}`" alt="okard-hgv">
+                                </div> -->
                             </div>
 
                             <div v-if="requests.onBoard.message" class="col-12">
                                 <label>Message:</label>
-                                <div class="theme-bg p-2 py-4 rounded-2">{{ requests.onBoard.message }}</div>
+                                <div class="bg-light p-2 py-4 rounded-2">{{ requests.onBoard.message }}</div>
                             </div>
 
                             <div v-if="requests.onBoard.doc" class="col-12">
@@ -53,9 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import { useRequests } from '@/stores/admin/requests';
+
+const hostURL = inject('hostURL')
 
 
 const requests = useRequests()
@@ -68,8 +85,8 @@ function reqName(name: string) {
     let title = ''
     if (name == 'Bill') title = 'Req for Bill of Quantity';
     if (name == 'Plan') title = 'Req for Bulding Plan';
-    if (name == 'Property') title = 'Buying a Property';
-    if (name == 'Materials') title = 'Buying Building Material';
+    if (name == 'Property') title = 'Buying Property';
+    if (name == 'Material') title = 'Buying Building Material';
 
     return title;
 }
