@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BlogController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +20,11 @@ use App\Http\Controllers\UserController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+
+
+
+
 
 Route::controller(AdminController::class)->group(function () {
     Route::post('admin/login',  'login');
@@ -36,7 +42,7 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::post('newCategory',  'newCategory');
     Route::get('getCategories',  'getCategories');
-    Route::get('deleteCategory/{id}',  'deleteCategory');
+    Route::delete('deleteCategory/{id}',  'deleteCategory');
 });
 
 
@@ -45,3 +51,6 @@ Route::controller(UserController::class)->group(function () {
     Route::post('sendRequest',  'sendRequest');
     Route::post('isVisitor',  'isVisitor');
 });
+
+
+Route::apiResource('blog', BlogController::class);

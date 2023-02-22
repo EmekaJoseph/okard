@@ -71,12 +71,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from 'vue';
+import { ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
-import { useRequests } from '@/stores/admin/requests';
-
-const hostURL = inject('hostURL')
-
+import { useRequests, } from '@/stores/admin/requests';
+import { hostURL } from '@/stores/functions/axiosInstance';
 
 const requests = useRequests()
 const btnX: any = ref(null)

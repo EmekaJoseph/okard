@@ -82,15 +82,14 @@
 
 
 <script setup lang="ts">
-import { onMounted, ref, computed, inject } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useImageSlides } from '@/stores/imageSlides'
 import enquiryModal from '@/components/modals/enquiryModal.vue';
 import cartModal from '@/components/modals/cartModal.vue';
 import useFunction from '@/stores/functions/useFunction';
+import { hostURL } from '@/stores/functions/axiosInstance';
 
 const fxn = useFunction.fx
-
-const hostURL = inject('hostURL')
 
 onMounted(() => {
   window.scrollTo(0, 0);

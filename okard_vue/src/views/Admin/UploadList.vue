@@ -42,9 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
-import { deleteImageSlide } from '@/stores/functions/axiosInstance';
+import { deleteImageSlide, hostURL } from '@/stores/functions/axiosInstance';
 import { useImageSlides } from '@/stores/imageSlides';
 
 onMounted(() => {
@@ -53,7 +53,6 @@ onMounted(() => {
 
 const images = useImageSlides()
 const fxn = useFunction.fx
-const hostURL = inject('hostURL')
 
 const nowShowing = ref<string>('Property')
 
@@ -95,6 +94,10 @@ function deleteImages() {
     transition: all 0.5s ease;
     height: 100px;
     width: auto;
+}
+
+.image-holder:hover {
+    transform: scale(0.97);
 }
 
 .fill {

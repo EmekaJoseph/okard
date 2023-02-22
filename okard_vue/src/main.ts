@@ -28,8 +28,7 @@ import PageLoading from '@/components/PageLoading.vue'
 app.component('PageLoading', PageLoading);
 
 
-app.provide('hostURL', 'http://127.0.0.1:8000') //dev
-// app.provide('hostURL', '') //build
+// app.provide('name', 'element')
 
 
 app.use(VueSweetalert2);

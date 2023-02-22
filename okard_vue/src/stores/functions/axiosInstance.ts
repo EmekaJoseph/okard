@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 
+const hostURL = 'http://127.0.0.1:8000' //dev
+// const hostURL = '' //build
 
+const apiURL = `${hostURL}/api/`
 
-const base = 'http://127.0.0.1:8000/api/' //dev
-// const base = '/api/' //build
-
-const $ax = axios.create({
-    baseURL: base,
+const $instance = axios.create({
+    baseURL: apiURL,
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json;charset=UTF-8;text/json',
@@ -15,8 +15,8 @@ const $ax = axios.create({
     },
 })
 
-const $axForm = axios.create({
-    baseURL: base,
+const $instanceForm = axios.create({
+    baseURL: apiURL,
     headers: {
         Accept: 'application/json',
         "Content-Type": "multipart/form-data",
@@ -24,60 +24,25 @@ const $axForm = axios.create({
     },
 })
 
-// create interceptor for renewing token
-// $ax.interceptors.request.use(
-//     (config: any) => {
-//         const token = localStorage.getItem('agudatechy_t');
-//         if (token) config.headers.Authorization = `Bearer ${atob(token)}`;
-//         return config;
-//     }
-// );
 
-// axios.defaults.headers.common['X-CSRF-TOKEN'] = <any>localStorage.getItem('agudatechy_t');
+const sendRequest = (data: any) => $instanceForm.post(`sendRequest`, data)
+const getRequests = () => $instance.get(`getRequests`)
+const requestDetails = (id: any) => $instance.get(`requestDetails/${id}`)
+const deleteRequest = (id: any) => $instance.delete(`deleteRequest/${id}`)
 
+const saveImageSlide = (data: FormData) => $instanceForm.post(`saveImageSlide`, data)
+const getImageSlides = () => $instance.get(`getImageSlides`)
+const deleteImageSlide = (id: any) => $instance.delete(`deleteImageSlide/${id}`)
 
+const newCategory = (data: object) => $instance.post(`newCategory`, JSON.stringify(data))
+const getCategories = () => $instance.get(`getCategories`)
+const deleteCategory = (id: any) => $instance.delete(`deleteCategory/${id}`)
 
-function sendRequest(data: any) {
-    return $axForm.post(`sendRequest`, data)
-}
-function getRequests() {
-    return $ax.get(`getRequests`)
-}
-function requestDetails(id: any) {
-    return $ax.get(`requestDetails/${id}`)
-}
-function deleteRequest(id: any) {
-    return $ax.delete(`deleteRequest/${id}`)
-}
+const isVisitor = () => $instance.post(`isVisitor`)
 
-
-function saveImageSlide(data: FormData) {
-    return $axForm.post(`saveImageSlide`, data)
-}
-function getImageSlides() {
-    return $ax.get(`getImageSlides`)
-}
-function deleteImageSlide(id: any) {
-    return $ax.delete(`deleteImageSlide/${id}`)
-}
-
-
-function newCategory(data: object) {
-    return $ax.post(`newCategory`, JSON.stringify(data))
-}
-function getCategories() {
-    return $ax.get(`getCategories`)
-}
-function deleteCategory(id: any) {
-    return $ax.get(`deleteCategory/${id}`)
-}
-
-
-function isVisitor() {
-    $ax.post(`isVisitor`)
-}
 
 export {
+    hostURL,
     sendRequest,
     getRequests,
     requestDetails,

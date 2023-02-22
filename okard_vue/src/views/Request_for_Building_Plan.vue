@@ -41,12 +41,12 @@
 
 
 <script setup lang="ts">
-import { onMounted, inject } from 'vue';
+import { onMounted } from 'vue';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import { useImageSlides } from '@/stores/imageSlides'
 import RequestForm from '@/components/RequestForm.vue';
+import { hostURL } from '@/stores/functions/axiosInstance';
 
-const hostURL = inject('hostURL')
 
 onMounted(() => window.scrollTo(0, 0))
 

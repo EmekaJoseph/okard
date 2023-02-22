@@ -21,9 +21,8 @@
 
                                 <div v-if="typeSelect" class="col-md-12">
                                     <div class="mb-1">Category under <span class="fw-bold">{{ typeSelect }}</span>
-                                        <span class="float-end btn btn-secondary m-0 p-0 px-2 btn-sm"
-                                            data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i
-                                                class="bi bi-plus"></i></span>
+                                        <span class="float-end btn btn-dark m-0 p-0 px-3 btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#addCategoryModal"><i class="bi bi-plus"></i></span>
                                     </div>
                                     <select v-model="categorySelect" class="form-control  form-select">
                                         <option v-for="option in cateDropDown" :value="option.name">
@@ -89,7 +88,7 @@
             </div>
         </div>
         <addCategoryModal :type="typeSelect" @added="updateCate" />
-    </div>
+</div>
 </template>
 
 <script setup lang="ts">
@@ -195,6 +194,8 @@ async function sendImage(obj: any) {
     background-color: #fcfcfc !important;
 }
 
+
+
 .fileBtnFake {
     background-color: var(--bs-light);
     padding: 15px 10px;
@@ -222,4 +223,3 @@ async function sendImage(obj: any) {
     /* background-color: #eee; */
 }
 </style>
-

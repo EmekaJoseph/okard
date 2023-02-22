@@ -119,7 +119,6 @@ class AdminController extends BaseController
         return response()->json(['success' => 'deleted'], 200);
     }
 
-
     private function deleteSlide($id)
     {
         $image = ImageSlideModel::find($id);
@@ -129,7 +128,6 @@ class AdminController extends BaseController
             if (file_exists($imgFile)) {
                 unlink($imgFile);
             }
-
             $image->delete();
         }
     }

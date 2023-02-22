@@ -53,15 +53,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, inject, reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import useFunction from '@/stores/functions/useFunction';
-import { sendRequest } from '@/stores/functions/axiosInstance';
+import { sendRequest, hostURL } from '@/stores/functions/axiosInstance';
 
 
 const fxn = useFunction.fx
 
-const hostURL = inject('hostURL')
 
 const emit = defineEmits(['showCart'])
 
