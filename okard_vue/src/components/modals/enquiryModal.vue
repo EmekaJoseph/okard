@@ -35,7 +35,7 @@
                                             <i class="bi bi-cart3"></i> Add To Cart
                                         </button>
                                         <button v-else @click="addToCart" type="button"
-                                            class="btn btn-dark w-100 btn-sm">
+                                            class="btn btn-dark w-100 btn-sm px-0">
                                             <i class="bi bi-cart-x"></i> Remove from cart
                                         </button>
                                     </div>
@@ -143,6 +143,26 @@ onBeforeRouteLeave(() => {
     border: none;
     background-color: var(--theme-color-bg);
     border-radius: 0%;
+}
+
+.image-holder {
+    cursor: pointer;
+    transition: all 0.5s ease;
+    height: 270px;
+    width: auto;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.fill img {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 </style>
 

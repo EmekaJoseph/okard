@@ -45,11 +45,11 @@
           <div v-show="!images.loading" class="col-lg-9 col-12">
             Showing:
             <span class="text-success fw-bold">
-              ({{ selectedCategory }})</span>
-            <!-- <legend class="text-muted small">Select Image to Continue &nbsp;
-            </legend> -->
+              ({{ selectedCategory }})
+            </span>
 
-            <div class="card border-0 bg-light h-100">
+
+            <div class="card h-100">
               <div class="card-body">
                 <div class="row g-2">
                   <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
@@ -59,7 +59,7 @@
                       <div class="details-overlay">
                         <div class="bottom-text">
                           <div class="text-warning text-capitalize">{{ show.name }}</div>
-                          <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 15) }}</div>
+                          <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div>
                         </div>
                       </div>
                     </div>

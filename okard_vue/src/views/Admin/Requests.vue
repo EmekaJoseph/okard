@@ -1,23 +1,36 @@
 <template>
     <div class="dashboard">
         <div class="container">
-            <h5 class="mb-3">
-                Requests: <small class="xsmall float-end">({{ requests.unRead }} unread)</small>
-            </h5>
+            <h6 class="mb-3">
+                Requests:
+                <span class="badge rounded-4 bg-light text-black fw-light small">{{ requests.list.length }}</span>
+                <span v-if="requests.unRead" class="xsmall float-end badge rounded-4 bg-light text-black"> {{
+                    requests.unRead
+                }} unread</span>
+            </h6>
             <div class="card main">
                 <div class="card-body pt-5">
                     <div v-if="!requests.list.length" class="text-center my-5">No Messages here</div>
                     <div v-else class="table-responsive table-sm text-nowrap ">
                         <table class="table">
+                            <!-- <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Contact</th>
+                                    <th>Name</th>
+                                    <th>time</th>
+                                </tr>
+                            </thead> -->
                             <tbody>
-                                <tr :class="{ 'unread-line': !line.isRead }" v-for="(line, index) in requests.list">
+                                <tr :class="{ 'unread-line': !line.isRead }" v-for="(line, index) in requests.list"
+                                    :key="index">
                                     <td>
-                                        <i v-if="line.isRead == '0'" class="bi bi-envelope-fill"></i>
+                                        <i v-if="!line.isRead" class="bi bi-envelope-fill"></i>
                                         <i v-else class="bi bi-envelope-open"></i>
                                     </td>
-                                    <td @click="getDetails(line.id)">{{ line.name }}</td>
                                     <td @click="getDetails(line.id)">{{ line.contact }}</td>
-                                    <th class="text-muted xsmall">{{ line.sent }}</th>
+                                    <td @click="getDetails(line.id)">{{ line.name }}</td>
+                                    <th @click="getDetails(line.id)" class="text-muted xsmall">{{ line.sent }}</th>
                                     <td @click="deleteReq(line.id)">
                                         <button class="btn btn-sm p-0 m-0 text-danger">
                                             <i class="bi bi-trash3"></i>
@@ -36,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useRequests } from '@/stores/admin/requests';
 import requestDetailsModal from '@/components/modals/requestDetailsModal.vue';
 import useFunction from '@/stores/functions/useFunction';
@@ -69,6 +82,14 @@ function deleteReq(id: any) {
             }
         })
 }
+
+let interval = setInterval(() => {
+    requests.getList()
+}, 10000)
+
+onUnmounted(() => {
+    clearInterval(interval)
+})
 
 </script>
 

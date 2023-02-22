@@ -20,7 +20,6 @@
             <PageLoading />
           </div>
 
-
           <div v-show="!images.loading" class="col-lg-3 col-12 mb-5">
             <fieldset class="border rounded-3 py-1 py-lg-4 px-4 ps-lg-4 pb-3 bg-light h-100">
               <legend class="text-muted float-none small p-0 px-2 w-auto">Categories</legend>
@@ -46,9 +45,11 @@
           <div v-show="!images.loading" class="col-lg-9 col-12">
             Showing:
             <span class="text-success fw-bold">
-              ({{ selectedCategory }})</span>
+              ({{ selectedCategory }})
+            </span>
 
-            <div class="card border-0 bg-light h-100">
+
+            <div class="card h-100">
               <div class="card-body">
                 <div class="row g-2">
                   <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
@@ -58,7 +59,7 @@
                       <div class="details-overlay">
                         <div class="bottom-text">
                           <div class="text-warning text-capitalize">{{ show.name }}</div>
-                          <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 15) }}</div>
+                          <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div>
                         </div>
                       </div>
                     </div>
@@ -67,7 +68,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </div>

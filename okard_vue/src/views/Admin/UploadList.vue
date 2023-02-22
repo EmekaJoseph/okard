@@ -1,18 +1,18 @@
 <template>
-    <div class="card">
-        <div class="card-header text-muted">UPLOAD LIST :
+    <div class="card border-0 bg-transparent">
+        <div class="card-header text-muted border-0 rounded-0">UPLOAD LIST :
             <button v-show="checkedImages.length" @click="deleteImages"
                 class="btn btn-sm btn-danger p-0 m-0 px-2 float-end">
                 <i class="bi bi-trash3-fill"></i> Delete
             </button>
         </div>
         <div class="card-body list-scroll">
-            <div class="card-title mb-3">
+            <div class="card-title mt-3 mb-4">
                 <span class="tabb" :class="{ 'active-tabb': nowShowing == 'Property' }"
                     @click="nowShowing = 'Property'">Properties
                 </span>
                 <span class="tabb" :class="{ 'active-tabb': nowShowing == 'Material' }"
-                    @click="nowShowing = 'Material'">Materials
+                    @click="nowShowing = 'Material'">Building Materials
                 </span>
             </div>
 
@@ -152,12 +152,13 @@ function deleteImages() {
 .tabb {
     cursor: pointer;
     margin-inline: 10px;
-    padding: 3px 7px;
-    border-radius: 4px;
+    padding: 3px 5px;
+    /* border-radius: 4px; */
+    font-size: 14px;
 }
 
 .active-tabb {
     background-color: var(--theme-color-bg);
-    border: 1px solid var(--theme-color);
+    border-bottom: 1px solid var(--theme-color);
 }
 </style>

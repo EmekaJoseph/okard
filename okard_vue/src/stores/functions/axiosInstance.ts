@@ -68,10 +68,13 @@ function newCategory(data: object) {
 function getCategories() {
     return $ax.get(`getCategories`)
 }
+function deleteCategory(id: any) {
+    return $ax.get(`deleteCategory/${id}`)
+}
 
 
-function isVisitor(data: any) {
-    return $ax.post(`newCategory`, JSON.stringify(data))
+function isVisitor() {
+    $ax.post(`isVisitor`)
 }
 
 export {
@@ -84,5 +87,6 @@ export {
     deleteImageSlide,
     newCategory,
     getCategories,
-    isVisitor
+    isVisitor,
+    deleteCategory
 }

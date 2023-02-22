@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { onMounted, ref, reactive } from 'vue';
+import { onMounted, } from 'vue';
 import HeroSection from '@/components/Hompage/HeroComponent.vue'
 import AboutSection from '@/components/Hompage/AboutComponent.vue'
 import ServicesSection from '@/components/Hompage/ServicesComponent.vue'
 import ContactSection from '@/components/Hompage/ContactComponent.vue'
 import HeaderComponent from '@/components/HeaderComponent.vue'
+import { isVisitor } from '@/stores/functions/axiosInstance';
 
-onMounted(() => window.scrollTo(0, 0))
+onMounted(() => {
+  window.scrollTo(0, 0)
+  isVisitor()
+})
 </script>
 
 <template>

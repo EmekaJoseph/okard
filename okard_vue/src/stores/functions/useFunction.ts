@@ -37,7 +37,7 @@ const fx = reactive({
             timer: 3000,
             timerProgressBar: false,
             padding: 10,
-            background: '#f8f8f8',
+            iconColor: '#2c3e50',
         })
     },
 

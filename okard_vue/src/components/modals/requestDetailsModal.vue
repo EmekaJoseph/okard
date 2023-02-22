@@ -2,8 +2,7 @@
     <div>
         <div class="modal fade" id="requestDetailsModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered"
-                :class="{ 'modal-sm': !requests.onBoard.refImage }">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header border-0 bg-light">
                         <span class="fw-bold"> {{ reqName(requests.onBoard.type) }} </span>
@@ -15,8 +14,8 @@
                     <div class="modal-body p-sm-4 mb-4">
                         <div class="row gy-3">
                             <div v-if="requests.onBoard.refImage" class="col-12">
-                                <label class="mb-3">Enquiry made for:</label>
-                                <div class=" theme-bg p-2">
+                                <label class="">Enquiry made for:</label>
+                                <div class=" theme-bg p-2 card shadow-sm">
                                     <div class="table-responsive">
                                         <table class="table table-sm">
                                             <tbody>
@@ -31,35 +30,39 @@
                                         </table>
                                     </div>
                                 </div>
-                                <!-- <div class="image-holder fill">
-                                    <img :src="`${hostURL}/slides/${requests.onBoard.refImage}`" alt="okard-hgv">
-                                </div> -->
                             </div>
 
                             <div v-if="requests.onBoard.message" class="col-12">
                                 <label>Message:</label>
-                                <div class="bg-light p-2 py-4 rounded-2">{{ requests.onBoard.message }}</div>
+                                <div class="bg-light card p-2 py-2 rounded-2">{{ requests.onBoard.message }}
+                                </div>
                             </div>
 
                             <div v-if="requests.onBoard.doc" class="col-12">
-                                <label>Document:</label>
-                                <div class="theme-bg p-2 rounded-2">
-                                    <a class="theme-text text-decoration-none" href="#" download="">
-                                        Download File
+                                <label>Attached Document:</label>
+                                <div class="theme-bg p-2 card">
+                                    <a class="theme-text text-decoration-none"
+                                        :href="`${hostURL}/reqFiles/${requests.onBoard.doc}`" download>
+                                        <i class="bi bi-download"></i> Download document
                                     </a>
                                 </div>
                             </div>
 
                             <div v-if="requests.onBoard.voiceNote" class="col-12">
                                 <label>Voice Note:</label>
-                                <div class="theme-bg p-2 rounded-2">
-                                    <a class="theme-text text-decoration-none" href="#" download>
-                                        Download Audio
+                                <div class="theme-bg p-2 card">
+                                    <a class="theme-text text-decoration-none"
+                                        :href="`${hostURL}/reqFiles/${requests.onBoard.voiceNote}`" download>
+                                        <i class="bi bi-mic"></i> Download voiceNote
                                     </a>
                                 </div>
                             </div>
-                        </div>
 
+                            <div class="col-12 mt-5">
+                                <button data-bs-dismiss="modal"
+                                    class="btn float-end btn-outline-secondary px-4">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

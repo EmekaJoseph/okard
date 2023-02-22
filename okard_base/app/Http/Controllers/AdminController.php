@@ -153,4 +153,9 @@ class AdminController extends BaseController
         $categories = DB::table('tbl_categories')->get();
         return response()->json($categories, 200);
     }
+
+    public function deleteCategory($id)
+    {
+        DB::table('tbl_categories')->where('id', $id)->delete();
+    }
 }

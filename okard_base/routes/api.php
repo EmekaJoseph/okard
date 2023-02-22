@@ -32,11 +32,11 @@ Route::controller(AdminController::class)->group(function () {
     Route::delete('deleteRequest/{id}',  'deleteRequest');
 
     Route::post('saveImageSlide',  'saveImageSlide');
-    // Route::get('getImageSlides',  'getImageSlides');
     Route::delete('deleteImageSlide/{id}',  'deleteImageSlide');
 
     Route::post('newCategory',  'newCategory');
     Route::get('getCategories',  'getCategories');
+    Route::get('deleteCategory/{id}',  'deleteCategory');
 });
 
 

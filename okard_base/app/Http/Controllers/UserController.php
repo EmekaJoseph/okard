@@ -40,7 +40,7 @@ class UserController extends BaseController
 
         if ($req->file('doc')) {
             $file = $req->file('doc');
-            $fileName = 'voiceNote-' . time() . '.' . $file->extension();
+            $fileName = 'doc-' . time() . '.' . $file->extension();
 
             $file->move('reqFiles/', $fileName);
 
@@ -58,7 +58,7 @@ class UserController extends BaseController
         DB::table('tbl_visitors')
             ->updateOrInsert(
                 ['ip_addr' => $req->ip()],
-                ['ip_addr' => $req->ip()]
+                ['ip_addr' => $req->ip(), 'visit_date' => Carbon::now()]
             );
     }
 }

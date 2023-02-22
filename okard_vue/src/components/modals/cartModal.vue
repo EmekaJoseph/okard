@@ -24,17 +24,20 @@
                         <div v-else class="row justify-content-center gy-3">
 
                             <div class="col-md-12 ">
-                                <div class=" theme-bg p-2">
+                                <div class=" card p-2 shadow-sm">
                                     <div class="table-responsive">
                                         <table class="table table-sm">
                                             <tbody>
                                                 <tr v-for="(item, i) in images.cart" :key="i">
                                                     <th class="fw-bold">{{(i + 1)}}</th>
-                                                    <td>{{ item.name }}<span v-if="item.location">, {{
-                                                        item.location
-                                                    }}</span>.</td>
+                                                    <td class=" text-capitalize text-truncate">{{ item.name }}<span
+                                                            v-if="item.location">, {{
+                                                                item.location
+                                                            }}</span>.</td>
                                                     <td><button @click="removeFromCart(item.id)"
-                                                            class="btn btn-sm m-0 p-0">X</button></td>
+                                                            class="btn btn-sm m-0 p-0">
+                                                            <i class="bib bi-x-lg"></i>
+                                                        </button></td>
                                                 </tr>
 
                                             </tbody>
