@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\RequestModel;
 use App\Models\ImageSlideModel;
@@ -91,7 +92,12 @@ class AdminController extends BaseController
             $file = $req->file('img');
             $fileName = 'img-' . time() . '.' . $file->extension();
 
-            $file->move('slides/', $fileName);
+            $img = Image::make($file);
+            $img->resize(800, 500, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save('slides/' . $fileName);
+
+            // $file->move('slides/', $fileName); ######### old, dont use..
 
             $image->img = $fileName;
         }

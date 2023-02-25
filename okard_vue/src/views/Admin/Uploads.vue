@@ -2,11 +2,10 @@
     <div class="dashboard">
         <div class="container">
             <h6 class="mb-2">
-                Upload Images
-                <!-- <span class="float-end btn btn-sm btn-secondary m-0 p-0 px-2">view list</span> -->
+                <i class="bi bi-cloud-upload"></i> Images Uploads
             </h6>
 
-            <div class="card main">
+            <div class="card border-0 main">
                 <div class="card-body pt-5 p-lg-5">
                     <div class="row gy-3">
                         <div class="col-md-6 px-lg-4">
@@ -43,11 +42,11 @@
                                     </div>
                                     <div v-else class="fileBtnFake theme-bg">
                                         <span>
-                                            <span class="theme-text">
+                                            <span class="theme-tex">
                                                 {{ newFile.name }}
                                             </span>
-                                            <span @click="fileFormR" class="fw-bold float-end theme-text">
-                                                <i class="bi bi-x-circle-fill"></i>
+                                            <span @click="fileFormR" class="fw-bold float-end ">
+                                                <i class="bi bi-x-circle-fill"></i> remove
                                             </span>
                                         </span>
                                     </div>
@@ -88,7 +87,7 @@
             </div>
         </div>
         <addCategoryModal :type="typeSelect" @added="updateCate" />
-</div>
+    </div>
 </template>
 
 <script setup lang="ts">

@@ -22,8 +22,7 @@
 
 
             <div v-else class="row gy-4 ">
-                <div @click="show.isChecked = !show.isChecked" v-for="(show, i) in gallery" :key="i"
-                    class="col-6 col-md-4">
+                <div @click="show.isChecked = !show.isChecked" v-for="(show, i) in gallery" :key="i" class="col-6 col-md-4">
                     <div class="image-holder fill">
                         <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
                         <div class="details-overlay">

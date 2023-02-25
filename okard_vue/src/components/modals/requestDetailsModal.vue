@@ -7,8 +7,7 @@
                     <div class="modal-header border-0 bg-light">
                         <span class="fw-bold"> {{ reqName(requests.onBoard.type) }} </span>
                         <span class="float-end">
-                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </span>
                     </div>
                     <div class="modal-body p-sm-4 mb-4">
@@ -20,7 +19,7 @@
                                         <table class="table table-sm">
                                             <tbody>
                                                 <tr v-for="(item, i) in requests.onBoard.refImage" :key="i">
-                                                    <th class="fw-bold">{{(i + 1)}}</th>
+                                                    <th class="fw-bold"> <i class="bi bi-arrow-right xsmall"></i> </th>
                                                     <td>{{ item.name }}<span v-if="item.location">, {{
                                                         item.location
                                                     }}</span>.</td>
@@ -67,7 +66,7 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
 </template>
 
 <script setup lang="ts">

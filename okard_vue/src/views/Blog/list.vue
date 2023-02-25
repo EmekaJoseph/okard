@@ -9,11 +9,11 @@
           {{ post.category }}
         </span>
       </div>
-      <div @click="viewDetails(post)" class="fw-bold blog-title hover-tiltY h5 mb-0">{{ post.topic }}</div>
+      <div @click="viewDetails(post)" class="fw-bold blog-title hover-tiltY h5 mb-0">{{ post.title }}</div>
       <div>{{ fxn.truncateStr(post.text, 50) }}</div>
-      <small class="blog-date text-muted mt-3"> {{
-        post.posted
-      }}</small>
+      <small class="blog-date text-muted mt-3">
+        {{ timeago(post.created_at) }}
+      </small>
     </div>
   </div>
 </template>
@@ -23,6 +23,9 @@ import { onMounted } from 'vue';
 import { useBlogStore } from '@/stores/blog';
 import { useRouter } from 'vue-router';
 import useFunction from '@/stores/functions/useFunction'
+import { useTimeAgo } from '@vueuse/core'
+
+const timeago = (date: Date) => useTimeAgo(new Date(date));
 
 const fxn = useFunction.fx
 const router = useRouter()
@@ -30,6 +33,7 @@ const router = useRouter()
 const blog = useBlogStore()
 onMounted(() => {
   window.scrollTo(0, 0)
+  blog.getList()
 })
 
 
@@ -37,8 +41,8 @@ function viewDetails(post: any) {
   router.push({
     path: '/blog/details',
     query: {
-      blog: post.id,
-      t: post.topic
+      blog: post.blog_id,
+      t: post.title
     }
   })
 }

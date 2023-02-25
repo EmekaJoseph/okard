@@ -66,6 +66,10 @@ li a {
     text-decoration: none;
 }
 
+li a:hover {
+    color: var(--theme-color);
+}
+
 .active {
     background-color: var(--theme-color-bg);
     padding: 5px 30px 5px 5px;

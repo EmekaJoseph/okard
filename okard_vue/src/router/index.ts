@@ -10,7 +10,8 @@ import AdminLoginView from '../views/Admin/Login.vue'
 import AdminLayout from '../views/Admin/_layout.vue'
 import AdminDashboard from '../views/Admin/Dashboard.vue'
 import AdminRequests from '../views/Admin/Requests.vue'
-import BlogPosting from '../views/Admin/BlogPosting.vue'
+import BlogPosting from '../views/Admin/BlogPost.vue'
+import BlogList from '../views/Admin/BlogList.vue'
 import AdminUploads from '../views/Admin/Uploads.vue'
 import AdminAccount from '../views/Admin/Account.vue'
 
@@ -40,7 +41,8 @@ const router = createRouter({
       component: AdminLayout,
       children: [
         { path: 'dashboard', alias: '', name: 'Dashboard', component: AdminDashboard },
-        { path: 'blogpost', name: 'Blog-Post', component: BlogPosting },
+        { path: 'blogpost', name: 'Blog-Listing', component: BlogList },
+        { path: 'blogpost_new', name: 'Blog-Post', component: BlogPosting },
         { path: 'requests', name: 'Requests', component: AdminRequests },
         { path: 'uploads', name: 'Uploads', component: AdminUploads },
         { path: 'account', name: 'Account', component: AdminAccount },

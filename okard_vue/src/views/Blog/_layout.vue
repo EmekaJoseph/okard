@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <div class="row">
+                        <div class="row gy-3">
 
                             <RouterView />
 
@@ -63,7 +63,6 @@
 
         </div>
     </div>
-
 </template>
 
 <script setup lang="ts">

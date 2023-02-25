@@ -43,23 +43,34 @@
           </div>
 
           <div v-show="!images.loading" class="col-lg-9 col-12">
-            Showing:
-            <span class="text-success fw-bold">
-              ({{ selectedCategory }})
-            </span>
+
+            <div class="row gy-3">
+              <div class="col-12">
+                Showing:
+                <span class="text-success fw-bold">
+                  ({{ selectedCategory }})
+                </span>
+
+                <span @click="showCart" class="float-end cartBtn">
+                  <i class="bi bi-cart3"></i> Cart
+                </span>
+              </div>
 
 
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="row g-2">
-                  <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
-                    class="col-6 col-lg-4 col-md-4 ">
-                    <div class="image-holder fill">
-                      <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
-                      <div class="details-overlay">
-                        <div class="bottom-text">
-                          <div class="text-warning text-capitalize">{{ show.name }}</div>
-                          <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div>
+              <div class="col-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="row g-2">
+                      <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
+                        class="col-6 col-lg-4 col-md-4 ">
+                        <div class="image-holder fill">
+                          <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
+                          <div class="details-overlay">
+                            <div class="bottom-text">
+                              <div class="text-warning text-capitalize">{{ show.name }}</div>
+                              <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -67,6 +78,7 @@
                 </div>
               </div>
             </div>
+
           </div>
 
         </div>
@@ -77,7 +89,7 @@
     <cartModal />
     <button class="d-none" ref="modalButton" data-bs-toggle="modal" data-bs-target="#enquiryModal"></button>
     <button class="d-none" ref="modalButtonCart" data-bs-toggle="modal" data-bs-target="#cartModal"></button>
-  </div>
+</div>
 </template>
 
 
@@ -228,6 +240,19 @@ img {
   left: 0;
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+.cartBtn {
+  border: 1px solid #9e9c9c;
+  background-color: #f5f5f5;
+  padding: 0px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cartBtn:hover {
+  background-color: #111;
+  color: #fff;
 }
 </style>
 

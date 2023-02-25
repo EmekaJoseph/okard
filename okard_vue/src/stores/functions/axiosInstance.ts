@@ -40,6 +40,40 @@ const deleteCategory = (id: any) => $instance.delete(`deleteCategory/${id}`)
 
 const isVisitor = () => $instance.post(`isVisitor`)
 
+const blogNew = (data: any) => $instanceForm.post(`blog`, data)
+const blogList = () => $instance.get(`blog`)
+const blogDetails = (id: any) => $instance.get(`blog/${id}`)
+const blogDelete = (id: any) => $instance.delete(`blog/${id}`)
+
+
+
+
+
+
+
+
+
+
+const testCall = async () => {
+    let data_: any = ''
+    await axios.post("https://api.ciku.co/v1/verifyRegCode",
+        JSON.stringify({ email: 'email@mail.com', code: '345673' }),
+        {
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json;',
+                withCredentials: true,
+            },
+        },
+    )
+        .then(function (response) {
+            data_ = response
+            console.log(response);
+
+        })
+    return data_
+}
+
 
 export {
     hostURL,
@@ -53,5 +87,10 @@ export {
     newCategory,
     getCategories,
     isVisitor,
-    deleteCategory
+    deleteCategory,
+    blogNew,
+    blogList,
+    blogDetails,
+    blogDelete,
+    // testCall
 }

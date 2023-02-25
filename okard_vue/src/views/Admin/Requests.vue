@@ -1,26 +1,15 @@
 <template>
-    <div class="dashboard">
+    <div class="over_all">
         <div class="container">
             <h6 class="mb-3">
-                Requests:
-                <span class="badge rounded-4 bg-light text-black fw-light small">{{ requests.list.length }}</span>
-                <span v-if="requests.unRead" class="xsmall float-end badge rounded-4 bg-light text-black"> {{
-                    requests.unRead
-                }} unread</span>
+                <i class="bi bi-chat-left-text"></i> Requests:
+                <span class="badge rounded-4 bg-light text-black fw-light small">{{ requests.unRead }} unread</span>
             </h6>
-            <div class="card main">
+            <div class="card border-0 main">
                 <div class="card-body pt-5">
-                    <div v-if="!requests.list.length" class="text-center my-5">No Messages here</div>
-                    <div v-else class="table-responsive table-sm text-nowrap ">
+                    <div v-if="!requests.list.length" class="text-center my-5 fs-3 text-muted">No Messages here</div>
+                    <div v-else class="table-responsive table-sm text-nowrap table-bordered ">
                         <table class="table">
-                            <!-- <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Contact</th>
-                                    <th>Name</th>
-                                    <th>time</th>
-                                </tr>
-                            </thead> -->
                             <tbody>
                                 <tr :class="{ 'unread-line': !line.isRead }" v-for="(line, index) in requests.list"
                                     :key="index">
@@ -94,7 +83,7 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.dashboard {
+.over_all {
     min-height: 80vh;
     display: flex;
     justify-content: center;

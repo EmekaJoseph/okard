@@ -20,7 +20,6 @@ class UserController extends BaseController
 
     public function sendRequest(Request $req)
     {
-
         $userReq = new RequestModel();
         $userReq->name = $req->input('name');
         $userReq->contact = $req->input('contact');
