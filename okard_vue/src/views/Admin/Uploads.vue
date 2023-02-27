@@ -20,7 +20,7 @@
 
                                 <div v-if="typeSelect" class="col-md-12">
                                     <div class="mb-1">Category under <span class="fw-bold">{{ typeSelect }}</span>
-                                        <span class="float-end btn btn-dark m-0 p-0 px-3 btn-sm" data-bs-toggle="modal"
+                                        <span class="float-end btn btn-dark m-0 p-0 px-2 btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#addCategoryModal"><i class="bi bi-plus"></i></span>
                                     </div>
                                     <select v-model="categorySelect" class="form-control  form-select">
@@ -31,14 +31,13 @@
 
                                 </div>
                                 <form ref="fileForm" class="d-none">
-                                    <input type="file" ref="fileBtn"
-                                        accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
+                                    <input type="file" ref="fileBtn" accept="image/jpeg, image/png, image/jpg"
                                         class="form-control form-control-lg" @change="fileUploadFn">
                                 </form>
                                 <div v-if="categorySelect" class="col-lg-12">
                                     <div class="mb-1">Upload Image:</div>
                                     <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
-                                        <i class="bi bi-file-earmark-text"></i> Click Here
+                                        <i class="bi bi-file-earmark-text"></i> Click Here to upload
                                     </div>
                                     <div v-else class="fileBtnFake theme-bg">
                                         <span>

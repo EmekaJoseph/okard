@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2023 at 01:29 AM
+-- Generation Time: Feb 27, 2023 at 11:32 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -20,6 +20,43 @@ SET time_zone = "+00:00";
 --
 -- Database: `okard_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_account`
+--
+
+CREATE TABLE `tbl_account` (
+  `id` int(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` varchar(100) DEFAULT NULL,
+  `last_login` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_account`
+--
+
+INSERT INTO `tbl_account` (`id`, `username`, `password`, `role`, `last_login`) VALUES
+(1, 'okard', '$2y$10$7KJA8djx/a6FZEpn9k7wVuApQ3JQFpVgmr7ee9WPfPxpGIMRTjCdK', NULL, '2023-02-27 22:25:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_blog`
+--
+
+CREATE TABLE `tbl_blog` (
+  `blog_id` int(100) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `images` varchar(255) DEFAULT NULL,
+  `created_at` varchar(100) NOT NULL,
+  `updated_at` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -120,11 +157,23 @@ CREATE TABLE `tbl_visitors` (
 --
 
 INSERT INTO `tbl_visitors` (`id`, `ip_addr`, `visit_date`) VALUES
-(1, '127.0.0.1', '2023-02-22 00:28:11');
+(1, '127.0.0.1', '2023-02-27 20:43:53');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `tbl_account`
+--
+ALTER TABLE `tbl_account`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_blog`
+--
+ALTER TABLE `tbl_blog`
+  ADD PRIMARY KEY (`blog_id`);
 
 --
 -- Indexes for table `tbl_imageslides`
@@ -149,16 +198,28 @@ ALTER TABLE `tbl_visitors`
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_account`
+--
+ALTER TABLE `tbl_account`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_blog`
+--
+ALTER TABLE `tbl_blog`
+  MODIFY `blog_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `tbl_imageslides`
 --
 ALTER TABLE `tbl_imageslides`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_requests`
 --
 ALTER TABLE `tbl_requests`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `tbl_visitors`

@@ -44,11 +44,10 @@
                         <!--nav-->
                     </div>
                     <div class="tab-content about-content" id="tabContent">
-                        <div class="tab-pane fade show active" id="history" role="tabpanel"
-                            aria-labelledby="history-tab">
+                        <div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="history-tab">
                             <div class="row align-items-center">
                                 <div class="col-md-5">
-                                    <div class="history-img text-lg-end text-center mb-4 mb-lg-0">
+                                    <div class="bounce history-img text-lg-end text-center mb-4 mb-lg-0">
                                         <img src="@/assets/images/history1.jpg" alt="history"
                                             class="img-fluid rounded-circle">
                                     </div>
@@ -90,7 +89,7 @@
                                 </div>
                                 <!--end col-->
                                 <div class="col-md-5">
-                                    <div class="vision-img text-lg-end text-center mb-4 mb-lg-0">
+                                    <div class="bounce vision-img text-lg-end text-center mb-4 mb-lg-0">
                                         <img src="@/assets/images/vision.jpeg" alt="vision"
                                             class="img-fluid rounded-circle">
                                     </div>
@@ -100,11 +99,10 @@
                             <!--end row-->
                         </div>
                         <!--end vision-tab-->
-                        <div class="tab-pane fade mission-tab" id="mission" role="tabpanel"
-                            aria-labelledby="mission-tab">
+                        <div class="tab-pane fade mission-tab" id="mission" role="tabpanel" aria-labelledby="mission-tab">
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
-                                    <div class="mission-img text-lg-end text-center mb-4 mb-lg-0">
+                                    <div class="bounce mission-img text-lg-end text-center mb-4 mb-lg-0">
                                         <img src="@/assets/images/mission.jpeg" alt="mission"
                                             class="img-fluid rounded-circle">
                                     </div>

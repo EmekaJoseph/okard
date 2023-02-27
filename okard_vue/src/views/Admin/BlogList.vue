@@ -10,7 +10,7 @@
                         <i class="bi bi-newspaper"></i> Blog List:
 
                         <RouterLink class="btn btn-sm p-0 m-0 px-3 theme-btn float-end " to="/admin/account/blogpost_new">
-                            <i class="bi bi-plus-circle-dotted"></i> New Post
+                            <i class="bi bi-plus-circle-dotted"></i> New Blog
                         </RouterLink>
 
                     </h6>
@@ -21,7 +21,7 @@
                         </div>
 
                         <div v-else class="card-body pt-5">
-                            <div v-if="!blog.list.length" class="text-center fs-3 text-muted my-5">No List To Show</div>
+                            <div v-if="!blog.list.length" class="text-center fs-4 text-muted my-5">No list, add blog</div>
                             <div v-else class="table-responsive table-sm text-nowrap ">
                                 <table class="table">
                                     <tbody>

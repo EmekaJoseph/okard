@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\RequestModel;
@@ -19,6 +20,70 @@ use App\Models\ImageSlideModel;
 class AdminController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+
+    public function login(Request $req)
+    {
+        // DB::table('tbl_account')->insert([
+        //     'username' => 'okard',
+        //     'password' => Hash::make('admin123'),
+        // ]);
+
+        $username = $req->input('username');
+        $password = $req->input('password');
+
+        $account = DB::table('tbl_account')->where('username', $username);
+        $row =  $account->first();
+
+        if (!$row) {
+            return response()->json('invalid details', 203);
+        }
+
+        if (!Hash::check($password, $row->password)) {
+            return response()->json('invalid details', 203);
+        }
+
+        $account->update(['last_login' => Carbon::now()]);
+
+        $data = [
+            'id' => $row->id,
+            'username' => $row->username,
+            'role' => $row->role,
+        ];
+
+        return response()->json($data, 200);
+    }
+
+    public function getAccount($id)
+    {
+        $account = DB::table('tbl_account')
+            ->select('id', 'username', 'role')
+            ->find($id);
+
+        return response()->json($account, 200);
+    }
+
+
+    public function passwordChange(Request $req)
+    {
+        $id = $req->input('id');
+        $table = DB::table('tbl_account');
+        $account = $table->find($id);
+
+        $oldPass = $req->input('oldPass');
+
+        if (!Hash::check($oldPass, $account->password)) {
+            return response()->json('invalid details', 203);
+        }
+        $newHash = Hash::make($req->input('newPass'));
+
+        $table->where('id',  $id)->update(['password' => $newHash]);
+
+        return response()->json('success', 200);
+    }
+
+
+
 
 
     public function getRequests(): JsonResponse

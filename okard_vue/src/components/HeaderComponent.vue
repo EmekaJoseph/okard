@@ -29,7 +29,9 @@ const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
     <nav class="navbar fixed-top navbar-expand-lg"
         :class="{ 'header-white': scrollAxis > 50, 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
         <div class="container-fluid">
-            <RouterLink class="navbar-brand text-warning" to="/">OKARD-HGV</RouterLink>
+            <RouterLink class="navbar-brand text-warning" to="/">OKARD-HGV
+                <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span>
+            </RouterLink>
             <button v-if="route.name == 'Home'" ref="toggler" class="navbar-toggler border-0 btn-sm" type="button"
                 data-bs-toggle="collapse" data-bs-target="#nav-link-lists" aria-controls="nav-link-lists"
                 aria-expanded="false" aria-label="Toggle navigation">

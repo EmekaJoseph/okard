@@ -7,11 +7,11 @@
         </div>
         <div class="offcanvas-body p-0">
             <ul class="menu-list" data-bs-dismiss="offcanvas">
-                <li>
+                <!-- <li>
                     <router-link to="/admin/account/dashboard">
                         <i class="bi bi-menu-app"></i> Dashboard
                     </router-link>
-                </li>
+                </li> -->
                 <li>
                     <router-link to="/admin/account/requests">
                         <i class="bi bi-chat-left-text"></i> Requests
@@ -32,7 +32,7 @@
                         <i class="bi bi-person-gear"></i> Account
                     </router-link>
                 </li>
-                <li> <router-link to="/admin" class="btn logout-btn py-0">Logout</router-link> </li>
+                <li> <span @click="logout" class="btn logout-btn py-0 mt-5">Logout</span> </li>
 
             </ul>
 
@@ -42,13 +42,25 @@
 
 <script setup lang="ts">
 import { onBeforeRouteLeave } from 'vue-router';
-
 import { ref } from 'vue';
+import { useAccount } from '@/stores/admin/account'
+import { useRouter } from 'vue-router';
 
+
+const account = useAccount();
+const router = useRouter();
 const closeBtn = ref<any>(null)
+
 onBeforeRouteLeave(() => {
     closeBtn.value.click()
 })
+
+function logout() {
+    account.state = account.nullState;
+    router.replace({
+        path: '/admin'
+    })
+}
 </script>
 
 <style scoped>
@@ -87,7 +99,12 @@ li a:hover {
 }
 
 .logout-btn {
-    background-color: var(--theme-color);
+    background-color: var(--bs-black);
+    color: #fff;
+}
+
+.logout-btn:hover {
+    background-color: var(--bs-black);
     color: #fff;
 }
 </style>

@@ -7,8 +7,7 @@
                 <div class="col-md-10 col-lg-8">
                     <h6 class="mb-3"> <i class="bi bi-newspaper"></i> New Blog Post:
 
-                        <RouterLink class="btn btn-sm p-0 m-0 px-3 btn-outline-dark float-end "
-                            to="/admin/account/blogpost">
+                        <RouterLink class="btn btn-sm p-0 m-0 px-3 btn-outline-dark ms-5" to="/admin/account/blogpost">
                             <i class="bi bi-list"></i> Back to List
                         </RouterLink>
                     </h6>
@@ -55,8 +54,7 @@
                                 <!-- hidden block -->
                                 <div class="col-md-12 col-lg-8 mt-5">
                                     <form ref="fileForm" class="d-none">
-                                        <input type="file" ref="fileBtn"
-                                            accept="image/jpeg, image/png, image/jpg, .doc,.docx,application/msword, .pdf, .txt, .xlsx, .xls"
+                                        <input type="file" ref="fileBtn" accept="image/jpeg, image/png, image/jpg"
                                             class="form-control form-control-lg" @change="loadImgarr">
                                     </form>
                                 </div>
@@ -140,7 +138,7 @@ function addPost(obj: FormData) {
             if (result.isConfirmed) {
                 isSaving.value = true
                 let resp = await blogNew(obj)
-                if (resp.status == 201) {
+                if (resp.status == 203) {
                     fxn.Toast('Use another Title', 'warning');
                     isSaving.value = false
                     window.scrollTo(0, 0);

@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAccount } from '@/stores/admin/account'
+
+
 import HomeView from '../views/Home.vue'
 import BuyPropertyView from '../views/Buy_Property.vue'
 import BuyBuildingMaterialView from '../views/Buy_Building_Materials.vue'
@@ -21,9 +24,13 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes: [
     { path: '/', name: 'Home', component: HomeView },
+
     { path: '/buy_property', name: 'Buy Property', component: BuyPropertyView },
+
     { path: '/buy_building_materials', name: 'Buy Building Materials', component: BuyBuildingMaterialView },
+
     { path: '/request_for_building_plan', name: 'Request for Building Plan', component: RequestForPlanView },
+
     { path: '/request_for_bill_of_quantity', name: 'Request for Bill of Quantity', component: RequestForBillView },
 
     {
@@ -35,8 +42,32 @@ const router = createRouter({
       ],
     },
 
-    { path: '/admin', alias: '/admin-login', name: 'Admin', component: AdminLoginView },
     {
+      beforeEnter: (to, from, next) => {
+        const account = useAccount()
+        if (account.state.id) {
+          next({ path: '/admin/account/requests' });
+        }
+        else {
+          next();
+        }
+      },
+      path: '/admin',
+      alias: '/admin-login',
+      name: 'Admin',
+      component: AdminLoginView
+    },
+
+    {
+      beforeEnter: (to, from, next) => {
+        const account = useAccount()
+        if (!account.state.id) {
+          next({ path: '/admin-login' });
+        }
+        else {
+          next();
+        }
+      },
       path: '/admin/account',
       component: AdminLayout,
       children: [
@@ -48,7 +79,6 @@ const router = createRouter({
         { path: 'account', name: 'Account', component: AdminAccount },
       ],
     },
-
 
     {
       path: '/:pathMatch(.*)*',

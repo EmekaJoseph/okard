@@ -28,12 +28,12 @@
                                         </router-link>
                                     </div>
                                     <div v-else>
-                                        <div class="fs-6 mb-0 fw-bolder">Categories</div>
+                                        <!-- <div class="fs-6 mb-0 fw-bolder">Categories</div>
                                         <hr class="mt-0">
                                         <ul class="category-list">
                                             <li class="text-muted" v-if="!blog.categories.length">No categories</li>
                                             <li class="hover-tiltX" v-for="(cate, i) in blog.categories">{{ cate }}</li>
-                                        </ul>
+                                        </ul> -->
                                     </div>
                                 </div>
 

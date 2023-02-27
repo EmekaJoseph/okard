@@ -22,16 +22,10 @@ use App\Http\Controllers\BlogController;
 // });
 
 
-
-
-
-
 Route::controller(AdminController::class)->group(function () {
     Route::post('admin/login',  'login');
-    Route::get('admin/overview',  'overview');
     Route::post('admin/passwordChange',  'passwordChange');
-
-
+    Route::get('admin/getAccount/{id}',  'getAccount');
 
     Route::get('getRequests',  'getRequests');
     Route::get('requestDetails/{id}',  'requestDetails');

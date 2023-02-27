@@ -9,8 +9,7 @@
                             <i class="bi bi-cart3"></i> Cart
                         </span>
                         <span class="float-end">
-                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </span>
                     </div>
                     <div class="modal-body p-sm-4">
@@ -24,18 +23,17 @@
                         <div v-else class="row justify-content-center gy-3">
 
                             <div class="col-md-12 ">
-                                <div class=" card p-2 shadow-sm">
+                                <div class=" card p-2 py-4 shadow-sm">
                                     <div class="table-responsive">
                                         <table class="table table-sm">
                                             <tbody>
                                                 <tr v-for="(item, i) in images.cart" :key="i">
-                                                    <th class="fw-bold">{{(i + 1)}}</th>
+                                                    <th class="fw-bold">{{ (i + 1) }}</th>
                                                     <td class=" text-capitalize text-truncate">{{ item.name }}<span
                                                             v-if="item.location">, {{
                                                                 item.location
                                                             }}</span>.</td>
-                                                    <td><button @click="removeFromCart(item.id)"
-                                                            class="btn btn-sm m-0 p-0">
+                                                    <td><button @click="removeFromCart(item.id)" class="btn btn-sm m-0 p-0">
                                                             <i class="bib bi-x-lg"></i>
                                                         </button></td>
                                                 </tr>
@@ -64,8 +62,7 @@
                                 <button v-if="!field.isSending" @click="saveReq" type="button"
                                     class="btn btn-lg theme-btn w-100">Make
                                     Enquriry</button>
-                                <button v-else type="button" class="btn btn-lg theme-btn w-100"
-                                    disabled>Sending</button>
+                                <button v-else type="button" class="btn btn-lg theme-btn w-100" disabled>Sending</button>
                             </div>
                         </div>
                     </div>
@@ -163,6 +160,10 @@ onBeforeRouteLeave(() => {
     border: none;
     background-color: var(--theme-color-bg);
     border-radius: 0%;
+}
+
+.card {
+    border-color: var(--bs-black);
 }
 </style>
 

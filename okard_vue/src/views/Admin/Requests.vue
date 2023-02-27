@@ -7,7 +7,7 @@
             </h6>
             <div class="card border-0 main">
                 <div class="card-body pt-5">
-                    <div v-if="!requests.list.length" class="text-center my-5 fs-3 text-muted">No Messages here</div>
+                    <div v-if="!requests.list.length" class="text-center my-5 fs-4 text-muted">No Reqests</div>
                     <div v-else class="table-responsive table-sm text-nowrap table-bordered ">
                         <table class="table">
                             <tbody>
@@ -43,7 +43,6 @@ import { useRequests } from '@/stores/admin/requests';
 import requestDetailsModal from '@/components/modals/requestDetailsModal.vue';
 import useFunction from '@/stores/functions/useFunction';
 import { requestDetails, deleteRequest } from '@/stores/functions/axiosInstance';
-
 
 onMounted(() => {
     window.scrollTo(0, 0);

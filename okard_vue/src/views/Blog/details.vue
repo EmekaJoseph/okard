@@ -4,7 +4,7 @@
       <PageLoading />
     </div>
 
-    <div v-else class="card p-3 py-5">
+    <div v-else class="card p-5">
       <h2>{{ blog.details.title }}</h2>
       <div class="text-muted">{{ blog.details.text }}</div>
 
@@ -30,6 +30,7 @@ const route = useRoute()
 
 const blog = useBlogStore()
 onMounted(() => {
+  blog.loading = true
   let thisRouteId: any = route.query.blog
   blog.getDetails(thisRouteId)
   window.scrollTo(0, 0)

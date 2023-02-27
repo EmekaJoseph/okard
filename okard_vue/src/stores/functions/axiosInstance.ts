@@ -45,34 +45,33 @@ const blogList = () => $instance.get(`blog`)
 const blogDetails = (id: any) => $instance.get(`blog/${id}`)
 const blogDelete = (id: any) => $instance.delete(`blog/${id}`)
 
+const login = (data: object) => $instance.post(`admin/login`, data)
+const passwordChange = (data: object) => $instance.post(`admin/passwordChange`, data)
+const getAccount = (id: any) => $instance.post(`admin/getAccount/${id}`,)
 
 
 
 
 
+// const testCall = async () => {
+//     let data_: any = ''
+//     await axios.post("https://api.ciku.co/v1/verifyRegCode",
+//         JSON.stringify({ email: 'email@mail.com', code: '345673' }),
+//         {
+//             headers: {
+//                 Accept: 'application/json',
+//                 'Content-Type': 'application/json;',
+//                 withCredentials: true,
+//             },
+//         },
+//     )
+//         .then(function (response) {
+//             data_ = response
+//             console.log(response);
 
-
-
-
-const testCall = async () => {
-    let data_: any = ''
-    await axios.post("https://api.ciku.co/v1/verifyRegCode",
-        JSON.stringify({ email: 'email@mail.com', code: '345673' }),
-        {
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json;',
-                withCredentials: true,
-            },
-        },
-    )
-        .then(function (response) {
-            data_ = response
-            console.log(response);
-
-        })
-    return data_
-}
+//         })
+//     return data_
+// }
 
 
 export {
@@ -92,5 +91,8 @@ export {
     blogList,
     blogDetails,
     blogDelete,
+    login,
+    passwordChange,
+    getAccount,
     // testCall
 }

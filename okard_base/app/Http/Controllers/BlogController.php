@@ -40,7 +40,7 @@ class BlogController extends BaseController
         $title = $request->input('title');
 
         if (BlogModel::where('title', $title)->exists()) {
-            return response()->json(['error' => 'title already exists'], 201);
+            return response()->json(['error' => 'title already exists'], 203);
         }
 
         $newBlog = new BlogModel();
@@ -85,7 +85,7 @@ class BlogController extends BaseController
     {
         $blogPost = BlogModel::find($id);
         if (!$blogPost) {
-            return response()->json('post not found', 404);
+            return response()->json('post not found', 203);
         }
 
         $blogPost->images = explode(',', $blogPost->images);
@@ -103,7 +103,7 @@ class BlogController extends BaseController
         $blogPost = BlogModel::find($id);
 
         if (!$blogPost) {
-            return response()->json('post not found', 404);
+            return response()->json('post not found', 203);
         }
 
         if ($blogPost->images) {
