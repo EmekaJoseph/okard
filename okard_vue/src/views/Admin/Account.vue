@@ -15,11 +15,11 @@
                                     <label>New Password</label>
                                     <input v-model="form.newPass1" :type="type" class="form-control form-control-lg">
                                 </div>
-                                <div class="col-12">
+                                <div v-if="form.newPass1" class="col-12">
                                     <label>Repeat New Password</label>
                                     <input v-model="form.newPass2" type="password" class="form-control form-control-lg">
                                 </div>
-                                <div class="col-12">
+                                <div v-if="form.newPass1" class="col-12">
                                     <div @click="isPassword = !isPassword"
                                         class="btn btn-link float-end text-dark text-decoration-none">
                                         <span v-if="isPassword">Show</span>

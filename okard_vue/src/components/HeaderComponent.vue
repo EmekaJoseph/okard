@@ -42,15 +42,14 @@ const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
             <div class="collapse navbar-collapse" id="nav-link-lists">
                 <ul class="navbar-nav mb-2 mb-lg-0">
 
-                    <li v-for="li in list_li" class="nav-item me-lg-3">
+                    <li v-for="li in list_li" class="nav-item me-lg-3 hover-tiltY">
                         <a class="nav-link" :href="'#' + li">{{ li }}</a>
                     </li>
 
-                    <li class="nav-item me-lg-3">
+                    <li class="nav-item me-lg-3 hover-tiltY">
                         <RouterLink class="nav-link" to="/blog">Blog</RouterLink>
-                        <!-- <a class="nav-link" href="#"></a> -->
                     </li>
-                    <li class="nav-item me-lg-5">
+                    <li class="nav-item me-lg-3 d-none d-lg-block hover-tiltX">
                         <a class="nav-link-btn btn btn-sm p-1 px-3 theme-btn" href="#Contact">Contact Us</a>
                     </li>
 
@@ -65,6 +64,8 @@ const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
     transition: all ease-in-out 0.4s;
     background-color: #fff;
 }
+
+
 
 @media (min-width: 994px) {
     .navbar {
@@ -97,5 +98,16 @@ const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
 
 .nav-link-btn:hover {
     color: #fff !important;
+}
+
+
+@media (max-width: 994px) {
+    .nav-item {
+        margin-bottom: 20px;
+    }
+}
+
+a:hover {
+    color: var(--theme-color) !important;
 }
 </style>

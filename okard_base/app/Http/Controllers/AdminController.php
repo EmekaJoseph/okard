@@ -15,6 +15,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Models\RequestModel;
 use App\Models\ImageSlideModel;
+use Illuminate\Support\Str;
 
 
 class AdminController extends BaseController

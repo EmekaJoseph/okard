@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4">
+                            <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4 hover-tiltX">
                                 Connect With Us
                             </a>
                         </div>

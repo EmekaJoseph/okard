@@ -12,7 +12,7 @@ class ImageSlideModel extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'tbl_imageSlides';
+    protected $table = 'tbl_imageslides';
     protected $primaryKey = 'id';
 
     protected $fillable = [

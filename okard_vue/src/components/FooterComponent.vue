@@ -3,10 +3,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="text-center">
-                        <p class="text-white-50 mb-0">
-                            2023 © OKARD-HGV Designed By Proffie.Tech
+                    <div class="text-center text-lg-start">
+                        <p class="text-white-50  mb-0">
+                            &COPY; {{ (new Date()).getFullYear() }} - OKARD-HGV |
+                            <router-link v-if="route.name == 'Home'" class="text-warning text-decoration-none small"
+                                to="/admin">Admin</router-link>
 
+                            <router-link v-else class="text-warning text-decoration-none small" to="/">Home</router-link>
+
+                            <br>
+                            <span class="xsmall mb-0 float-lg-end text-muted">
+                                Designed By proffictech | 08139590011
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -14,6 +22,11 @@
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+const route = useRoute()
+</script>
 
 <style scoped>
 .text-white-50 {

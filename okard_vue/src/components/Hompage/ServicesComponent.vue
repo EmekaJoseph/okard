@@ -17,7 +17,7 @@ import { RouterLink } from 'vue-router';
             </div>
             <div class="row gy-4">
                 <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card">
+                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
 
                         <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
 
@@ -37,7 +37,7 @@ import { RouterLink } from 'vue-router';
 
                 </div>
                 <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card">
+                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
                         <div class="blog-content card-body mt-2">
 
@@ -55,7 +55,7 @@ import { RouterLink } from 'vue-router';
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
+                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_property.jpeg" alt="03" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body mt-2">
@@ -65,19 +65,18 @@ import { RouterLink } from 'vue-router';
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
                             </p>
                             <p>
-                                <RouterLink class="continue" to="buy_property">Continue <i
-                                        class="bi bi-arrow-right"></i>
+                                <RouterLink class="continue" to="buy_property">Continue <i class="bi bi-arrow-right"></i>
                                 </RouterLink>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card">
+                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body mt-2">
-                            <RouterLink to="buy_building_materials" class="h5">
+                            <RouterLink to="buy_building_materials" class="h5 ">
                                 Buy Building Materials
                             </RouterLink>
                             <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
@@ -181,7 +180,7 @@ h6 {
 }
 
 .service-card {
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: 0.4s ease-in-out;
 }
 
@@ -216,5 +215,10 @@ h6 {
 
 .continue:hover .bi {
     color: var(--theme-color) !important;
+}
+
+a:hover {
+    color: var(--theme-color);
+
 }
 </style>

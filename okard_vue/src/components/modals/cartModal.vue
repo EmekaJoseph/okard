@@ -130,9 +130,8 @@ async function sendReq(obj: any) {
             clearCart()
         }
     } catch (error) {
-        field.isSending = true
+        field.isSending = false
         fxn.Toast('Sorry, Error occoured, try again', 'error')
-        btnX.value.click()
     }
 }
 

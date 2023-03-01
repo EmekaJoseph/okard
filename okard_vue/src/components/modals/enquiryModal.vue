@@ -8,8 +8,7 @@
                         <!-- <span class="fw-bold">{{ item.name }}</span> -->
                         <span class="fw-bold">{{ item.type }}</span>
                         <span class="float-end">
-                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </span>
                     </div>
                     <div class="modal-body p-sm-4">
@@ -113,9 +112,8 @@ async function sendReq(obj: any) {
             btnX.value.click()
         }
     } catch (error) {
-        field.isSending = true
+        field.isSending = false
         fxn.Toast('Sorry, Error occoured, try again', 'error')
-        btnX.value.click()
     }
 }
 

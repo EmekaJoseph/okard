@@ -28,25 +28,31 @@ class UserController extends BaseController
         $userReq->refImage = $req->input('refImage');
 
 
-        if ($req->file('voiceNote')) {
-            $file = $req->file('voiceNote');
-            $fileName = 'voiceNote-' . time() . '.' . $file->extension();
+        try {
+            if ($req->file('voiceNote')) {
+                $file = $req->file('voiceNote');
+                $fileName = 'voiceNote-' . time() . '.' . $file->extension();
 
-            $file->move('reqFiles/', $fileName);
+                $file->move('reqFiles/', $fileName);
 
-            $userReq->voiceNote = $fileName;
-        }
+                $userReq->voiceNote = $fileName;
+            }
 
-        if ($req->file('doc')) {
-            $file = $req->file('doc');
-            $fileName = 'doc-' . time() . '.' . $file->extension();
+            if ($req->file('doc')) {
+                $file = $req->file('doc');
+                $fileName = 'doc-' . time() . '.' . $file->extension();
 
-            $file->move('reqFiles/', $fileName);
+                $file->move('reqFiles/', $fileName);
 
-            $userReq->doc = $fileName;
+                $userReq->doc = $fileName;
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
         }
 
         $userReq->save();
+
+        // send mail to okard
 
         return response()->json(['message' => 'saved'], 200);
     }

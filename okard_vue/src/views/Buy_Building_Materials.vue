@@ -21,8 +21,8 @@
           </div>
 
           <div v-show="!images.loading" class="col-lg-3 col-12 mb-5">
-            <fieldset class="border rounded-3 py-1 py-lg-4 px-4 ps-lg-4 pb-3 bg-light h-100">
-              <legend class="text-muted float-none small p-0 px-2 w-auto">Categories</legend>
+            <fieldset class="border rounded-3 py-1 py-lg-4 px-4 ps-lg-4 pb-3 bg-ligh h-100">
+              <legend class="text-muted float-none small p-0 px-2 w-auto">Select category</legend>
               <div class="row g-2 gy-4">
 
                 <div class="form-check col-6 col-lg-12">
@@ -89,7 +89,7 @@
     <cartModal />
     <button class="d-none" ref="modalButton" data-bs-toggle="modal" data-bs-target="#enquiryModal"></button>
     <button class="d-none" ref="modalButtonCart" data-bs-toggle="modal" data-bs-target="#cartModal"></button>
-</div>
+  </div>
 </template>
 
 

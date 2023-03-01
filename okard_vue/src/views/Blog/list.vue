@@ -6,7 +6,7 @@
 
     <div v-else>
       <div class="mb-4" v-if="!blog.list.length">
-        <span class="h4 text-muted">No updates to show now, comeback later</span>
+        <span class="h4 text-muted">Blog is empty.</span>
       </div>
       <div v-else v-for="(post, index) in blog.list" :key="index" class="card blog-card mb-3">
         <div class="col-md-12">

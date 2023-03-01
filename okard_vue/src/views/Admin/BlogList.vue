@@ -5,7 +5,8 @@
 
             <div class="row justify-content-center">
 
-                <div class="col-md-10 col-lg-8">
+                <!-- <div class="col-md-10 col-lg-8"> -->
+                <div>
                     <h6 class="mb-3">
                         <i class="bi bi-newspaper"></i> Blog List:
 
