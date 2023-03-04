@@ -49,6 +49,11 @@ const login = (data: object) => $instance.post(`admin/login`, data)
 const passwordChange = (data: object) => $instance.post(`admin/passwordChange`, data)
 const getAccount = (id: any) => $instance.post(`admin/getAccount/${id}`,)
 
+const messageNew = (data: any) => $instance.post(`message`, data)
+const messageList = () => $instance.get(`message`)
+const messageDetails = (id: any) => $instance.get(`message/${id}`)
+const messageDelete = (id: any) => $instance.delete(`message/${id}`)
+
 
 
 
@@ -94,5 +99,9 @@ export {
     login,
     passwordChange,
     getAccount,
+    messageNew,
+    messageList,
+    messageDetails,
+    messageDelete,
     // testCall
 }

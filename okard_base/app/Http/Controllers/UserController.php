@@ -7,7 +7,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 
 use App\Models\RequestModel;
 use Carbon\Carbon;

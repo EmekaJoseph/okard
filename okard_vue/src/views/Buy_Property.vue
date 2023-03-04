@@ -48,7 +48,7 @@
 
               <div class="col-12">
                 Showing:
-                <span class="text-success fw-bold">
+                <span class="text-success small fw-bold">
                   ({{ selectedCategory }})
                 </span>
 
@@ -59,7 +59,7 @@
 
 
               <div class="col-12">
-                <div class="card h-100">
+                <div class="card h-100 border-0">
                   <div class="card-body">
                     <div class="row g-2">
                       <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"

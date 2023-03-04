@@ -3,6 +3,7 @@ import { useAccount } from '@/stores/admin/account'
 
 
 import HomeView from '../views/Home.vue'
+import AboutView from '../views/About.vue'
 import BuyPropertyView from '../views/Buy_Property.vue'
 import BuyBuildingMaterialView from '../views/Buy_Building_Materials.vue'
 import RequestForBillView from '../views/Request_for_Bill.vue'
@@ -13,10 +14,13 @@ import AdminLoginView from '../views/Admin/Login.vue'
 import AdminLayout from '../views/Admin/_layout.vue'
 import AdminDashboard from '../views/Admin/Dashboard.vue'
 import AdminRequests from '../views/Admin/Requests.vue'
+import Messages from '../views/Admin/Messages.vue'
 import BlogPosting from '../views/Admin/BlogPost.vue'
 import BlogList from '../views/Admin/BlogList.vue'
 import AdminUploads from '../views/Admin/Uploads.vue'
 import AdminAccount from '../views/Admin/Account.vue'
+
+import invalidURL from '../views/404Page.vue'
 
 
 const router = createRouter({
@@ -24,6 +28,8 @@ const router = createRouter({
   linkActiveClass: 'active',
   routes: [
     { path: '/', name: 'Home', component: HomeView },
+
+    { path: '/about', name: 'About', component: AboutView },
 
     { path: '/buy_property', name: 'Buy Property', component: BuyPropertyView },
 
@@ -73,6 +79,7 @@ const router = createRouter({
       children: [
         { path: 'dashboard', alias: '', name: 'Dashboard', component: AdminDashboard },
         { path: 'blogpost', name: 'Blog-Listing', component: BlogList },
+        { path: 'messages', name: 'Messages', component: Messages },
         { path: 'blogpost_new', name: 'Blog-Post', component: BlogPosting },
         { path: 'requests', name: 'Requests', component: AdminRequests },
         { path: 'uploads', name: 'Uploads', component: AdminUploads },
@@ -83,7 +90,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: '404',
-      component: () => import('../views/404Page.vue')
+      component: invalidURL
     },
 
   ]

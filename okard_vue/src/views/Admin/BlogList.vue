@@ -10,8 +10,9 @@
                     <h6 class="mb-3">
                         <i class="bi bi-newspaper"></i> Blog List:
 
-                        <RouterLink class="btn btn-sm p-0 m-0 px-3 theme-btn float-end " to="/admin/account/blogpost_new">
-                            <i class="bi bi-plus-circle-dotted"></i> New Blog
+                        <RouterLink class="btn btn-sm p-0 m-0 px-3 theme-b fw-bold theme-text float-end "
+                            to="/admin/account/blogpost_new">
+                            <i class="bi bi-plus-circle-dotted"></i> New Post
                         </RouterLink>
 
                     </h6>
@@ -43,8 +44,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </template>

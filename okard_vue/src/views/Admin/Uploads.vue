@@ -5,75 +5,88 @@
                 <i class="bi bi-cloud-upload"></i> Images Uploads
             </h6>
 
-            <div class="card border-0 main">
-                <div class="card-body pt-5 p-lg-5">
-                    <div class="row gy-3">
-                        <div class="col-md-6 px-lg-4">
-                            <div class="row gy-4">
-                                <div class="col-md-12">
-                                    <div class="mb-1">Select Type:</div>
-                                    <select v-model="typeSelect" class="form-control form-select">
-                                        <option value="Property">Properties</option>
-                                        <option value="Material">Building Materials</option>
-                                    </select>
+            <div class="card bg-transparent border-0 main">
+                <div class="card-body pt-3 p-lg-5">
+                    <div class="row g-3 gy-5">
+                        <div class="col-md-6 bg-white p-3">
+                            <div class="card border-0 bg-transparent">
+                                <div class="card-header text-muted border-0 rounded-0">UPLOAD IMAGE :
                                 </div>
+                                <div class="card-body">
+                                    <div class="row gy-4">
+                                        <div class="col-md-12">
+                                            <div class="mb-1">Select Type:</div>
+                                            <select v-model="typeSelect" class="form-control form-select">
+                                                <option value="Property">Properties</option>
+                                                <option value="Material">Building Materials</option>
+                                            </select>
+                                        </div>
 
-                                <div v-if="typeSelect" class="col-md-12">
-                                    <div class="mb-1">Category under <span class="fw-bold">{{ typeSelect }}</span>
-                                        <span class="float-end btn btn-dark m-0 p-0 px-2 btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#addCategoryModal"><i class="bi bi-plus"></i></span>
+                                        <div v-if="typeSelect" class="col-md-12">
+                                            <div class="mb-1">Category under <span class="fw-bold">{{ typeSelect }}</span>
+                                                <span class="float-end btn btn-dark m-0 p-0 px-2 btn-sm"
+                                                    data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i
+                                                        class="bi bi-plus"></i></span>
+                                            </div>
+                                            <select v-model="categorySelect" class="form-control  form-select">
+                                                <option v-for="option in cateDropDown" :value="option.name">
+                                                    {{ option.name }}
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                        <form ref="fileForm" class="d-none">
+                                            <input type="file" ref="fileBtn" accept="image/jpeg, image/png, image/jpg"
+                                                class="form-control form-control-lg" @change="fileUploadFn">
+                                        </form>
+                                        <div v-if="categorySelect" class="col-lg-12">
+                                            <div class="mb-1">Upload Image:</div>
+                                            <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
+                                                <i class="bi bi-file-earmark-text"></i> Click Here to upload
+                                            </div>
+                                            <div v-else class="fileBtnFake theme-bg">
+                                                <span>
+                                                    <span class="theme-tex">
+                                                        {{ newFile.name }}
+                                                    </span>
+                                                    <span @click="fileFormR" class="fw-bold float-end ">
+                                                        <i class="bi bi-x-circle-fill"></i> remove
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div v-show="fileURL" class="imagePreviewWrapper"
+                                                :style="{ 'background-image': `url(${fileURL})` }">
+                                            </div>
+                                        </div>
+
+                                        <div v-if="fileURL" class="col-md-6"
+                                            :class="{ 'col-md-12': typeSelect != 'Property' }">
+                                            <div>Image Name:</div>
+                                            <input v-model="newImage.name" type="text" class="form-control form-control-lg">
+                                        </div>
+                                        <div v-if="typeSelect == 'Property' && fileURL" class="col-md-6">
+                                            <div>Location:</div>
+                                            <input v-model="newImage.location" type="text"
+                                                class="form-control form-control-lg">
+                                        </div>
+
+                                        <div v-if="fileURL" class="col-lg-12">
+                                            <div>Description:</div>
+                                            <textarea v-model="newImage.description" class="form-control"
+                                                rows="5"></textarea>
+                                        </div>
+
+                                        <div v-if="fileURL" class="col-lg-12">
+                                            <button v-if="!isSaving" @click="saveImage"
+                                                class="btn theme-btn w-100 btn-lg">Save
+                                                Image</button>
+                                            <button v-else class="btn btn-secondary w-100 btn-lg" disabled>Saving..</button>
+                                        </div>
                                     </div>
-                                    <select v-model="categorySelect" class="form-control  form-select">
-                                        <option v-for="option in cateDropDown" :value="option.name">
-                                            {{ option.name }}
-                                        </option>
-                                    </select>
 
-                                </div>
-                                <form ref="fileForm" class="d-none">
-                                    <input type="file" ref="fileBtn" accept="image/jpeg, image/png, image/jpg"
-                                        class="form-control form-control-lg" @change="fileUploadFn">
-                                </form>
-                                <div v-if="categorySelect" class="col-lg-12">
-                                    <div class="mb-1">Upload Image:</div>
-                                    <div @click="fileBtn.click()" v-if="!newFile" class="fileBtnFake">
-                                        <i class="bi bi-file-earmark-text"></i> Click Here to upload
-                                    </div>
-                                    <div v-else class="fileBtnFake theme-bg">
-                                        <span>
-                                            <span class="theme-tex">
-                                                {{ newFile.name }}
-                                            </span>
-                                            <span @click="fileFormR" class="fw-bold float-end ">
-                                                <i class="bi bi-x-circle-fill"></i> remove
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div v-show="fileURL" class="imagePreviewWrapper"
-                                        :style="{ 'background-image': `url(${fileURL})` }">
-                                    </div>
-                                </div>
 
-                                <div v-if="fileURL" class="col-md-6" :class="{ 'col-md-12': typeSelect != 'Property' }">
-                                    <div>Image Name:</div>
-                                    <input v-model="newImage.name" type="text" class="form-control form-control-lg">
-                                </div>
-                                <div v-if="typeSelect == 'Property' && fileURL" class="col-md-6">
-                                    <div>Location:</div>
-                                    <input v-model="newImage.location" type="text" class="form-control form-control-lg">
-                                </div>
-
-                                <div v-if="fileURL" class="col-lg-12">
-                                    <div>Description:</div>
-                                    <textarea v-model="newImage.description" class="form-control" rows="5"></textarea>
-                                </div>
-
-                                <div v-if="fileURL" class="col-lg-12">
-                                    <button v-if="!isSaving" @click="saveImage" class="btn theme-btn w-100 btn-lg">Save
-                                        Image</button>
-                                    <button v-else class="btn btn-secondary w-100 btn-lg" disabled>Saving..</button>
                                 </div>
                             </div>
                         </div>

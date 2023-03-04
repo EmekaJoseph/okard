@@ -4,7 +4,7 @@
             <h5 class="mb-3 text-center"> Change Password: </h5>
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-5">
-                    <div class="card p-2 py-4">
+                    <div class="card p-2 py-5">
                         <div class="card-body">
                             <form class="row gy-3">
                                 <div class="col-12">
@@ -28,8 +28,8 @@
                                 </div>
                                 <div class="col-12 mt-3">
                                     <button v-if="!isSaving" @click.prevent="submit" type="submit"
-                                        class="btn theme-btn w-100 btn-lg">Change</button>
-                                    <button disabled v-else class="btn theme-btn w-100 btn-lg">Loading ..</button>
+                                        class="btn btn-dark w-100 btn-lg">Change</button>
+                                    <button disabled v-else class="btn btn-dark w-100 btn-lg">Loading ..</button>
                                 </div>
                             </form>
                         </div>

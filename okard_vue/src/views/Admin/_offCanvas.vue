@@ -14,9 +14,16 @@
                 </li> -->
                 <li>
                     <router-link to="/admin/account/requests">
-                        <i class="bi bi-chat-left-text"></i> Requests
+                        <i class="bi bi-question-circle"></i> Requests
                     </router-link>
                 </li>
+
+                <li>
+                    <router-link to="/admin/account/messages">
+                        <i class="bi bi-chat-left-text"></i> Messages
+                    </router-link>
+                </li>
+
                 <li>
                     <router-link to="/admin/account/uploads">
                         <i class="bi bi-cloud-upload"></i> Uploads

@@ -6,10 +6,10 @@
                     <div class="text-center text-lg-start">
                         <p class="text-white-50  mb-0">
                             &COPY; {{ (new Date()).getFullYear() }} - OKARD-HGV |
-                            <router-link v-if="route.name == 'Home'" class="text-warning text-decoration-none small"
+                            <router-link v-if="route.name == 'Home'" class="text-muted text-decoration-none small"
                                 to="/admin">Admin</router-link>
 
-                            <router-link v-else class="text-warning text-decoration-none small" to="/">Home</router-link>
+                            <router-link v-else class="text-muted text-decoration-none small" to="/">Home</router-link>
 
                             <br>
                             <span class="xsmall mb-0 float-lg-end text-muted">

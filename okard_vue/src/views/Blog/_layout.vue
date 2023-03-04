@@ -8,7 +8,7 @@
                         <div class="topic-card">
                             <div class="topic-overlay">
                                 <span>
-                                    <div class="theme-text text-center">OKARD-HGV's Blog</div>
+                                    <div class="theme-text text-center">OKARD-HGV LIMITED</div>
                                     <h2 class="text-white text-center">Our Latest News & Updates</h2>
                                 </span>
                             </div>
@@ -37,24 +37,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12">
-                                    <fieldset class="border rounded-3 p-3">
-                                        <legend class="text-muted float-none small p-0 px-2 w-auto">Social Media
-                                        </legend>
-                                        <div class="social-card">
-                                            <a class="hover-tiltY" target="_blank"
-                                                href="https://api.whatsapp.com/send?phone=+234#######&text=__"><i
-                                                    class="bi bi-whatsapp"></i></a>
-                                            <a class="hover-tiltY" target="_blank" href="https://twitter.com/####"><i
-                                                    class="bi bi-twitter"></i></a>
-                                            <a class="hover-tiltY" target="_blank"
-                                                href="https://www.linkedin.com/company/#####/"><i
-                                                    class="bi bi-linkedin"></i></a>
-                                            <a class="hover-tiltY" target="_blank" href="https://facebook.com/####"><i
-                                                    class="bi bi-facebook"></i></a>
-                                        </div>
-                                    </fieldset>
-                                </div>
+                                <social_media_handles />
                             </div>
                         </div>
                     </div>
@@ -68,6 +51,7 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import { useBlogStore } from '@/stores/blog';
+import social_media_handles from '@/components/social_media_handles.vue';
 
 const route = useRoute()
 const blog = useBlogStore()
@@ -107,23 +91,6 @@ const blog = useBlogStore()
 
 .category-list li:hover {
     color: var(--theme-color);
-}
-
-
-.social-card {
-    /* background-color: var(--theme-main1-transparent); */
-    /* padding: 10px 30px; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.social-card a {
-    color: var(--theme-color) !important;
-    font-size: 22px;
-    background-color: var(--theme-color-bg);
-    padding: 5px 10px;
-    border-radius: 10px;
 }
 </style>
 

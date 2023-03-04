@@ -2,7 +2,7 @@
     <div class="over_all">
         <div class="container">
             <h6 class="mb-3">
-                <i class="bi bi-chat-left-text"></i> Requests:
+                <i class="bi bi-question-circle"></i> Requests:
                 <span class="badge rounded-4 bg-light text-black fw-light small">{{ requests.unRead }} unread</span>
             </h6>
             <div class="card border-0 main">

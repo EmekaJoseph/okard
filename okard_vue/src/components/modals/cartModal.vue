@@ -6,7 +6,9 @@
                 <div class="modal-content">
                     <div class="modal-header border-0 bg-light">
                         <span class="fw-bold">
-                            <i class="bi bi-cart3"></i> Cart
+                            <i class="bi bi-cart3"></i> Cart <span class="badge bg-secondary fw-light rounded px-2 m-0">
+                                {{ images.cart.length }}
+                            </span>
                         </span>
                         <span class="float-end">
                             <button ref="btnX" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -23,7 +25,7 @@
                         <div v-else class="row justify-content-center gy-3">
 
                             <div class="col-md-12 ">
-                                <div class=" card p-2 py-4 shadow-sm">
+                                <div class=" card p-2 py-4 shadow-sm border-0">
                                     <div class="table-responsive">
                                         <table class="table table-sm">
                                             <tbody>
@@ -159,10 +161,6 @@ onBeforeRouteLeave(() => {
     border: none;
     background-color: var(--theme-color-bg);
     border-radius: 0%;
-}
-
-.card {
-    border-color: var(--bs-black);
 }
 </style>
 

@@ -8,87 +8,65 @@ import { RouterLink } from 'vue-router';
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="text-center mb-5">
-                        <h6 class="theme-text mb-0 text-uppercase">Our Services</h6>
-                        <h3 class="title-heading text-capitalize">What we have to offer you</h3>
+                        <h6 class="theme-text mb-0 text-uppercase">Our Major Services</h6>
+                        <h3 class="title-heading text-capitalize">What can we do for you?</h3>
                         <div class="title-border"></div>
-                        <p class="text-muted mt-3 mx-md-5">Select to continue</p>
+                        <!-- <p class="text-muted mt-3 mx-md-5">Select to continue</p> -->
                     </div>
                 </div>
             </div>
-            <div class="row gy-4">
-                <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+            <div class="row gy-5">
 
+                <div class="col-lg-3">
+                    <RouterLink to="request_for_bill_of_quantity"
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
-
-                        <div class="blog-content card-body mt-2">
-                            <RouterLink to="request_for_bill_of_quantity" class="h5">
-                                Request for Bill of Quantity (Building cost estimates) & Construction.
-                            </RouterLink>
-                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
-                            </p>
-                            <p>
-                                <RouterLink class="continue" to="request_for_bill_of_quantity">Continue <i
-                                        class="bi bi-arrow-right"></i>
-                                </RouterLink>
-                            </p>
+                        <div class="blog-content card-body">
+                            <div class="h6">
+                                Request for Bill of Quantity (Building cost estimates) & Construction
+                            </div>
                         </div>
-                    </div>
-
+                    </RouterLink>
                 </div>
+
                 <div class="col-lg-3">
-                    <div class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                    <RouterLink to="request_for_building_plan"
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
-                        <div class="blog-content card-body mt-2">
-
-                            <RouterLink to="request_for_building_plan" class="h5">
+                        <div class="blog-content card-body">
+                            <div class="h4">
                                 Request for Building Plans
-                            </RouterLink>
-                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
-                            </p>
-                            <p>
-                                <RouterLink class="continue" to="request_for_building_plan">Continue <i
-                                        class="bi bi-arrow-right"></i>
-                                </RouterLink>
-                            </p>
+                            </div>
                         </div>
-                    </div>
+                    </RouterLink>
                 </div>
+
                 <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                    <RouterLink to="buy_property" class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_property.jpeg" alt="03" class="img-fluid rounded-top">
 
-                        <div class="blog-content card-body mt-2">
-                            <RouterLink to="buy_property" class="h5">
+                        <div class="blog-content card-body">
+                            <div class="h4">
                                 Buy Properties
-                            </RouterLink>
-                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
-                            </p>
-                            <p>
-                                <RouterLink class="continue" to="buy_property">Continue <i class="bi bi-arrow-right"></i>
-                                </RouterLink>
-                            </p>
+                            </div>
                         </div>
-                    </div>
+                    </RouterLink>
                 </div>
-                <div class="col-lg-3">
-                    <div class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
-                        <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
 
-                        <div class="blog-content card-body mt-2">
-                            <RouterLink to="buy_building_materials" class="h5 ">
+
+                <div class="col-lg-3">
+                    <RouterLink to="buy_building_materials"
+                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                        <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
+                        <div class="blog-content card-body">
+                            <div class="h4 ">
                                 Buy Building Materials
-                            </RouterLink>
-                            <p class="text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting...
-                            </p>
-                            <p>
-                                <RouterLink class="continue" to="buy_building_materials">Continue <i
-                                        class="bi bi-arrow-right"></i>
-                                </RouterLink>
-                            </p>
+                            </div>
                         </div>
-                    </div>
+                    </RouterLink>
                 </div>
+
+
             </div>
         </div>
     </section>
@@ -190,9 +168,10 @@ h6 {
     box-shadow: 0 1rem 3rem rgba(black, .175) !important;
 }
 
-/* .service-card:hover a {
+.service-card:hover .h4,
+.service-card:hover .h6 {
     color: var(--theme-color)
-} */
+}
 
 
 

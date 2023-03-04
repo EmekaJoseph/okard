@@ -30,16 +30,18 @@
                                 <div class="row">
                                     <div class="col-7">
                                         <button v-if="!item.inCart" @click="addToCart" type="button"
-                                            class="btn theme-btn w-100 btn-sm">
-                                            <i class="bi bi-cart3"></i> Add To Cart
+                                            class="btn theme-btn w-100">
+                                            Add to Cart
                                         </button>
-                                        <button v-else @click="addToCart" type="button"
-                                            class="btn btn-dark w-100 btn-sm px-0">
-                                            <i class="bi bi-cart-x"></i> Remove from cart
+                                        <button v-else @click="addToCart" type="button" class="btn btn-dark w-100">
+                                            <i class="bi bi-cart-x"></i> Remove
                                         </button>
                                     </div>
-                                    <div class="col-5"><button @click="showCart" type="button"
-                                            class="btn btn-outline-dark w-100 btn-sm">View Cart</button></div>
+                                    <div class="col-5">
+                                        <button @click="showCart" type="button" class="btn btn-outline-dark w-100">
+                                            <i class="bi bi-cart3"></i> Cart
+                                        </button>
+                                    </div>
                                 </div>
 
                             </div>

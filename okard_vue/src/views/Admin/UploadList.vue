@@ -1,6 +1,6 @@
 <template>
     <div class="card border-0 bg-transparent">
-        <div class="card-header text-muted border-0 rounded-0">UPLOAD LIST :
+        <div class="card-header text-muted border-0 rounded-0">UPLOADED :
             <button v-show="checkedImages.length" @click="deleteImages"
                 class="btn btn-sm btn-danger p-0 m-0 px-2 float-end">
                 <i class="bi bi-trash3-fill"></i> Delete

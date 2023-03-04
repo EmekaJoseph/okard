@@ -4,11 +4,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="about-title text-center mb-5">
-                        <h6 class="theme-text text-uppercase mb-0">About Us</h6>
-                        <h3 class="title-heading">We'r a dynamic team of cratives people innovation</h3>
+                        <h6 class="theme-text text-uppercase mb-0">Who We Are</h6>
+                        <h3 class="title-heading">We provide substantial and quality building materials for your building
+                            projects.</h3>
                         <div class="title-border"></div>
-                        <p class="text-muted pt-3 mx-md-5">Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the industry's standard.</p>
+                        <p class="text-muted pt-3 mx-md-5">Innovation, Creativity, Safety, Integrity, Entrepreneurship,
+                            Transparency, Accountability, and trust.</p>
                     </div>
                     <!--end about-title-->
                 </div>
@@ -19,36 +20,37 @@
                 <div class="col-lg-12">
                     <div class="d-flex justify-content-center mb-4 pb-2">
                         <ul class="nav nav-pills about-tab" id="aboutus" role="tablist">
+
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link rounded-3 active" id="history-tab" data-bs-toggle="pill"
+                                <button class="nav-link rounded-3 active" id="mission-tab" data-bs-toggle="pill"
+                                    data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
+                                    aria-selected="false">Mission & Vision</button>
+                            </li>
+
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link rounded-3 " id="history-tab" data-bs-toggle="pill"
                                     data-bs-target="#history" type="button" role="tab" aria-controls="history"
                                     aria-selected="true">History</button>
-                                <!--end nav-link-->
                             </li>
-                            <!--end nav-item-->
-                            <li class="nav-item mx-3" role="presentation">
+
+                            <!-- <li class="nav-item mx-3" role="presentation">
                                 <button class="nav-link rounded-3" id="vision-tab" data-bs-toggle="pill"
                                     data-bs-target="#vision" type="button" role="tab" aria-controls="vision"
-                                    aria-selected="false">Vision</button>
-                                <!--end nav-link-->
-                            </li>
-                            <!--end nav-item-->
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link rounded-3" id="mission-tab" data-bs-toggle="pill"
-                                    data-bs-target="#mission" type="button" role="tab" aria-controls="mission"
-                                    aria-selected="false">Mission</button>
-                                <!--end nav-link-->
-                            </li>
-                            <!--end nav-item-->
+                                    aria-selected="false">Vision </button>
+                            </li> -->
+
+
                         </ul>
                         <!--nav-->
                     </div>
                     <div class="tab-content about-content" id="tabContent">
-                        <div class="tab-pane fade show active" id="history" role="tabpanel" aria-labelledby="history-tab">
+
+                        <div class="tab-pane fade " id="history" role="tabpanel" aria-labelledby="history-tab">
                             <div class="row align-items-center">
                                 <div class="col-md-5">
                                     <div class="bounce history-img text-lg-end text-center mb-4 mb-lg-0">
-                                        <img src="@/assets/images/history1.jpg" alt="history"
+                                        <img src="@/assets/images/mission.jpeg" alt="history"
                                             class="img-fluid rounded-circle">
                                     </div>
                                 </div>
@@ -71,7 +73,8 @@
                             </div>
                             <!--end row-->
                         </div>
-                        <div class="tab-pane fade" id="vision" role="tabpanel" aria-labelledby="vision-tab">
+
+                        <!-- <div class="tab-pane fade " id="vision" role="tabpanel" aria-labelledby="vision-tab">
                             <div class="row align-items-center">
                                 <div class="col-md-7">
                                     <div class="card border-0 p-3 me-lg-4">
@@ -85,25 +88,23 @@
                                             type and it to make a type specimen book.
                                         </p>
                                     </div>
-                                    <!--end card-->
                                 </div>
-                                <!--end col-->
                                 <div class="col-md-5">
                                     <div class="bounce vision-img text-lg-end text-center mb-4 mb-lg-0">
-                                        <img src="@/assets/images/vision.jpeg" alt="vision"
+                                        <img src="@/assets/images/mission.jpeg" alt="vision"
                                             class="img-fluid rounded-circle">
                                     </div>
                                 </div>
-                                <!--end col-->
                             </div>
-                            <!--end row-->
-                        </div>
-                        <!--end vision-tab-->
-                        <div class="tab-pane fade mission-tab" id="mission" role="tabpanel" aria-labelledby="mission-tab">
+                        </div> -->
+
+
+                        <div class="tab-pane fade mission-tab show active" id="mission" role="tabpanel"
+                            aria-labelledby="mission-tab">
                             <div class="row justify-content-center">
                                 <div class="col-md-5">
                                     <div class="bounce mission-img text-lg-end text-center mb-4 mb-lg-0">
-                                        <img src="@/assets/images/mission.jpeg" alt="mission"
+                                        <img src="@/assets/images/vision.jpeg" alt="mission"
                                             class="img-fluid rounded-circle">
                                     </div>
                                 </div>
@@ -116,8 +117,8 @@
                                                 <i class="bi bi-eye mission-icon" aria-hidden="true"></i>
                                                 <div class="ms-3">
                                                     <h5 class="mb-0">Vision</h5>
-                                                    <p class="text-muted mb-0">Lorem Ipsum is text printing and
-                                                        typesetting.</p>
+                                                    <p class="text-muted mb-0">Focus on our customers' needs in order to
+                                                        provide highest construction services.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,8 +128,8 @@
                                                 <i class="bi bi-rocket-takeoff mission-icon"></i>
                                                 <div class="ms-3">
                                                     <h5 class="mb-0">Mission</h5>
-                                                    <p class="text-muted mb-0">Lorem Ipsum is text printing and
-                                                        typesetting.</p>
+                                                    <p class="text-muted mb-0">Render best services in real-estate
+                                                        development and sales.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,9 +138,9 @@
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-bullseye mission-icon"></i>
                                                 <div class="ms-3">
-                                                    <h5 class="mb-0">Goal</h5>
-                                                    <p class="text-muted mb-0">Lorem Ipsum is text printing and
-                                                        typesetting.</p>
+                                                    <h5 class="mb-0">Values</h5>
+                                                    <p class="text-muted mb-0">Innovation, Creativity, Safety, Integrity,
+                                                        Entrepreneurship, Transparency, Accountability, and trust.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,14 +152,12 @@
                             </div>
                             <!--end row-->
                         </div>
-                        <!--end mission-tab-->
+
+
                     </div>
                 </div>
-                <!--end col-->
             </div>
-            <!--end row-->
         </div>
-        <!--end container-->
     </section>
 </template>
 
@@ -244,11 +243,14 @@ em {
     height: 50px; */
     /* line-height: 75px; */
     font-size: 27px;
-    color: var(--theme-color-faint);
+    /* color: var(--theme-color-faint); */
     text-align: center;
     /* border-radius: 50%; */
     /* border: 1px solid rgba(0, 0, 0, 0.125); */
-    padding: 0px 20px
+    padding: 8px 14px;
+    background-color: var(--theme-color-faint);
+    background-color: #e6e3e3;
+    border-radius: 100%;
 }
 
 .about-tab .nav-item .nav-link {

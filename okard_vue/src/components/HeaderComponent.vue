@@ -21,36 +21,50 @@ onMounted(() => {
     })
 })
 
-const list_li = ['Home', 'About Us', 'Services', 'Portfolio']
-
 </script>
 
 <template>
     <nav class="navbar fixed-top navbar-expand-lg"
-        :class="{ 'header-white': scrollAxis > 50, 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
+        :class="{ 'header-white': scrollAxis > 50 || route.name != 'Home', 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
         <div class="container-fluid">
-            <RouterLink class="navbar-brand text-warning" to="/">OKARD-HGV
+            <div class="navbar-brand">
+                <RouterLink class="text-warning text-decoration-none" to="/">OKARD-HGV </RouterLink>
                 <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span>
-            </RouterLink>
+                <span v-if="route.name == 'About'">| About Us</span>
+            </div>
             <button v-if="route.name == 'Home'" ref="toggler" class="navbar-toggler border-0 btn-sm" type="button"
                 data-bs-toggle="collapse" data-bs-target="#nav-link-lists" aria-controls="nav-link-lists"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="container" v-if="route.name == 'Home'">
+        <!-- <div class="container" v-if="route.name == 'Home' || route.name == 'About'"> -->
+        <div class="container">
             <div class="collapse navbar-collapse" id="nav-link-lists">
                 <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item me-lg-3 hover-tiltY">
+                        <RouterLink class="nav-link" to="/">Home</RouterLink>
+                    </li>
 
-                    <li v-for="li in list_li" class="nav-item me-lg-3 hover-tiltY">
-                        <a class="nav-link" :href="'#' + li">{{ li }}</a>
+                    <li class="nav-item me-lg-3 hover-tiltY">
+                        <a class="nav-link" href="/#Services">Services</a>
+                    </li>
+
+                    <li class="nav-item me-lg-3 hover-tiltY">
+                        <RouterLink class="nav-link" to="/about">About Us</RouterLink>
+                    </li>
+
+
+                    <li class="nav-item me-lg-3 hover-tiltY">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
                         <RouterLink class="nav-link" to="/blog">Blog</RouterLink>
                     </li>
+
                     <li class="nav-item me-lg-3 d-none d-lg-block hover-tiltX">
-                        <a class="nav-link-btn btn btn-sm p-1 px-3 theme-btn" href="#Contact">Contact Us</a>
+                        <a class="nav-link-btn btn btn-sm p-1 px-3 theme-btn" href="/#Contact">Contact Us</a>
                     </li>
 
                 </ul>

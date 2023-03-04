@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2023 at 11:32 PM
+-- Generation Time: Mar 04, 2023 at 09:38 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_account` (
 --
 
 INSERT INTO `tbl_account` (`id`, `username`, `password`, `role`, `last_login`) VALUES
-(1, 'okard', '$2y$10$7KJA8djx/a6FZEpn9k7wVuApQ3JQFpVgmr7ee9WPfPxpGIMRTjCdK', NULL, '2023-02-27 22:25:43');
+(1, 'okard', '$2y$10$7KJA8djx/a6FZEpn9k7wVuApQ3JQFpVgmr7ee9WPfPxpGIMRTjCdK', NULL, '2023-03-04 20:29:06');
 
 -- --------------------------------------------------------
 
@@ -123,6 +123,23 @@ INSERT INTO `tbl_imageslides` (`id`, `name`, `category`, `img`, `description`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_messages`
+--
+
+CREATE TABLE `tbl_messages` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `contact` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `text` text NOT NULL,
+  `isRead` varchar(10) DEFAULT NULL,
+  `created_at` varchar(100) NOT NULL,
+  `updated_at` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_requests`
 --
 
@@ -157,7 +174,7 @@ CREATE TABLE `tbl_visitors` (
 --
 
 INSERT INTO `tbl_visitors` (`id`, `ip_addr`, `visit_date`) VALUES
-(1, '127.0.0.1', '2023-02-27 20:43:53');
+(1, '127.0.0.1', '2023-03-04 20:37:34');
 
 --
 -- Indexes for dumped tables
@@ -179,6 +196,12 @@ ALTER TABLE `tbl_blog`
 -- Indexes for table `tbl_imageslides`
 --
 ALTER TABLE `tbl_imageslides`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -216,10 +239,16 @@ ALTER TABLE `tbl_imageslides`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
+-- AUTO_INCREMENT for table `tbl_messages`
+--
+ALTER TABLE `tbl_messages`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_requests`
 --
 ALTER TABLE `tbl_requests`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_visitors`
