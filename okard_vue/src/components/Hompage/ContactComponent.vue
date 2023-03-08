@@ -23,32 +23,33 @@
                                     <div class="col">
                                         <div class="text-muted">
                                             <i class="f-19 bi bi-geo-alt"></i>&nbsp;
-                                            <span class="text-dark fs-6">120, Odomola Epe Lagos State, Nigeria</span>
+                                            <span class="text-dark fs-6">{{ display.address }}</span>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="text-muted">
                                             <i class="f-19 bi bi-telephone"></i>&nbsp;
-                                            <a class="text-dark fs-6 text-decoration-none"
-                                                href="tel:+2348131048313">+2348131048313</a>
+                                            <a class="text-dark fs-6 text-decoration-none" :href="'tel:' + display.phone">
+                                                {{ display.phone }}
+                                            </a>
                                         </div>
                                     </div>
 
                                     <div class="col">
                                         <div class="text-muted">
                                             <i class="f-19 bi bi-envelope"></i>&nbsp;
-                                            <span class="text-dark fs-6 ">OKARDhvg@gmail.com
+                                            <span class="text-dark fs-6 ">{{ display.email }}
                                             </span>
                                         </div>
                                     </div>
 
-                                    <div class="col">
+                                    <!-- <div class="col">
                                         <div class="text-muted">
                                             <i class="f-19 bi bi-whatsapp"></i>&nbsp;
                                             <a class="text-dark fs-6 text-decoration-none"
                                                 href="'https://api.whatsapp.com/send?phone=+2348131048313&text=..'">+2348131048313</a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -130,9 +131,24 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
-import { messageNew } from '@/stores/functions/axiosInstance';
+import { messageNew, getContact } from '@/stores/functions/axiosInstance';
+
+
+onMounted(async () => {
+    let { data } = await getContact()
+    display.email = data.email
+    display.phone = data.phone
+    display.address = data.address
+})
+
+
+const display = reactive({
+    address: '',
+    phone: '',
+    email: '',
+})
 
 
 const thForm = reactive<any>({

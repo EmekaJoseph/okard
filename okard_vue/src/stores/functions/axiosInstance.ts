@@ -47,14 +47,15 @@ const blogDelete = (id: any) => $instance.delete(`blog/${id}`)
 
 const login = (data: object) => $instance.post(`admin/login`, data)
 const passwordChange = (data: object) => $instance.post(`admin/passwordChange`, data)
-const getAccount = (id: any) => $instance.post(`admin/getAccount/${id}`,)
+const getAccount = (id: any) => $instance.post(`admin/getAccount/${id}`)
 
 const messageNew = (data: any) => $instance.post(`message`, data)
 const messageList = () => $instance.get(`message`)
 const messageDetails = (id: any) => $instance.get(`message/${id}`)
 const messageDelete = (id: any) => $instance.delete(`message/${id}`)
 
-
+const updateContact = (data: any) => $instance.post(`updateContact`, data)
+const getContact = () => $instance.get(`getContact`)
 
 
 
@@ -103,5 +104,7 @@ export {
     messageList,
     messageDetails,
     messageDelete,
+    updateContact,
+    getContact
     // testCall
 }

@@ -27,7 +27,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   linkActiveClass: 'active',
   routes: [
-    { path: '/', name: 'Home', component: HomeView },
+    { path: '/', name: 'Home', alias: '/home', component: HomeView },
 
     { path: '/about', name: 'About', component: AboutView },
 
@@ -93,7 +93,13 @@ const router = createRouter({
       component: invalidURL
     },
 
-  ]
+  ],
+
+  scrollBehavior(to) {
+    if (to.hash) {
+      return { el: to.hash }
+    }
+  }
 })
 
 

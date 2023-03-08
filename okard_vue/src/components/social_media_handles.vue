@@ -8,15 +8,15 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <strong><i class="bi bi-geo-alt-fill"></i></strong>
-                            120, Odomola Epe, Lagos State, Nigeria.
+                            {{ display.address }}
                         </li>
                         <li class="list-group-item">
                             <strong><i class="bi bi-telephone-fill"></i></strong>
-                            +2348131048313
+                            {{ display.phone }}
                         </li>
                         <li class="list-group-item">
                             <strong><i class="bi bi-envelope-at-fill"></i></strong>
-                            OKARDhvg@gmail.com
+                            {{ display.email }}
                         </li>
 
                     </ul>
@@ -43,6 +43,29 @@
         </div>
     </div>
 </template>
+
+<script lang="ts" setup>
+import { onMounted, reactive } from 'vue';
+import { getContact } from '@/stores/functions/axiosInstance';
+
+onMounted(async () => {
+    let { data } = await getContact()
+    display.email = data.email
+    display.phone = data.phone
+    display.address = data.address
+})
+
+
+const display = reactive({
+    address: '',
+    phone: '',
+    email: '',
+})
+
+
+</script>
+
+
 
 <style scoped>
 .social-card {

@@ -226,4 +226,28 @@ class AdminController extends BaseController
     {
         DB::table('tbl_categories')->where('id', $id)->delete();
     }
+
+
+
+
+    public function getContact()
+    {
+        $data =  DB::table('tbl_contact')->where('id', 1)->first();
+        return response()->json($data);
+    }
+
+
+    public function updateContact(Request $req)
+    {
+        $data = [
+            'address' => $req->input('address'),
+            'phone' => $req->input('phone'),
+            'email' => $req->input('email'),
+            'last_update' => Carbon::now()
+        ];
+
+        DB::table('tbl_contact')->where('id', 1)->update($data);
+
+        return response()->json('success', 200);
+    }
 }

@@ -43,17 +43,16 @@ onMounted(() => {
             <div class="collapse navbar-collapse" id="nav-link-lists">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item me-lg-3 hover-tiltY">
-                        <RouterLink class="nav-link" to="/">Home</RouterLink>
-                    </li>
-
-                    <li class="nav-item me-lg-3 hover-tiltY">
-                        <a class="nav-link" href="/#Services">Services</a>
+                        <RouterLink class="nav-link" :to="{ path: '/', hash: '#Home' }">Home</RouterLink>
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
                         <RouterLink class="nav-link" to="/about">About Us</RouterLink>
                     </li>
 
+                    <li class="nav-item me-lg-3 hover-tiltY">
+                        <RouterLink class="nav-link" :to="{ path: '/home', hash: '#Services' }">Services</RouterLink>
+                    </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -121,7 +120,7 @@ onMounted(() => {
     }
 }
 
-a:hover {
+/* a:hover {
     color: var(--theme-color) !important;
-}
+} */
 </style>

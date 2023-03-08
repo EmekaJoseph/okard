@@ -42,6 +42,9 @@ Route::controller(AdminController::class)->group(function () {
 
 
 Route::get('getImageSlides', [AdminController::class, 'getImageSlides']);
+Route::post('updateContact', [AdminController::class, 'updateContact']);
+Route::get('getContact', [AdminController::class, 'getContact']);
+
 Route::controller(UserController::class)->group(function () {
     Route::post('sendRequest',  'sendRequest');
     Route::post('isVisitor',  'isVisitor');
