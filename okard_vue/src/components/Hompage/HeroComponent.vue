@@ -4,21 +4,23 @@
             <div class="container content-lay">
                 <div class="row justify-content-center">
                     <div class="col-md-10">
-                        <p class="text-white text-center hero-sub fs-24">
-                            Okard Height Global Ventures Limited
+                        <p class="text-white text-center theme-text hero-sub fs-24">
+                            OKARD HEIGHT GLOBAL VENTURES LIMITED
+                            <!-- Okard Height Global Ventures Limited -->
                         </p>
                         <h1 class="text-white text-center hero-heading">
-                            Bulding Construction & Sales (Real Estate
-                            Developers), Production, Building Materials Merchandise
+                            Bulding Construction & Sales <br>
+                            (Real Estate Developers)
+                            <!-- Production, Building Materials Merchandise -->
                             <!-- ▪︎ -->
                         </h1>
 
-                        <div class="text-center text-light">
+                        <!-- <div class="text-center text-light">
                             We produce building
                             materials
                             like Rebar,
                             We sell building materials like Tiles, POP cements, Roofing-sheets, etc.
-                        </div>
+                        </div> -->
 
                         <div class="d-flex justify-content-center">
                             <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4 hover-tiltX">
@@ -49,6 +51,7 @@
 
 .trans-lay {
     background-color: rgba(13, 15, 21, 0.651);
+    background-color: rgba(13, 15, 21, 0.555);
     min-height: inherit;
     padding-top: 200px;
     padding-bottom: 100px;

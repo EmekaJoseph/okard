@@ -21,6 +21,7 @@ class ImageSlideModel extends Authenticatable
         'img',
         'description',
         'location',
-        'type'
+        'type',
+        'price'
     ];
 }

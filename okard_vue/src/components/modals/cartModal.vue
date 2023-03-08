@@ -25,19 +25,56 @@
                         <div v-else class="row justify-content-center gy-3">
 
                             <div class="col-md-12 ">
-                                <div class=" card p-2 py-4 shadow-sm border-0">
+                                <div class=" card p-2 py-4 shadow-sm">
                                     <div class="table-responsive">
-                                        <table class="table table-sm">
+                                        <table class="table table-sm text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Qty</th>
+                                                    <th class="text-end">Price</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
                                             <tbody>
                                                 <tr v-for="(item, i) in images.cart" :key="i">
                                                     <th class="fw-bold">{{ (i + 1) }}</th>
-                                                    <td class=" text-capitalize text-truncate">{{ item.name }}<span
-                                                            v-if="item.location">, {{
-                                                                item.location
-                                                            }}</span>.</td>
-                                                    <td><button @click="removeFromCart(item.id)" class="btn btn-sm m-0 p-0">
-                                                            <i class="bib bi-x-lg"></i>
-                                                        </button></td>
+                                                    <td class=" text-capitalize text-truncate">{{ item.name }}
+                                                        <span v-if="item.location">, {{ item.location }}</span>.
+                                                    </td>
+
+                                                    <td>
+                                                        <button @click="decQty(item)"
+                                                            class="btn btn-sm m-0 p-0 btn-qtyChange">
+                                                            <i class="bi bi-caret-left-fill"></i>
+                                                        </button>
+
+                                                        {{ itemQty(item) }}
+
+                                                        <button @click="item.qty ? item.qty++ : item.qty = 2"
+                                                            class="btn btn-sm m-0 p-0 btn-qtyChange">
+                                                            <i class="bi bi-caret-right-fill"></i>
+                                                        </button>
+                                                    </td>
+                                                    <td class="text-end">
+                                                        {{ (rowTotal(item)).toLocaleString() }}
+                                                    </td>
+
+                                                    <td>
+                                                        <button @click="removeFromCart(item.id)" class="btn btn-sm m-0 p-0">
+                                                            <i class="bi bi-x-lg"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                                <tr class="totalSpan">
+                                                    <th colspan="3">TOTAL:</th>
+
+                                                    <th class="text-end">
+                                                        N {{ totalPrice.toLocaleString() }}
+                                                    </th>
+                                                    <th></th>
                                                 </tr>
 
                                             </tbody>
@@ -62,7 +99,7 @@
 
                             <div class="col-md-12">
                                 <button v-if="!field.isSending" @click="saveReq" type="button"
-                                    class="btn btn-lg theme-btn w-100">Make
+                                    class="btn btn-lg theme-btn w-100">Submit
                                     Enquriry</button>
                                 <button v-else type="button" class="btn btn-lg theme-btn w-100" disabled>Sending</button>
                             </div>
@@ -75,7 +112,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import useFunction from '@/stores/functions/useFunction';
 import { sendRequest } from '@/stores/functions/axiosInstance';
@@ -94,6 +131,37 @@ const field = reactive({
 })
 
 
+const totalPrice = computed(() => {
+    return images.cart.reduce((previous, current) => {
+        return previous + current.total
+    }, 0)
+})
+
+
+function decQty(item: any) {
+    if (item.qty) {
+        if (!(item.qty == 1)) {
+            item.qty--
+        }
+    }
+}
+
+const itemQty = (item: any) => {
+    item.qty = !item.qty ? 1 : item.qty
+    return item.qty
+}
+
+
+const rowTotal = (item: any) => {
+    item.total = item.qty ?
+        (item.price * item.qty)
+        : item.price
+
+    return item.total
+}
+
+
+
 
 function saveReq() {
 
@@ -108,13 +176,13 @@ function saveReq() {
     }
 
 
-    let refImage = images.cart.map(x => x.id)
+    let imageIds = images.cart.map(x => x.id)
 
     let obj = {
         name: field.name,
         contact: field.contact,
         message: !field.message.length ? null : field.message,
-        refImage: refImage.toString(),
+        refImage: imageIds.toString(),
         type: images.cart[0].type
     }
     sendReq(obj);
@@ -161,6 +229,12 @@ onBeforeRouteLeave(() => {
     border: none;
     background-color: var(--theme-color-bg);
     border-radius: 0%;
+}
+
+
+.totalSpan th {
+    background-color: var(--bs-light);
+    padding-block: 15px !important;
 }
 </style>
 

@@ -51,9 +51,13 @@
                   ({{ selectedCategory }})
                 </span>
 
-                <span @click="showCart" class="float-end cartBtn">
-                  <i class="bi bi-cart3"></i> Cart
-                </span>
+                <button @click="showCart" type="button" class="btn btn-light float-end m-0">
+                  <i v-if="!images.cart.length" class="bi bi-cart3"></i>
+                  <i v-else class="bi bi-cart-check-fill"></i>
+                  Go to Cart
+                  <span class="badge bg-dark"> {{ images.cart.length }}</span>
+                </button>
+
               </div>
 
 
@@ -61,16 +65,33 @@
                 <div class="card h-100 border-0">
                   <div class="card-body">
                     <div class="row g-2">
-                      <div @click="openRequestModal(show)" v-for="(show, i) in gallery" :key="i"
-                        class="col-6 col-lg-4 col-md-4 ">
+                      <div v-for="(show, i) in gallery" :key="i" class="col-6 col-lg-4 col-md-4">
                         <div class="image-holder fill">
                           <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
-                          <div class="details-overlay">
-                            <div class="bottom-text">
-                              <div class="text-warning text-capitalize">{{ show.name }}</div>
-                              <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div>
+
+                          <div class="btns-overlay">
+                            <div class="top-btns">
+                              <button @click="openRequestModal(show)" class="btn theme-btn xsmall btn-sm me-2 py-0"><i
+                                  class="bi bi-info-circle"></i></button>
+                              <button v-if="!show.inCart" @click="show.inCart = !show.inCart"
+                                class="btn btn-sm xsmall btn-light py-0">
+                                <i class="bi bi-cart3"></i> Add to cart
+                              </button>
+                              <button v-else @click="show.inCart = !show.inCart" class="btn btn-sm xsmall btn-dark py-0">
+                                <i class="bi bi-cart3"></i> Remove
+                              </button>
                             </div>
                           </div>
+
+                          <div class="details-overlay">
+                            <div class="bottom-text">
+                              <div class=" text-uppercase fw-bold text-white">{{ show.name }}</div>
+                              <div v-if="show.price" class="text-white xsmall">N{{ show.price.toLocaleString() }}</div>
+                              <!-- <div @click="openRequestModal(show)" class="text-warning small hover-tiltX">
+                                more details..</div> -->
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </div>
@@ -169,9 +190,9 @@ function showCart() {
 
 
 
-.image-holder:hover {
+/* .image-holder:hover {
   transform: scale(0.97);
-}
+} */
 
 /* img {
   vertical-align: middle;
@@ -219,6 +240,19 @@ img {
   /* font-size: 12px; */
 }
 
+.btns-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  /* border: 1px solid #eee; */
+  padding: 10px;
+  /* border-radius: 20px; */
+  /* display: none; */
+  /* font-size: 12px; */
+}
+
 
 @media (min-width: 994px) {
   .topix {
@@ -242,17 +276,12 @@ img {
   margin-bottom: 10px;
 }
 
-.cartBtn {
-  border: 1px solid #9e9c9c;
-  background-color: #f5f5f5;
-  padding: 0px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cartBtn:hover {
-  background-color: #111;
-  color: #fff;
+.top-btns {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 </style>
 

@@ -84,9 +84,6 @@ class AdminController extends BaseController
     }
 
 
-
-
-
     public function getRequests(): JsonResponse
     {
         $list =  RequestModel::select('id', 'name', 'contact', 'isRead', 'created_at')
@@ -151,6 +148,7 @@ class AdminController extends BaseController
         $image->description = $req->input('description');
         $image->location = $req->input('location');
         $image->type = $req->input('type');
+        $image->price = $req->input('price');
         $image->img = '';
 
 

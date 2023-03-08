@@ -35,6 +35,7 @@ export const useImageSlides = defineStore('slides', () => {
     imageSlides.value = data
   }
 
+
   return {
     loading,
     properties,

@@ -72,6 +72,17 @@
                                                 class="form-control form-control-lg">
                                         </div>
 
+                                        <div v-if="fileURL" class="col-lg-6">
+                                            <div>Price:</div>
+                                            <input v-model="newImage.price" class="form-control" type="number" />
+                                        </div>
+                                        <div v-if="fileURL" class="col-lg-6">
+                                            <div>&nbsp;</div>
+                                            <input type="text" class="form-control bg-whit border-0 fw-bold"
+                                                :value="'N' + newImage.price.toLocaleString()" disabled>
+                                            <!-- {{ newImage.price.toLocaleString() }} -->
+                                        </div>
+
                                         <div v-if="fileURL" class="col-lg-12">
                                             <div>Description:</div>
                                             <textarea v-model="newImage.description" class="form-control"
@@ -133,6 +144,7 @@ const newImage = reactive({
     name: '',
     description: '',
     location: '',
+    price: ''
 })
 
 
@@ -151,15 +163,23 @@ async function updateCate() {
     categories.value = data
 }
 
+
 function saveImage() {
     if (!newImage.name || !newImage.description) {
         fxn.Toast('Name & Description is important', 'warning')
         return;
     }
+
+    if (!newImage.price) {
+        fxn.Toast('Include Price', 'warning')
+        return;
+    }
+
     isSaving.value = true
     let imgObj = new FormData()
     imgObj.append('name', newImage.name)
     imgObj.append('description', newImage.description)
+    imgObj.append('price', newImage.price)
     if (newImage.location) { imgObj.append('location', newImage.location) }
     imgObj.append('type', typeSelect.value)
     imgObj.append('category', categorySelect.value)

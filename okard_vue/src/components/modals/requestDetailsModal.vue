@@ -14,15 +14,26 @@
                         <div class="row gy-3">
                             <div v-if="requests.onBoard.refImage" class="col-12">
                                 <label class="">Enquiry made for:</label>
-                                <div class=" theme-bg p-2 card shadow-sm">
+                                <div class=" theme-b p-2 card shadow-sm">
                                     <div class="table-responsive">
                                         <table class="table table-sm">
                                             <tbody>
                                                 <tr v-for="(item, i) in requests.onBoard.refImage" :key="i">
-                                                    <th class="fw-bold"> <i class="bi bi-arrow-right xsmall"></i> </th>
+                                                    <!-- <th class="fw-bold"> <i class="bi bi-arrow-right xsmall"></i> </th> -->
                                                     <td>{{ item.name }}<span v-if="item.location">, {{
                                                         item.location
                                                     }}</span>.</td>
+
+                                                    <td class="text-end">
+                                                        {{ item.price.toLocaleString() }}
+                                                    </td>
+                                                </tr>
+                                                <tr class="totalSpan">
+                                                    <th>TOTAL AMOUNT:</th>
+
+                                                    <th class="text-end">
+                                                        N {{ totalPrice.toLocaleString() }}
+                                                    </th>
                                                 </tr>
 
                                             </tbody>
@@ -33,7 +44,7 @@
 
                             <div v-if="requests.onBoard.message" class="col-12">
                                 <label>Message:</label>
-                                <div class="bg-light card p-2 py-2 rounded-2">{{ requests.onBoard.message }}
+                                <div class=" card p-2 py-2 rounded-2">{{ requests.onBoard.message }}
                                 </div>
                             </div>
 
@@ -66,11 +77,11 @@
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import { useRequests, } from '@/stores/admin/requests';
 import { hostURL } from '@/stores/functions/axiosInstance';
@@ -91,32 +102,20 @@ function reqName(name: string) {
     return title;
 }
 
+
+const totalPrice = computed(() => {
+    return requests.onBoard.refImage.reduce((previous: any, current: any) => {
+        return previous + current.price
+    }, 0)
+})
+
+
 </script>
 
 <style scoped>
-.info-panel {
-    padding: 10px;
-    border: none;
-    background-color: var(--theme-color-bg);
-    border-radius: 0%;
-}
-
-
-
-
-
-
-.fill {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden
-}
-
-.fill img {
-    flex-shrink: 0;
-    min-width: 100%;
-    min-height: 100%
+.totalSpan th {
+    background-color: var(--bs-light);
+    padding-block: 15px !important;
 }
 </style>
 

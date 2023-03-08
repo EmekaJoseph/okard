@@ -71,8 +71,18 @@ $box-shadow-inset:            inset 0 1px 2px rgba($black, .075); */
     font-size: 12px;
 }
 
+@media (max-width: 994px) {
+    .xsmall {
+        font-size: 9px;
+    }
+}
+
 .list-scroll {
     /* background-color: #eeeeee7c; */
     height: 500px;
     overflow-y: auto;
+}
+
+th {
+    font-weight: bold;
 }

@@ -20,15 +20,17 @@
                             </div>
                             <div class="col-md-12 ">
                                 <div class="bg-light p-2">
-                                    <div class="mb-1"><b>Name:</b> {{ item.name }}</div>
-                                    <div class="mb-1"> <b>Description</b>: {{ item.description }}</div>
-                                    <div v-if="item.location"><b>Location</b>: {{ item.location }}</div>
+                                    <div class="mb-2"><b>Name:</b> {{ item.name }}</div>
+                                    <div class="mb-2"> <b>Description</b>: {{ item.description }}</div>
+                                    <div class="mb-2" v-if="item.location"><b>Location</b>: {{ item.location }}</div>
+                                    <div class="mb-2" v-if="item.price"><b>Price</b>: N{{ item.price.toLocaleString() }}
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="row">
-                                    <div class="col-7">
+                                    <!-- <div class="col-7">
                                         <button v-if="!item.inCart" @click="addToCart" type="button"
                                             class="btn theme-btn w-100">
                                             Add to Cart
@@ -36,10 +38,10 @@
                                         <button v-else @click="addToCart" type="button" class="btn btn-dark w-100">
                                             <i class="bi bi-cart-x"></i> Remove
                                         </button>
-                                    </div>
-                                    <div class="col-5">
+                                    </div> -->
+                                    <div class="col-12">
                                         <button @click="showCart" type="button" class="btn btn-outline-dark w-100">
-                                            <i class="bi bi-cart3"></i> Cart
+                                            <i class="bi bi-cart3"></i> View Cart
                                         </button>
                                     </div>
                                 </div>
@@ -54,13 +56,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
-import useFunction from '@/stores/functions/useFunction';
-import { sendRequest, hostURL } from '@/stores/functions/axiosInstance';
+import { hostURL } from '@/stores/functions/axiosInstance';
 
 
-const fxn = useFunction.fx
 
 
 const emit = defineEmits(['showCart'])
@@ -73,51 +73,6 @@ const prop = defineProps({
     }
 })
 
-const field = reactive({
-    name: '',
-    contact: '',
-    message: '',
-    isSending: false
-})
-
-
-
-function saveReq() {
-
-    if (!field.name) {
-        fxn.Toast('Please tell us your name', 'warning')
-        return;
-    }
-
-    if (!field.contact) {
-        fxn.Toast('Enter your phone/email or both', 'warning')
-        return;
-    }
-
-    let obj = {
-        name: field.name,
-        contact: field.contact,
-        message: !field.message.length ? null : field.message,
-        refImage: prop.item.id,
-        type: prop.item.type
-    }
-    sendReq(obj);
-}
-
-async function sendReq(obj: any) {
-    field.isSending = true
-    try {
-        let resp = await sendRequest(obj)
-        if (resp.status == 200) {
-            field.isSending = false
-            fxn.Toast('Thank You, We will contact you shortly', 'success')
-            btnX.value.click()
-        }
-    } catch (error) {
-        field.isSending = false
-        fxn.Toast('Sorry, Error occoured, try again', 'error')
-    }
-}
 
 function addToCart() {
     prop.item.inCart = !prop.item.inCart

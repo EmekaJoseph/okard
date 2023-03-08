@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2023 at 09:38 PM
+-- Generation Time: Mar 08, 2023 at 05:49 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_account` (
 --
 
 INSERT INTO `tbl_account` (`id`, `username`, `password`, `role`, `last_login`) VALUES
-(1, 'okard', '$2y$10$7KJA8djx/a6FZEpn9k7wVuApQ3JQFpVgmr7ee9WPfPxpGIMRTjCdK', NULL, '2023-03-04 20:29:06');
+(1, 'okard', '$2y$10$7KJA8djx/a6FZEpn9k7wVuApQ3JQFpVgmr7ee9WPfPxpGIMRTjCdK', NULL, '2023-03-08 15:38:18');
 
 -- --------------------------------------------------------
 
@@ -97,6 +97,7 @@ CREATE TABLE `tbl_imageslides` (
   `category` varchar(100) NOT NULL,
   `img` varchar(100) NOT NULL,
   `description` text NOT NULL,
+  `price` int(100) DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
   `extra_col` varchar(100) DEFAULT NULL,
   `type` varchar(100) NOT NULL,
@@ -108,17 +109,17 @@ CREATE TABLE `tbl_imageslides` (
 -- Dumping data for table `tbl_imageslides`
 --
 
-INSERT INTO `tbl_imageslides` (`id`, `name`, `category`, `img`, `description`, `location`, `extra_col`, `type`, `updated_at`, `created_at`) VALUES
-(1, 'Duplex', 'Residential', 'img-1676760548.jpg', 'cool  duplex', '230Km Abuja', NULL, 'Property', '2023-02-18 22:49:08', '2023-02-18 22:49:08'),
-(2, 'Commercial Place', 'Commercial', 'img-1676760896.jpg', 'cool place', 'Abuja', NULL, 'Property', '2023-02-18 22:54:56', '2023-02-18 22:54:56'),
-(3, 'the Land', 'Lands', 'img-1676760936.jpg', 'land desc', 'Lagos Ibadan', NULL, 'Property', '2023-02-18 22:55:36', '2023-02-18 22:55:36'),
-(4, 'German Door', 'Doors', 'img-1676760965.jpg', 'this is a door', NULL, NULL, 'Material', '2023-02-18 22:56:05', '2023-02-18 22:56:05'),
-(5, 'POP Cement HGV', 'POP Cements', 'img-1676760998.jpg', 'best quality, Grade one', NULL, NULL, 'Material', '2023-02-18 22:56:38', '2023-02-18 22:56:38'),
-(6, 'Italian rods', 'Rods', 'img-1676761029.jpg', '10 years waranty', NULL, NULL, 'Material', '2023-02-18 22:57:09', '2023-02-18 22:57:09'),
-(7, 'Vapor Tiles', 'Tiles', 'img-1676761065.jpg', 'the best for floor', NULL, NULL, 'Material', '2023-02-18 22:57:45', '2023-02-18 22:57:45'),
-(8, 'Roofing Sheets', 'Roofing', 'img-1676761099.jpg', 'Made in Nigeria', NULL, NULL, 'Material', '2023-02-18 22:58:20', '2023-02-18 22:58:20'),
-(9, 'Idian Pipes', 'Plumbing Fittings', 'img-1676761267.jpg', 'Full lengths to be enough for 3 storey', NULL, NULL, 'Material', '2023-02-18 23:01:07', '2023-02-18 23:01:07'),
-(10, 'seaters', 'Plumbing Fittings', 'img-1676761302.jpg', 'best shinny seaters', NULL, NULL, 'Material', '2023-02-18 23:01:42', '2023-02-18 23:01:42');
+INSERT INTO `tbl_imageslides` (`id`, `name`, `category`, `img`, `description`, `price`, `location`, `extra_col`, `type`, `updated_at`, `created_at`) VALUES
+(1, 'Duplex', 'Residential', 'img-1676760548.jpg', 'cool  duplex', NULL, '230Km Abuja', NULL, 'Property', '2023-02-18 22:49:08', '2023-02-18 22:49:08'),
+(2, 'Commercial Place', 'Commercial', 'img-1676760896.jpg', 'cool place', NULL, 'Abuja', NULL, 'Property', '2023-02-18 22:54:56', '2023-02-18 22:54:56'),
+(3, 'the Land', 'Lands', 'img-1676760936.jpg', 'land desc', NULL, 'Lagos Ibadan', NULL, 'Property', '2023-02-18 22:55:36', '2023-02-18 22:55:36'),
+(4, 'German Door', 'Doors', 'img-1676760965.jpg', 'this is a door', 30000, NULL, NULL, 'Material', '2023-02-18 22:56:05', '2023-02-18 22:56:05'),
+(5, 'POP Cement HGV', 'POP Cements', 'img-1676760998.jpg', 'best quality, Grade one', 40000, NULL, NULL, 'Material', '2023-02-18 22:56:38', '2023-02-18 22:56:38'),
+(6, 'Italian rods', 'Rods', 'img-1676761029.jpg', '10 years waranty', 80000, NULL, NULL, 'Material', '2023-02-18 22:57:09', '2023-02-18 22:57:09'),
+(7, 'Vapor Tiles', 'Tiles', 'img-1676761065.jpg', 'the best for floor', 1200, NULL, NULL, 'Material', '2023-02-18 22:57:45', '2023-02-18 22:57:45'),
+(8, 'Roofing Sheets', 'Roofing', 'img-1676761099.jpg', 'Made in Nigeria', 280000, NULL, NULL, 'Material', '2023-02-18 22:58:20', '2023-02-18 22:58:20'),
+(9, 'Idian Pipes', 'Plumbing Fittings', 'img-1676761267.jpg', 'Full lengths to be enough for 3 storey', 3000, NULL, NULL, 'Material', '2023-02-18 23:01:07', '2023-02-18 23:01:07'),
+(10, 'seaters', 'Plumbing Fittings', 'img-1676761302.jpg', 'best shinny seaters', 4000, NULL, NULL, 'Material', '2023-02-18 23:01:42', '2023-02-18 23:01:42');
 
 -- --------------------------------------------------------
 
@@ -174,7 +175,7 @@ CREATE TABLE `tbl_visitors` (
 --
 
 INSERT INTO `tbl_visitors` (`id`, `ip_addr`, `visit_date`) VALUES
-(1, '127.0.0.1', '2023-03-04 20:37:34');
+(1, '127.0.0.1', '2023-03-08 16:45:50');
 
 --
 -- Indexes for dumped tables
@@ -230,13 +231,13 @@ ALTER TABLE `tbl_account`
 -- AUTO_INCREMENT for table `tbl_blog`
 --
 ALTER TABLE `tbl_blog`
-  MODIFY `blog_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `blog_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tbl_imageslides`
 --
 ALTER TABLE `tbl_imageslides`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tbl_messages`
@@ -248,7 +249,7 @@ ALTER TABLE `tbl_messages`
 -- AUTO_INCREMENT for table `tbl_requests`
 --
 ALTER TABLE `tbl_requests`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_visitors`
