@@ -4,9 +4,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ImageSlidesController;
+use App\Http\Controllers\UserEnquiryController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,34 +24,25 @@ use App\Http\Controllers\MessageController;
 //     return $request->user();
 // });
 
-
 Route::controller(AdminController::class)->group(function () {
     Route::post('admin/login',  'login');
     Route::post('admin/passwordChange',  'passwordChange');
     Route::get('admin/getAccount/{id}',  'getAccount');
 
-    Route::get('getRequests',  'getRequests');
-    Route::get('requestDetails/{id}',  'requestDetails');
-    Route::delete('deleteRequest/{id}',  'deleteRequest');
-
-    Route::post('saveImageSlide',  'saveImageSlide');
-    Route::delete('deleteImageSlide/{id}',  'deleteImageSlide');
-
     Route::post('newCategory',  'newCategory');
     Route::get('getCategories',  'getCategories');
     Route::delete('deleteCategory/{id}',  'deleteCategory');
-});
 
+    Route::get('getContact',  'getContact');
+    Route::post('updateContact',  'updateContact');
 
-Route::get('getImageSlides', [AdminController::class, 'getImageSlides']);
-Route::post('updateContact', [AdminController::class, 'updateContact']);
-Route::get('getContact', [AdminController::class, 'getContact']);
-
-Route::controller(UserController::class)->group(function () {
-    Route::post('sendRequest',  'sendRequest');
     Route::post('isVisitor',  'isVisitor');
 });
 
+// Route::post('isVisitor', [UserController::class, 'isVisitor']);
 
 Route::apiResource('blog', BlogController::class);
 Route::apiResource('message', MessageController::class);
+Route::apiResource('portfolio', PortfolioController::class);
+Route::apiResource('imageSlides', ImageSlidesController::class);
+Route::apiResource('enquiry', UserEnquiryController::class);

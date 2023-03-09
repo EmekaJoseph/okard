@@ -16,23 +16,31 @@
                                 <label class="">Enquiry made for:</label>
                                 <div class=" theme-b p-2 card shadow-sm">
                                     <div class="table-responsive">
-                                        <table class="table table-sm">
+                                        <table class="table table-sm text-nowrap">
+                                            <thead>
+                                                <th>#</th>
+                                                <th>Item</th>
+                                                <th class="text-end">Price</th>
+                                            </thead>
                                             <tbody>
                                                 <tr v-for="(item, i) in requests.onBoard.refImage" :key="i">
                                                     <!-- <th class="fw-bold"> <i class="bi bi-arrow-right xsmall"></i> </th> -->
-                                                    <td>{{ item.name }}<span v-if="item.location">, {{
-                                                        item.location
-                                                    }}</span>.</td>
+                                                    <th>{{ (i + 1) }}</th>
+                                                    <td>
+                                                        {{ item.name }}
+                                                        <span v-if="item.location">, {{ item.location }}</span>.
+                                                        (x{{ item.qty }})
+                                                    </td>
 
                                                     <td class="text-end">
-                                                        {{ item.price.toLocaleString() }}
+                                                        {{ item.total.toLocaleString() }}
                                                     </td>
                                                 </tr>
                                                 <tr class="totalSpan">
-                                                    <th>TOTAL AMOUNT:</th>
+                                                    <th colspan="2">TOTAL AMOUNT:</th>
 
                                                     <th class="text-end">
-                                                        N {{ totalPrice.toLocaleString() }}
+                                                        N {{ requests.onBoard.totalPrice.toLocaleString() }}
                                                     </th>
                                                 </tr>
 
@@ -90,7 +98,11 @@ const requests = useRequests()
 const btnX: any = ref(null)
 onBeforeRouteLeave(() => {
     btnX.value.click()
+    console.log(requests.onBoard);
+
 })
+
+const list = computed(() => { return requests.onBoard.refImage })
 
 function reqName(name: string) {
     let title = ''
@@ -103,11 +115,11 @@ function reqName(name: string) {
 }
 
 
-const totalPrice = computed(() => {
-    return requests.onBoard.refImage.reduce((previous: any, current: any) => {
-        return previous + current.price
-    }, 0)
-})
+// const totalPrice = computed(() => {
+//     return requests.onBoard.refImage.reduce((previous: any, current: any) => {
+//         return previous + current.price
+//     }, 0)
+// })
 
 
 </script>

@@ -15,6 +15,7 @@ import AdminLayout from '../views/Admin/_layout.vue'
 import AdminDashboard from '../views/Admin/Dashboard.vue'
 import AdminRequests from '../views/Admin/Requests.vue'
 import Messages from '../views/Admin/Messages.vue'
+import AdminPortfolio from '../views/Admin/Portfolio.vue'
 import BlogPosting from '../views/Admin/BlogPost.vue'
 import BlogList from '../views/Admin/BlogList.vue'
 import AdminUploads from '../views/Admin/Uploads.vue'
@@ -84,6 +85,7 @@ const router = createRouter({
         { path: 'requests', name: 'Requests', component: AdminRequests },
         { path: 'uploads', name: 'Uploads', component: AdminUploads },
         { path: 'account', name: 'Account', component: AdminAccount },
+        { path: 'portfolios', name: 'Portfolio-edit', component: AdminPortfolio },
       ],
     },
 

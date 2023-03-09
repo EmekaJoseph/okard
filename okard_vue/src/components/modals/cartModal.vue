@@ -176,14 +176,23 @@ function saveReq() {
     }
 
 
-    let imageIds = images.cart.map(x => x.id)
+    // let imageIds = images.cart.map(x => x.id)
+
+    let meappedReq = images.cart.map(x => (
+        {
+            name: x.name + `${x.location ? ', ' + x.location : ''}`,
+            qty: x.qty,
+            total: x.total
+        }
+    ))
 
     let obj = {
         name: field.name,
         contact: field.contact,
         message: !field.message.length ? null : field.message,
-        refImage: imageIds.toString(),
-        type: images.cart[0].type
+        refImage: JSON.stringify(meappedReq),
+        type: images.cart[0].type,
+        totalPrice: totalPrice.value
     }
     sendReq(obj);
 }

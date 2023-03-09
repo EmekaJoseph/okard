@@ -25,14 +25,15 @@ const $instanceForm = axios.create({
 })
 
 
-const sendRequest = (data: any) => $instanceForm.post(`sendRequest`, data)
-const getRequests = () => $instance.get(`getRequests`)
-const requestDetails = (id: any) => $instance.get(`requestDetails/${id}`)
-const deleteRequest = (id: any) => $instance.delete(`deleteRequest/${id}`)
+const sendRequest = (data: any) => $instanceForm.post(`enquiry`, data)
+const getRequests = () => $instance.get(`enquiry`)
+const requestDetails = (id: any) => $instance.get(`enquiry/${id}`)
+const deleteRequest = (id: any) => $instance.delete(`enquiry/${id}`)
 
-const saveImageSlide = (data: FormData) => $instanceForm.post(`saveImageSlide`, data)
-const getImageSlides = () => $instance.get(`getImageSlides`)
-const deleteImageSlide = (id: any) => $instance.delete(`deleteImageSlide/${id}`)
+const saveImageSlide = (data: any) => $instanceForm.post(`imageSlides`, data)
+const getImageSlides = () => $instance.get(`imageSlides`)
+const showImageSlide = (id: any) => $instance.get(`imageSlides/${id}`)
+const deleteImageSlide = (id: any) => $instance.delete(`imageSlides/${id}`)
 
 const newCategory = (data: object) => $instance.post(`newCategory`, JSON.stringify(data))
 const getCategories = () => $instance.get(`getCategories`)
@@ -53,6 +54,13 @@ const messageNew = (data: any) => $instance.post(`message`, data)
 const messageList = () => $instance.get(`message`)
 const messageDetails = (id: any) => $instance.get(`message/${id}`)
 const messageDelete = (id: any) => $instance.delete(`message/${id}`)
+
+const portfolioNew = (data: any) => $instanceForm.post(`portfolio`, data)
+const portfolioList = () => $instance.get(`portfolio`)
+const portfolioDetails = (id: any) => $instance.get(`portfolio/${id}`)
+const portfolioDelete = (id: any) => $instance.delete(`portfolio/${id}`)
+const portfolioUpdate = (id: any) => $instance.put(`portfolio/${id}`)
+
 
 const updateContact = (data: any) => $instance.post(`updateContact`, data)
 const getContact = () => $instance.get(`getContact`)
@@ -86,24 +94,38 @@ export {
     getRequests,
     requestDetails,
     deleteRequest,
+
     saveImageSlide,
     getImageSlides,
     deleteImageSlide,
+    showImageSlide,
+
     newCategory,
     getCategories,
-    isVisitor,
     deleteCategory,
+
+    isVisitor,
+
     blogNew,
     blogList,
     blogDetails,
     blogDelete,
+
     login,
     passwordChange,
     getAccount,
+
     messageNew,
     messageList,
     messageDetails,
     messageDelete,
+
+    portfolioNew,
+    portfolioList,
+    portfolioDetails,
+    portfolioDelete,
+    portfolioUpdate,
+
     updateContact,
     getContact
     // testCall

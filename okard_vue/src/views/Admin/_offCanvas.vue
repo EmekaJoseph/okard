@@ -29,6 +29,13 @@
                         <i class="bi bi-cloud-upload"></i> Uploads
                     </router-link>
                 </li>
+
+                <li>
+                    <router-link to="/admin/account/portfolios">
+                        <i class="bi bi-bag"></i> Portfolios
+                    </router-link>
+                </li>
+
                 <li>
                     <router-link to="/admin/account/blogpost">
                         <i class="bi bi-newspaper"></i> Blog

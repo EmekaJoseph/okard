@@ -84,124 +84,6 @@ class AdminController extends BaseController
     }
 
 
-    public function getRequests(): JsonResponse
-    {
-        $list =  RequestModel::select('id', 'name', 'contact', 'isRead', 'created_at')
-            ->orderBy('created_at', 'desc')->get();
-        if (sizeof($list) > 0) {
-            foreach ($list as $line) {
-                $line->sent = (Carbon::parse($line->created_at))->diffForHumans();
-            }
-        }
-        return response()->json($list, 200);
-    }
-
-    public function requestDetails($id): JsonResponse
-    {
-        $userReq = RequestModel::find($id);
-        if ($userReq) {
-            $userReq->isRead = '1';
-            $userReq->save();
-
-            if ($userReq->refImage) {
-                $ids = explode(',', $userReq->refImage);
-                $imgs = ImageSlideModel::find($ids);
-                $userReq->refImage =  $imgs;
-            }
-        }
-
-        return response()->json($userReq, 200);
-    }
-
-
-    public function deleteRequest($id)
-    {
-        $userReq = RequestModel::find($id);
-
-        //remove the uploaded file if exists
-        if ($userReq) {
-            if ($userReq->voiceNote) {
-                $voiceNote = 'reqFiles/' . $userReq->voiceNote;
-                if (file_exists($voiceNote)) {
-                    unlink($voiceNote);
-                }
-            }
-            if ($userReq->doc) {
-                $doc = 'reqFiles/' . $userReq->doc;
-                if (file_exists($doc)) {
-                    unlink($doc);
-                }
-            }
-            $userReq->delete();
-        }
-
-        return response()->json(['success' => 'deleted'], 200);
-    }
-
-
-    public function saveImageSlide(Request $req)
-    {
-        $image = new ImageSlideModel();
-
-        $image->name = $req->input('name');
-        $image->category = $req->input('category');
-        $image->description = $req->input('description');
-        $image->location = $req->input('location');
-        $image->type = $req->input('type');
-        $image->price = $req->input('price');
-        $image->img = '';
-
-
-        if ($req->file('img')) {
-            $file = $req->file('img');
-            $fileName = 'img-' . time() . '.' . $file->extension();
-
-            $img = Image::make($file);
-            $img->resize(800, 500, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save('slides/' . $fileName);
-
-            // $file->move('slides/', $fileName); ######### old, dont use..
-
-            $image->img = $fileName;
-        }
-
-        $image->save();
-
-
-        return response()->json(['success' => 'saved'], 200);
-    }
-
-
-    public function getImageSlides()
-    {
-        return ImageSlideModel::all();
-    }
-
-
-    public function deleteImageSlide($ids)
-    {
-        $idsArr = explode(',', $ids);
-        foreach ($idsArr as $id) {
-            $this->deleteSlide($id);
-        }
-
-        return response()->json(['success' => 'deleted'], 200);
-    }
-
-    private function deleteSlide($id)
-    {
-        $image = ImageSlideModel::find($id);
-
-        if ($image) {
-            $imgFile = 'slides/' . $image->img;
-            if (file_exists($imgFile)) {
-                unlink($imgFile);
-            }
-            $image->delete();
-        }
-    }
-
     public function newCategory(Request $req)
     {
         DB::table('tbl_categories')
@@ -228,8 +110,6 @@ class AdminController extends BaseController
     }
 
 
-
-
     public function getContact()
     {
         $data =  DB::table('tbl_contact')->where('id', 1)->first();
@@ -249,5 +129,15 @@ class AdminController extends BaseController
         DB::table('tbl_contact')->where('id', 1)->update($data);
 
         return response()->json('success', 200);
+    }
+
+
+    public function isVisitor(Request $req)
+    {
+        DB::table('tbl_visitors')
+            ->updateOrInsert(
+                ['ip_addr' => $req->ip()],
+                ['ip_addr' => $req->ip(), 'visit_date' => Carbon::now()]
+            );
     }
 }

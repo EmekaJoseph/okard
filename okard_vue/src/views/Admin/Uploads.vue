@@ -37,7 +37,7 @@
                                         </div>
                                         <form ref="fileForm" class="d-none">
                                             <input type="file" ref="fileBtn" accept="image/jpeg, image/png, image/jpg"
-                                                class="form-control form-control-lg" @change="fileUploadFn">
+                                                @change="fileUploadFn">
                                         </form>
                                         <div v-if="categorySelect" class="col-lg-12">
                                             <div class="mb-1">Upload Image:</div>

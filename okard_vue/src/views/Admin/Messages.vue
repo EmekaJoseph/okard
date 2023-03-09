@@ -41,11 +41,11 @@
 
                         </div>
 
-                        <div class="col-md-5">
+                        <div v-if="selectedMessage.text" class="col-md-5">
                             <div class="card border-0 h-100">
                                 <div class="card-header border-0">Message Body
 
-                                    <span v-if="selectedMessage" @click="selectedMessage = {}" style="cursor: pointer;"
+                                    <span @click="selectedMessage = {}" style="cursor: pointer;"
                                         class="float-end text-danger cursor-pointer">clear</span>
                                 </div>
                                 <div class="card-body">
@@ -76,18 +76,6 @@ onMounted(() => {
     window.scrollTo(0, 0);
     getMessages()
 })
-
-const messages_ = ref([
-    {
-        id: '1',
-        name: 'Emeka',
-        subject: 'New Subject',
-        sent: '2 days ago',
-        contact: '09032456',
-        isRead: null,
-        text: 'the text.......'
-    }
-])
 
 const messages = ref<any>([])
 
