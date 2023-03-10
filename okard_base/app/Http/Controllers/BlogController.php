@@ -22,7 +22,7 @@ class BlogController extends BaseController
     public function index()
     {
         $list =  BlogModel::select('blog_id', 'title', 'text', 'created_at', 'images')
-            ->orderByDesc('created_at')->limit(10)->get();
+            ->orderByDesc('created_at')->limit(20)->get();
 
 
         if (sizeof($list) > 0) {

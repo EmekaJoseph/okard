@@ -22,11 +22,12 @@
                                                     <th class="text-muted xsmall">{{
                                                         (new Date(line.created_at)).toLocaleDateString() }}
                                                     </th>
-                                                    <!-- <td @click="editModalOpen(line.id)">
+                                                    <td @click="portofolioToEdit = line" data-bs-toggle="modal"
+                                                        data-bs-target="#portfolioEditModal">
                                                         <button class="btn btn-sm p-0 m-0 text-dark">
                                                             <i class="bi bi-pencil-fill"></i>
                                                         </button>
-                                                    </td> -->
+                                                    </td>
 
                                                     <td @click="deletePortfolio(line.id)">
                                                         <button class="btn btn-sm p-0 m-0 text-danger">
@@ -102,6 +103,7 @@
                 </div>
             </div>
         </div>
+        <portfolioEditModal v-if="portofolioToEdit" :item="portofolioToEdit" @done="getPortfolios" />
     </div>
 </template>
 
@@ -110,6 +112,7 @@ import { ref, onMounted, reactive } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
 import { portfolioDelete, portfolioList, portfolioNew } from '@/stores/functions/axiosInstance';
 import { fileUploader } from '@/stores/functions/fileUploader'
+import portfolioEditModal from '@/components/modals/portfolioEditModal.vue';
 
 
 // ###################### UPLOADING START ####################### //
@@ -179,6 +182,7 @@ onMounted(() => {
 })
 
 const portfolios = ref<any>([])
+const portofolioToEdit = ref<any>({})
 
 async function getPortfolios() {
     let resp = await portfolioList()
@@ -196,8 +200,8 @@ function deletePortfolio(id: any) {
         })
 }
 
-function editModalOpen(id: any) {
-
+function editModalOpen(obj: any) {
+    portofolioToEdit.value = obj
 }
 
 </script>

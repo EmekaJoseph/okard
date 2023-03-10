@@ -59,7 +59,7 @@ const portfolioNew = (data: any) => $instanceForm.post(`portfolio`, data)
 const portfolioList = () => $instance.get(`portfolio`)
 const portfolioDetails = (id: any) => $instance.get(`portfolio/${id}`)
 const portfolioDelete = (id: any) => $instance.delete(`portfolio/${id}`)
-const portfolioUpdate = (id: any) => $instance.put(`portfolio/${id}`)
+const portfolioUpdate = (id: any, data: any) => $instance.put(`portfolio/${id}`, JSON.stringify(data))
 
 
 const updateContact = (data: any) => $instance.post(`updateContact`, data)

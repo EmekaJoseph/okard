@@ -9,6 +9,7 @@ import BuyBuildingMaterialView from '../views/Buy_Building_Materials.vue'
 import RequestForBillView from '../views/Request_for_Bill.vue'
 import RequestForPlanView from '../views/Request_for_Building_Plan.vue'
 import BlogLayout from '../views/Blog/_layout.vue'
+import PortfolioView from '../views/Portfolios_all.vue'
 
 import AdminLoginView from '../views/Admin/Login.vue'
 import AdminLayout from '../views/Admin/_layout.vue'
@@ -31,6 +32,8 @@ const router = createRouter({
     { path: '/', name: 'Home', alias: '/home', component: HomeView },
 
     { path: '/about', name: 'About', component: AboutView },
+
+    { path: '/portfolio', name: 'Portfolio', component: PortfolioView },
 
     { path: '/buy_property', name: 'Buy Property', component: BuyPropertyView },
 

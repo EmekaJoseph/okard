@@ -86,7 +86,8 @@
 
                           <div class="details-overlay">
                             <div class="bottom-text">
-                              <div class=" text-uppercase fw-bold text-white">{{ show.name }}</div>
+                              <div @click="openRequestModal(show)" class=" text-uppercase fw-bold text-white">{{ show.name
+                              }}</div>
                               <div v-if="show.price" class="text-white xsmall">N{{ show.price.toLocaleString() }}</div>
                               <!-- <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div> -->
                             </div>

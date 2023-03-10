@@ -32,9 +32,9 @@ onMounted(() => {
                 <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span>
                 <span v-if="route.name == 'About'">| About Us</span>
             </div>
-            <button v-if="route.name == 'Home'" ref="toggler" class="navbar-toggler border-0 btn-sm" type="button"
-                data-bs-toggle="collapse" data-bs-target="#nav-link-lists" aria-controls="nav-link-lists"
-                aria-expanded="false" aria-label="Toggle navigation">
+            <button ref="toggler" class="navbar-toggler border-0 btn-sm" type="button" data-bs-toggle="collapse"
+                data-bs-target="#nav-link-lists" aria-controls="nav-link-lists" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -51,18 +51,21 @@ onMounted(() => {
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
-                        <RouterLink class="nav-link" :to="{ path: '/home', hash: '#Services' }">Services</RouterLink>
+                        <RouterLink class="nav-link hash-link text-white" :to="{ path: '/home', hash: '#Services' }">
+                            Services
+                        </RouterLink>
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                        <!-- <a class="nav-link" href="#portfolio">Portfolio</a> -->
+                        <RouterLink class="nav-link" to="/portfolio">Portfolio</RouterLink>
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
                         <RouterLink class="nav-link" to="/blog">Blog</RouterLink>
                     </li>
 
-                    <li class="nav-item me-lg-3 d-none d-lg-block hover-tiltX">
+                    <li v-if="route.name == 'Home'" class="nav-item me-lg-3 d-none d-lg-block hover-tiltX">
                         <a class="nav-link-btn btn btn-sm p-1 px-3 theme-btn" href="/#Contact">Contact Us</a>
                     </li>
 
@@ -101,12 +104,15 @@ onMounted(() => {
 
 .header-white ul li a {
     color: black;
+}
 
+.header-white ul li a.hash-link {
+    color: black !important;
 }
 
 
 .navbar .navbar-nav .nav-item .nav-link.active {
-    color: #f15825 !important;
+    color: #f15825;
 }
 
 .nav-link-btn:hover {
@@ -116,7 +122,8 @@ onMounted(() => {
 
 @media (max-width: 994px) {
     .nav-item {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        margin-left: 10px;
     }
 }
 

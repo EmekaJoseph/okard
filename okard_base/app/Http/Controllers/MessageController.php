@@ -19,7 +19,7 @@ class MessageController extends BaseController
     public function index()
     {
         $list =  MessageModel::select('id', 'name', 'subject', 'isRead', 'created_at', 'contact')
-            ->orderByDesc('created_at')->limit(10)->get();
+            ->orderByDesc('created_at')->limit(20)->get();
 
         if (sizeof($list) > 0) {
             foreach ($list as $line) {

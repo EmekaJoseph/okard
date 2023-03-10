@@ -21,9 +21,8 @@ class PortfolioController extends BaseController
 
     public function index()
     {
-        $list =  PortfolioModel::select('id', 'title', 'created_at', 'image', 'category')
-            ->orderByDesc('created_at')->limit(10)->get();
-
+        $list =  PortfolioModel::select('*')
+            ->orderByDesc('created_at')->limit(20)->get();
         return response()->json($list, 200);
     }
 
