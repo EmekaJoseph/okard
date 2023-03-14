@@ -9,9 +9,7 @@
               <h4 class="text-capitalize topix">Request for Building Plan</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolores cupiditate inventore esse quas
-                voluptas deleniti quidem! Vero ipsum culpa, saepe consectetur quas totam fuga commodi hic ducimus odio
-                corporis.
+                Let us draw that building plan for you, fll the form below to reach us
               </p>
             </div>
           </div>

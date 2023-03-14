@@ -18,7 +18,7 @@ class UserEnquiryController extends BaseController
 
     public function index()
     {
-        $list =  EnquiryModel::select('id', 'name', 'contact', 'isRead', 'created_at')
+        $list =  EnquiryModel::select('id', 'name', 'contact', 'isRead', 'created_at', 'type')
             ->orderBy('created_at', 'desc')->get();
         if (sizeof($list) > 0) {
             foreach ($list as $line) {

@@ -52,7 +52,7 @@
 
                             <div v-if="requests.onBoard.message" class="col-12">
                                 <label>Message:</label>
-                                <div class=" card p-2 py-2 rounded-2">{{ requests.onBoard.message }}
+                                <div style="min-height: 100px;" class="card p-2 rounded-2">{{ requests.onBoard.message }}
                                 </div>
                             </div>
 

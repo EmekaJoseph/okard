@@ -44,8 +44,7 @@
             <div class="col-lg-12 d-sm-none">
                 <label class="fs-5">Add a Voice Note?</label>
                 <input @change="getVoiceNote" ref="recordBtn" type="file" accept="audio/*" capture hidden />
-                <div v-if="!voiceNote" @click="recordBtn.click()" class="fileBtnFake"><i
-                        class="bi bi-record-circle"></i>
+                <div v-if="!voiceNote" @click="recordBtn.click()" class="fileBtnFake"><i class="bi bi-record-circle"></i>
                     Record
                 </div>
                 <div @click="removeVoiceNote" v-else class="fileBtnFake theme-bg"><i class="bi bi-x-lg"></i> Remove
@@ -57,8 +56,7 @@
 
         </div>
         <!--end row-->
-        <button v-if="!isSending" @click="submitForm" type="button"
-            class="btn float-end btn-lg theme-btn mt-5 w-100">Send
+        <button v-if="!isSending" @click="submitForm" type="button" class="btn float-end btn-lg theme-btn mt-5 w-100">Send
             Message</button>
         <button v-else type="button" class="btn float-end btn-lg theme-btn mt-5 w-100" disabled>Sending..</button>
     </form>

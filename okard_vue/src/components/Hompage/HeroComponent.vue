@@ -1,10 +1,11 @@
 <template>
-    <div class="hero" id="Home">
+    <div class="hero" id="Home" :style="{ 'background-image': `url(${hostURL}/slides/${hero_image})` }">
+        <!-- <div class="hero" id="Home"> -->
         <div class="trans-lay">
-            <div class="container content-lay">
+            <div class="container content-la">
                 <div class="row justify-content-center">
                     <div class="col-md-10">
-                        <p class="text-white text-center theme-text hero-sub fs-24">
+                        <p class="text-whit text-center hero-sub fs-24" style="color: #24F2C3;">
                             OKARD HEIGHT GLOBAL VENTURES LIMITED
                             <!-- Okard Height Global Ventures Limited -->
                         </p>
@@ -15,12 +16,9 @@
                             <!-- ▪︎ -->
                         </h1>
 
-                        <!-- <div class="text-center text-light">
-                            We produce building
-                            materials
-                            like Rebar,
-                            We sell building materials like Tiles, POP cements, Roofing-sheets, etc.
-                        </div> -->
+                        <div class="text-center text-light">
+                            We are BUILDING CONTRACTORS, production of building materials and general merchandise
+                        </div>
 
                         <div class="d-flex justify-content-center">
                             <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4 hover-tiltX">
@@ -36,22 +34,42 @@
     </div>
 </template>
 
+<script lang="ts" setup>
+import { hostURL } from '@/stores/functions/axiosInstance';
+import { ref, onMounted } from 'vue';
+
+onMounted(() => {
+    randomizeImage()
+
+})
+
+const hero_image = ref<string>('hero-image.jpg')
+const imgArr = ref<any>(['hero-image.jpg', 'hero-image2.jpg', 'hero-image3.jpg'])
+
+
+const randomizeImage = () => {
+    setInterval(() => {
+        hero_image.value = imgArr.value[Math.floor(Math.random() * imgArr.value.length)];
+        console.log(hero_image.value);
+
+    }, 5000);
+};
+
+</script>
+
 <style scoped>
 .hero {
     /* overflow: hidden; */
     margin-top: -1px;
     height: 100%;
-    /* background-color: #7dd34c59; */
-    background-color: #cf8a4959;
-    /* background: url("@/assets/images/hero5.jpeg"); */
-    background: url("@/assets/images/hero-image.jpg");
+    /* background: url("@/assets/images/hero-image.jpg"); */
     background-size: cover;
     background-position: center center;
 }
 
 .trans-lay {
-    background-color: rgba(13, 15, 21, 0.651);
-    background-color: rgba(13, 15, 21, 0.555);
+    background-color: rgba(13, 15, 21, 0.795);
+    background-color: rgba(13, 15, 21, 0.664);
     min-height: inherit;
     padding-top: 200px;
     padding-bottom: 100px;

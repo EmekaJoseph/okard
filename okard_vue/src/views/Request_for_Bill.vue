@@ -9,9 +9,8 @@
               <h4 class="text-capitalize topix">Request for Bill of Quantity <br> (Building Cost Estimates)</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolores cupiditate inventore esse quas
-                voluptas deleniti quidem! Vero ipsum culpa, saepe consectetur quas totam fuga commodi hic ducimus odio
-                corporis.
+                Request for a bill of Quantity, need cost estimates? fill the form below and let us do the calculation for
+                you.
               </p>
             </div>
           </div>

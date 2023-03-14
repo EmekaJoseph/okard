@@ -9,9 +9,8 @@
               <h4 class="text-capitalize topix">Buy Building Materials</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur dolores cupiditate inventore esse quas
-                voluptas deleniti quidem! Vero ipsum culpa, saepe consectetur quas totam fuga commodi hic ducimus odio
-                corporis.
+                Our variety of available Materials, you can add as many as possible to CART and send us a request,
+                we will reach as soon as possible.
               </p>
             </div>
           </div>
