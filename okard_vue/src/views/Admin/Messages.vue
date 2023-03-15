@@ -8,9 +8,9 @@
             <div class="card bg-transparent border-0 main">
                 <div class="card-body pt-5">
                     <div class="row g-3">
-                        <div class="col-md-7">
-                            <div class="card border-0 h-100">
-                                <div class="card-header border-0">Message List</div>
+                        <div class="col-12" :class="{ 'col-lg-7': selectedMessage.text }">
+                            <div class="card border-0 min-vh-100 h-100">
+                                <div class="card-header border-0">Inbox</div>
                                 <div class="card-body">
                                     <div v-if="!messages.length" class="text-center my-5 fs-4 text-muted">No Messages</div>
                                     <div v-else class="table-responsive table-sm text-nowrap table-bordered ">
@@ -41,7 +41,7 @@
 
                         </div>
 
-                        <div v-if="selectedMessage.text" class="col-md-5">
+                        <div v-show="selectedMessage.text" class="col-12 col-lg-5" ref="messageBodyBlock">
                             <div class="card border-0 h-100">
                                 <div class="card-header border-0">Message Body
 
@@ -71,11 +71,15 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
 import { messageDelete, messageDetails, messageList } from '@/stores/functions/axiosInstance';
+import { useWindowSize } from '@vueuse/core'
 
 onMounted(() => {
     window.scrollTo(0, 0);
     getMessages()
 })
+
+const messageBodyBlock = ref<any>(null)
+const { width: windowWidth } = useWindowSize()
 
 const messages = ref<any>([])
 
@@ -98,6 +102,7 @@ async function getDetails(id: any) {
     console.log(data);
 
     selectedMessage.value = data
+    if (windowWidth.value < 992) messageBodyBlock.value.scrollIntoView()
     getMessages()
 }
 

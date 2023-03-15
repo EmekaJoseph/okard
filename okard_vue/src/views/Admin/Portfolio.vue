@@ -72,20 +72,23 @@
 
                                         <div class="col-12">
                                             <div class="row g-4">
-                                                <div class="col-12 col-sm-6">
-                                                    <label class="mb-1">Image: <span class="text-muted"> (optional)</span>
-                                                    </label> <br>
-                                                    <button @click="fileBtn.click()" v-if="!newFile"
-                                                        class="btn btn-secondary bg-white text-dark w-100"> Upload
-                                                    </button>
-                                                    <button v-else @click="fileFormR" class="btn btn-dark w-100"> Remove
-                                                    </button>
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                    <div v-show="fileURL" class="imagePreviewWrapper"
+                                                <label class="mb-1">Image: <span class="text-muted"> (optional)</span>
+                                                </label>
+                                                <div v-if="fileURL" class="col-6 col-sm-6">
+                                                    <div class="imagePreviewWrapper"
                                                         :style="{ 'background-image': `url(${fileURL})` }">
                                                     </div>
                                                 </div>
+
+                                                <div class="col-6 col-sm-6">
+                                                    <button @click="fileBtn.click()" v-if="!newFile"
+                                                        class="btn btn-secondary bg-white text-dark w-100 btn-sm"> Upload
+                                                    </button>
+                                                    <button v-else @click="fileFormR" class="btn btn-dark btn-sm w-100">
+                                                        Remove
+                                                    </button>
+                                                </div>
+
                                             </div>
                                         </div>
 

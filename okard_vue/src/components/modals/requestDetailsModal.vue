@@ -16,7 +16,7 @@
                                 <label class="">Enquiry made for:</label>
                                 <div class=" theme-b p-2 card shadow-sm">
                                     <div class="table-responsive">
-                                        <table class="table table-sm text-nowrap">
+                                        <table class="table table-sm">
                                             <thead>
                                                 <th>#</th>
                                                 <th>Item</th>
@@ -32,14 +32,14 @@
                                                         (x{{ item.qty }})
                                                     </td>
 
-                                                    <td class="text-end">
+                                                    <td class="text-end text-nowrap">
                                                         {{ item.total.toLocaleString() }}
                                                     </td>
                                                 </tr>
                                                 <tr class="totalSpan">
                                                     <th colspan="2">TOTAL AMOUNT:</th>
 
-                                                    <th class="text-end">
+                                                    <th class="text-end text-nowrap">
                                                         N {{ requests.onBoard.totalPrice.toLocaleString() }}
                                                     </th>
                                                 </tr>

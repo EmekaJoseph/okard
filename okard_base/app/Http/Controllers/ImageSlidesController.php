@@ -66,16 +66,19 @@ class ImageSlidesController extends BaseController
         return response()->json($item, 200);
     }
 
-    // public function update(Request $request, string $id)
-    // {
-    //     $item = PortfolioModel::find($id);
+    public function update(Request $req, string $id)
+    {
+        $item = ImageSlideModel::find($id);
 
-    //     $item->title = $request->input('title');
-    //     $item->text = $request->input('text');
-    //     $item->category = $request->input('category');
+        $item->name = $req->input('name');
+        // $item->category = $req->input('category');
+        $item->description = $req->input('description');
+        $item->location = $req->input('location');
+        // $item->type = $req->input('type');
+        $item->price = $req->input('price');
 
-    //     return response()->json($item->save(), 200);
-    // }
+        return response()->json($item->save(), 200);
+    }
 
 
     public function destroy(string $ids)

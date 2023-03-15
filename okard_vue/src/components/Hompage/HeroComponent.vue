@@ -22,9 +22,10 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <a href="#Contact" class="btn theme-btn mt-3 mt-lg-4 hover-tiltX">
+                                        <router-link :to="{ path: '/', hash: '#Contact' }"
+                                            class="btn theme-btn mt-3 mt-lg-4 hover-tiltX">
                                             Connect With Us
-                                        </a>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -91,15 +92,15 @@ const imgArr = ref<any>([
 .hero {
     /* overflow: hidden; */
     margin-top: -1px;
-    height: 100%;
+    height: 100vh;
     /* background: url("@/assets/images/hero-image.jpg"); */
     background-size: cover;
     background-position: center center;
 }
 
 .trans-lay {
-    background-color: rgba(13, 15, 21, 0.795);
     background-color: rgba(13, 15, 21, 0.753);
+    background-color: rgba(13, 15, 21, 0.634);
     /* min-height: inherit; */
     padding-top: 200px;
     padding-bottom: 100px;
@@ -115,9 +116,6 @@ const imgArr = ref<any>([
     overflow: hidden;
 }
 
-.content-lay {
-    opacity: 1;
-}
 
 @media (min-width: 994px) {
     .trans-lay {
@@ -126,7 +124,7 @@ const imgArr = ref<any>([
 }
 
 .text-light {
-    color: rgba(255, 255, 255, .5) !important;
+    /* color: rgba(255, 255, 255, .5) !important; */
     margin-top: 1.5rem !important;
     font-size: 16px;
 }
@@ -150,5 +148,13 @@ const imgArr = ref<any>([
 .hero-sub {
     animation-name: moveInleft;
     animation-duration: 3s;
+}
+
+
+@media (max-width: 994px) {
+    .fs-24 {
+        font-size: 16px;
+        /* margin-bottom: 1rem; */
+    }
 }
 </style>

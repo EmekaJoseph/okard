@@ -64,19 +64,19 @@
                 <div class="card h-100 border-0">
                   <div class="card-body">
                     <div class="row g-2">
-                      <div v-for="(show, i) in gallery" :key="i" class="col-6 col-lg-4 col-md-4 ">
+                      <div v-for="(show, i) in gallery" :key="i" class="col-12 col-lg-4 col-md-4 ">
                         <div class="image-holder fill">
                           <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
 
                           <div class="btns-overlay">
                             <div class="top-btns">
-                              <button @click="openRequestModal(show)" class="btn theme-btn xsmall btn-sm me-2 py-0"><i
+                              <button @click="openRequestModal(show)" class="btn theme-btn small btn-sm me-2 py-0"><i
                                   class="bi bi-info-circle"></i></button>
                               <button v-if="!show.inCart" @click="show.inCart = !show.inCart"
-                                class="btn btn-sm xsmall btn-light py-0">
+                                class="btn btn-sm small btn-light py-0">
                                 <i class="bi bi-cart3"></i> Add to cart
                               </button>
-                              <button v-else @click="show.inCart = !show.inCart" class="btn btn-sm xsmall btn-dark py-0">
+                              <button v-else @click="show.inCart = !show.inCart" class="btn btn-sm small btn-dark py-0">
                                 <i class="bi bi-cart3"></i> Remove
                               </button>
                             </div>

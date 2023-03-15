@@ -27,7 +27,7 @@
                             <div class="col-md-12 ">
                                 <div class=" card p-2 py-4 shadow-sm">
                                     <div class="table-responsive">
-                                        <table class="table table-sm text-nowrap">
+                                        <table class="table table-sm text-nowra">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -40,24 +40,24 @@
                                             <tbody>
                                                 <tr v-for="(item, i) in images.cart" :key="i">
                                                     <th class="fw-bold">{{ (i + 1) }}</th>
-                                                    <td class=" text-capitalize text-truncate">{{ item.name }}
+                                                    <td class="text-capitalize">{{ item.name }}
                                                         <span v-if="item.location">, {{ item.location }}</span>.
                                                     </td>
 
-                                                    <td>
+                                                    <td class="text-nowrap">
                                                         <button @click="decQty(item)"
-                                                            class="btn btn-sm m-0 p-0 btn-qtyChange">
-                                                            <i class="bi bi-caret-left-fill"></i>
+                                                            class="btn btn-light fs-5 m-0 p-0 me-1 p-0">
+                                                            <i class="bi bi-caret-left-fill text-dark"></i>
                                                         </button>
 
                                                         {{ itemQty(item) }}
 
                                                         <button @click="item.qty ? item.qty++ : item.qty = 2"
-                                                            class="btn btn-sm m-0 p-0 btn-qtyChange">
-                                                            <i class="bi bi-caret-right-fill"></i>
+                                                            class="btn btn-light fs-5 m-0 p-0 ms-1">
+                                                            <i class="bi bi-caret-right-fill text-success"></i>
                                                         </button>
                                                     </td>
-                                                    <td class="text-end">
+                                                    <td class="text-end text-nowrap">
                                                         {{ (rowTotal(item)).toLocaleString() }}
                                                     </td>
 
@@ -71,7 +71,7 @@
                                                 <tr class="totalSpan">
                                                     <th colspan="3">TOTAL:</th>
 
-                                                    <th class="text-end">
+                                                    <th class="text-end text-nowrap">
                                                         N {{ totalPrice.toLocaleString() }}
                                                     </th>
                                                     <th></th>

@@ -34,6 +34,7 @@ const saveImageSlide = (data: any) => $instanceForm.post(`imageSlides`, data)
 const getImageSlides = () => $instance.get(`imageSlides`)
 const showImageSlide = (id: any) => $instance.get(`imageSlides/${id}`)
 const deleteImageSlide = (id: any) => $instance.delete(`imageSlides/${id}`)
+const imageSlideUpdate = (id: any, data: any) => $instance.patch(`imageSlides/${id}`, JSON.stringify(data))
 
 const newCategory = (data: object) => $instance.post(`newCategory`, JSON.stringify(data))
 const getCategories = () => $instance.get(`getCategories`)
@@ -99,6 +100,7 @@ export {
     getImageSlides,
     deleteImageSlide,
     showImageSlide,
+    imageSlideUpdate,
 
     newCategory,
     getCategories,

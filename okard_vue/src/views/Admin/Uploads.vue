@@ -47,7 +47,8 @@
                                             <div v-else class="fileBtnFake theme-bg">
                                                 <span>
                                                     <span class="theme-tex">
-                                                        {{ newFile.name }}
+                                                        <!-- {{ newFile.name }} -->
+                                                        image added..
                                                     </span>
                                                     <span @click="fileFormR" class="fw-bold float-end ">
                                                         <i class="bi bi-x-circle-fill"></i> remove
@@ -91,8 +92,8 @@
 
                                         <div v-if="fileURL" class="col-lg-12">
                                             <button v-if="!isSaving" @click="saveImage"
-                                                class="btn theme-btn w-100 btn-lg">Save
-                                                Image</button>
+                                                class="btn theme-btn w-100 btn-lg">Upload
+                                            </button>
                                             <button v-else class="btn btn-secondary w-100 btn-lg" disabled>Saving..</button>
                                         </div>
                                     </div>
