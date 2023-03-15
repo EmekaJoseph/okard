@@ -3,7 +3,7 @@
     <HeaderComponent />
     <div class="container">
       <section class="action-section">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center gy-3">
           <div class="col-lg-10">
             <div class="text-center mb-5">
               <h4 class="text-capitalize topix">Request for Building Plan</h4>
@@ -13,21 +13,23 @@
               </p>
             </div>
           </div>
-          <div class="col-lg-6 ">
-            <Carousel :autoplay="3000" :wrap-around="true">
+          <div class="col-lg-8">
+            <Carousel :autoplay="10000" :wrap-around="true">
               <Slide v-for="slide in images.plan" :key="slide">
                 <img class="carousel__item" :src="`${hostURL}/slides/${slide}`" alt="">
               </Slide>
 
               <template #addons>
-                <Pagination />
-                <Navigation class="no-mobile" />
+                <!-- <Pagination /> -->
+                <!-- <Navigation class="no-mobile" /> -->
               </template>
             </Carousel>
           </div>
 
-          <div class="col-lg-6">
-            <RequestForm requestType="Plan" />
+          <div class="col-lg-4">
+            <div class="card p-3 shadow">
+              <RequestForm requestType="Plan" />
+            </div>
           </div>
 
         </div>
@@ -65,7 +67,7 @@ const images = useImageSlides()
   background-color: var(--vc-clr-primary);
   color: var(--vc-clr-white);
   font-size: 20px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   display: flex;
   justify-content: center;
   align-items: center;

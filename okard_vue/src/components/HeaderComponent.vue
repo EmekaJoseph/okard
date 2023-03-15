@@ -125,6 +125,10 @@ onMounted(() => {
         margin-bottom: 10px;
         margin-left: 10px;
     }
+
+    ul li a.hash-link {
+        color: rgba(0, 0, 0, 0.74) !important;
+    }
 }
 
 /* a:hover {

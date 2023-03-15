@@ -1,35 +1,43 @@
 <template>
-    <div class="hero" id="Home" :style="{ 'background-image': `url(${hostURL}/slides/${hero_image})` }">
-        <!-- <div class="hero" id="Home"> -->
-        <div class="trans-lay">
-            <div class="container content-la">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <p class="text-whit text-center hero-sub fs-24" style="color: #24F2C3;">
-                            OKARD HEIGHT GLOBAL VENTURES LIMITED
-                            <!-- Okard Height Global Ventures Limited -->
-                        </p>
-                        <h1 class="text-white text-center hero-heading">
-                            Bulding Construction & Sales <br>
-                            (Real Estate Developers)
-                            <!-- Production, Building Materials Merchandise -->
-                            <!-- ▪︎ -->
-                        </h1>
+    <div>
+        <Carousel :autoplay="5000" :wrap-around="true">
+            <Slide v-for="slide in imgArr" :key="slide">
+                <div class="hero w-100" id="Home"
+                    :style="{ 'background-image': `url(${hostURL}/slides/hero/${slide.img})` }">
+                    <div class="trans-lay">
+                        <div class="container content-la">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <p class="text-whit text-center hero-sub fs-24" style="color: #24F2C3;">
+                                        OKARD HEIGHT GLOBAL VENTURES LIMITED
+                                    </p>
+                                    <h1 class="text-white text-center hero-heading">
+                                        {{ slide.title }}
+                                    </h1>
 
-                        <div class="text-center text-light">
-                            We are BUILDING CONTRACTORS, production of building materials and general merchandise
-                        </div>
+                                    <div class="text-center text-light">
+                                        <!-- We are BUILDING CONTRACTORS,  -->
+                                        Production of building materials and general
+                                        merchandise
+                                    </div>
 
-                        <div class="d-flex justify-content-center">
-                            <a href="#Contact" class="btn btn-lg theme-btn mt-3 mt-lg-4 hover-tiltX">
-                                Connect With Us
-                            </a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="#Contact" class="btn theme-btn mt-3 mt-lg-4 hover-tiltX">
+                                            Connect With Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </Slide>
 
-            </div>
-        </div>
+            <template #addons>
+                <!-- <Pagination /> -->
+                <!-- <Navigation class="no-mobile" /> -->
+            </template>
+        </Carousel>
 
     </div>
 </template>
@@ -37,23 +45,45 @@
 <script lang="ts" setup>
 import { hostURL } from '@/stores/functions/axiosInstance';
 import { ref, onMounted } from 'vue';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
-onMounted(() => {
-    randomizeImage()
+// onMounted(() => {
+//     // randomizeImage()
 
-})
+// })
 
-const hero_image = ref<string>('hero-image.jpg')
-const imgArr = ref<any>(['hero-image.jpg', 'hero-image2.jpg', 'hero-image3.jpg'])
+// const imgArr = ref<any>(['hero-image.jpg', 'hero-image2.jpg', 'hero-image3.jpg', 'hero-image4.jpg'])
+
+const imgArr = ref<any>([
+    {
+        img: 'hero-image.jpg',
+        title: 'Bulding Construction & Sales'
+    },
+    {
+        img: 'hero-image2.jpg',
+        title: 'Real Estate Developers'
+    },
+
+    {
+        img: 'hero-image3.jpg',
+        title: 'Bulding Contractors'
+    },
+
+    {
+        img: 'hero-image4.jpg',
+        title: 'Bulding Materials & General Merchandise'
+    },
+
+])
 
 
-const randomizeImage = () => {
-    setInterval(() => {
-        hero_image.value = imgArr.value[Math.floor(Math.random() * imgArr.value.length)];
-        console.log(hero_image.value);
+// const randomizeImage = () => {
+//     setInterval(() => {
+//         hero_image.value = imgArr.value[Math.floor(Math.random() * imgArr.value.length)];
+//         console.log(hero_image.value);
 
-    }, 5000);
-};
+//     }, 5000);
+// };
 
 </script>
 
@@ -69,10 +99,11 @@ const randomizeImage = () => {
 
 .trans-lay {
     background-color: rgba(13, 15, 21, 0.795);
-    background-color: rgba(13, 15, 21, 0.664);
-    min-height: inherit;
+    background-color: rgba(13, 15, 21, 0.753);
+    /* min-height: inherit; */
     padding-top: 200px;
     padding-bottom: 100px;
+    height: 100%;
 
 
     display: flex;
@@ -101,7 +132,7 @@ const randomizeImage = () => {
 }
 
 .hero-heading {
-    font-weight: 500;
+    font-weight: 600;
     font-size: calc(1.425rem + 2.1vw);
     margin-top: 1.5rem !important;
 }

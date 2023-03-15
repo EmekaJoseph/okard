@@ -19,7 +19,7 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="request_for_bill_of_quantity"
-                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
                         <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h6">
@@ -31,7 +31,7 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="request_for_building_plan"
-                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
                         <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4">
@@ -42,7 +42,8 @@ import { RouterLink } from 'vue-router';
                 </div>
 
                 <div class="col-lg-3">
-                    <RouterLink to="buy_property" class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                    <RouterLink to="buy_property"
+                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
                         <img src="@/assets/images/serv_property.jpeg" alt="03" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body">
@@ -56,7 +57,7 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="buy_building_materials"
-                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
+                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
                         <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4 ">
@@ -162,11 +163,10 @@ h6 {
     transition: 0.4s ease-in-out;
 }
 
-.service-card:hover {
-    /* transform: scale(1.03); */
+/* .service-card:hover {
     border: 1px solid var(--theme-color-faint) !important;
     box-shadow: 0 1rem 3rem rgba(black, .175) !important;
-}
+} */
 
 .service-card:hover .h4,
 .service-card:hover .h6 {
