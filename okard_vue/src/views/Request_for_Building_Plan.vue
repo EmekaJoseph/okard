@@ -6,7 +6,7 @@
         <div class="row justify-content-center gy-3">
           <div class="col-lg-10">
             <div class="text-center mb-5">
-              <h4 class="text-capitalize topix">Request for Building Plan</h4>
+              <h4 class="text-capitalize topix">Request for Building Plan &amp; Interior Designs</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
                 Let us draw that building plan for you, fll the form below to reach us

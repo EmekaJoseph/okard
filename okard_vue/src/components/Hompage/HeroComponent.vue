@@ -8,7 +8,7 @@
                         <div class="container content-la">
                             <div class="row justify-content-center">
                                 <div class="col-md-10">
-                                    <p class="text-whit text-center hero-sub fs-24" style="color: #24F2C3;">
+                                    <p class="text-whit text-center hero-sub fs-24 fw-bold">
                                         OKARD HEIGHT GLOBAL VENTURES LIMITED
                                     </p>
                                     <h1 class="text-white text-center hero-heading">
@@ -23,7 +23,7 @@
 
                                     <div class="d-flex justify-content-center">
                                         <router-link :to="{ path: '/', hash: '#Contact' }"
-                                            class="btn theme-btn mt-3 mt-lg-4 hover-tiltX">
+                                            class="btn theme-btn mt-3 mt-lg-4 hover-tiltX border-0">
                                             Connect With Us
                                         </router-link>
                                     </div>
@@ -58,7 +58,7 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 const imgArr = ref<any>([
     {
         img: 'hero-image.jpg',
-        title: 'Bulding Construction & Sales'
+        title: 'Bulding Construction'
     },
     {
         img: 'hero-image2.jpg',
@@ -67,12 +67,12 @@ const imgArr = ref<any>([
 
     {
         img: 'hero-image3.jpg',
-        title: 'Bulding Contractors'
+        title: 'Bulding Designs & Interior'
     },
 
     {
         img: 'hero-image4.jpg',
-        title: 'Bulding Materials & General Merchandise'
+        title: 'Bulding Materials Production & Sells'
     },
 
 ])
@@ -99,8 +99,8 @@ const imgArr = ref<any>([
 }
 
 .trans-lay {
-    background-color: rgba(13, 15, 21, 0.753);
-    background-color: rgba(13, 15, 21, 0.634);
+    background-color: rgba(13, 15, 21, 0.582);
+    /* background-color: rgba(13, 15, 21, 0.479); */
     /* min-height: inherit; */
     padding-top: 200px;
     padding-bottom: 100px;
@@ -143,11 +143,16 @@ const imgArr = ref<any>([
 .hero-heading {
     animation-name: moveInRight;
     animation-duration: 3s;
+    /* text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4); */
+    /* text-shadow: 0px 2px 2px rgba(206, 33, 33, 0.4); */
 }
 
 .hero-sub {
+    color: #f15825;
+    /* font-weight: 400; */
     animation-name: moveInleft;
     animation-duration: 3s;
+    /* text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4); */
 }
 
 

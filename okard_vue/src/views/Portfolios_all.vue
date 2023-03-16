@@ -22,7 +22,7 @@
                                     <PageLoading />
                                 </div>
 
-                                <div v-else>
+                                <div v-else style="min-height: 50vh;">
                                     <div v-if="!list.length" class="py-5 fs-3">
                                         No Portfolios to show
                                     </div>

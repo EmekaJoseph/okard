@@ -184,7 +184,7 @@ function showCart() {
 .image-holder {
   cursor: pointer;
   transition: all 0.5s ease;
-  height: 150px;
+  height: 250px;
   width: auto;
 }
 

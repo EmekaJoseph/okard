@@ -28,9 +28,16 @@ onMounted(() => {
         :class="{ 'header-white': scrollAxis > 50 || route.name != 'Home', 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
         <div class="container-fluid">
             <div class="navbar-brand">
-                <RouterLink class="text-warning text-decoration-none" to="/">OKARD-HGV </RouterLink>
-                <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span>
-                <span v-if="route.name == 'About'">| About Us</span>
+                <RouterLink class="text-warning text-decoration-none header-logo d-none d-md-block" to="/">
+                    <img class="" src="@/assets/images/logo/logo2.png" v-if="scrollAxis < 50 && route.name == 'Home'">
+                    <img v-else src="@/assets/images/logo/logo1.png">
+                </RouterLink>
+
+                <RouterLink class="text-warning text-decoration-none header-logo  d-md-none" to="/">
+                    <img src="@/assets/images/logo/logo1.png">
+                </RouterLink>
+                <!-- <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span> -->
+                <!-- <span v-if="route.name == 'About'">| About Us</span> -->
             </div>
             <button ref="toggler" class="navbar-toggler border-0 btn-sm" type="button" data-bs-toggle="collapse"
                 data-bs-target="#nav-link-lists" aria-controls="nav-link-lists" aria-expanded="false"
@@ -119,6 +126,10 @@ onMounted(() => {
     color: #fff !important;
 }
 
+.navbar-brand .header-logo img {
+    width: 170px;
+}
+
 
 @media (max-width: 994px) {
     .nav-item {
@@ -128,6 +139,10 @@ onMounted(() => {
 
     ul li a.hash-link {
         color: rgba(0, 0, 0, 0.74) !important;
+    }
+
+    .navbar-brand .header-logo img {
+        width: 150px;
     }
 }
 

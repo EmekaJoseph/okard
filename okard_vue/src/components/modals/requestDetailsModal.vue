@@ -69,10 +69,12 @@
                             <div v-if="requests.onBoard.voiceNote" class="col-12">
                                 <label>Voice Note:</label>
                                 <div class="theme-bg p-2 card">
-                                    <a class="theme-text text-decoration-none"
+                                    <audio class="form-control" :src="`${hostURL}/reqFiles/${requests.onBoard.voiceNote}`"
+                                        controls></audio>
+                                    <!-- <a class="theme-text text-decoration-none"
                                         :href="`${hostURL}/reqFiles/${requests.onBoard.voiceNote}`" download>
                                         <i class="bi bi-mic"></i> Download voiceNote
-                                    </a>
+                                    </a> -->
                                 </div>
                             </div>
 

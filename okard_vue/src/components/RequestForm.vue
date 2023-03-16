@@ -50,7 +50,8 @@
                 <div @click="removeVoiceNote" v-else class="fileBtnFake theme-bg"><i class="bi bi-x-lg"></i> Remove
                     Voice note
                 </div>
-                <div v-if="voiceURL" class="my-3"><audio class="form-control" :src="voiceURL" controls></audio>
+                <div v-if="voiceURL" class="my-3">
+                    <audio class="form-control" :src="voiceURL" controls></audio>
                 </div>
             </div>
 

@@ -4,7 +4,7 @@
       <PageLoading />
     </div>
 
-    <div v-else>
+    <div v-else style="min-height: 50vh;">
       <div class="mb-4" v-if="!blog.list.length">
         <span class="h4 text-muted">Blog is empty.</span>
       </div>

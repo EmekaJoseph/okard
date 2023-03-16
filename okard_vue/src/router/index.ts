@@ -107,8 +107,6 @@ const router = createRouter({
   }
 })
 
-
-
 router.afterEach((to, from) => {
   document.title = 'OKARD-HGV | ' + to.name?.toString();
 })

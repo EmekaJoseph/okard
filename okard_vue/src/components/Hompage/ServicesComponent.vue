@@ -23,7 +23,8 @@ import { RouterLink } from 'vue-router';
                         <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h6">
-                                Request for Bill of Quantity (Building cost estimates) & Construction
+                                Request for Bill of Quantity. <br>
+                                <span class="s">(Building cost estimates) & Construction</span>
                             </div>
                         </div>
                     </RouterLink>
@@ -34,8 +35,8 @@ import { RouterLink } from 'vue-router';
                         class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
                         <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
-                            <div class="h4">
-                                Request for Building Plans
+                            <div class="h6">
+                                Request for Building Plans &amp; Interior Designs
                             </div>
                         </div>
                     </RouterLink>
