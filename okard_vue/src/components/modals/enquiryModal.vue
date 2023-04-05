@@ -23,27 +23,29 @@
                                     <div class="mb-2"><b>Name:</b> {{ item.name }}</div>
                                     <div class="mb-2"> <b>Description</b>: {{ item.description }}</div>
                                     <div class="mb-2" v-if="item.location"><b>Location</b>: {{ item.location }}</div>
-                                    <div class="mb-2" v-if="item.price"><b>Price</b>: N{{ item.price.toLocaleString() }}
+                                    <div class="mb-2" v-if="item.price"><b>Price</b>: N{{ fxn.AddCommas(item.price) }}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                 <div class="row">
-                                    <!-- <div class="col-7">
+                                    <div class="col-7"></div>
+                                    <div class="col-5 float-end">
                                         <button v-if="!item.inCart" @click="addToCart" type="button"
-                                            class="btn theme-btn w-100">
-                                            Add to Cart
+                                            class="btn small btn-sm theme-btn-line w-100 ">
+                                            <i class="bi bi-square">&nbsp;<i class="bi bi-cart"></i>cart</i>
                                         </button>
-                                        <button v-else @click="addToCart" type="button" class="btn btn-dark w-100">
-                                            <i class="bi bi-cart-x"></i> Remove
+                                        <button v-else @click="addToCart" type="button"
+                                            class="btn small btn-sm theme-btn-line w-100">
+                                            <i class="bi bi-check-square-fill">&nbsp;<i class="bi bi-cart"></i>cart</i>
                                         </button>
-                                    </div> -->
-                                    <div class="col-12">
+                                    </div>
+                                    <!-- <div class="col-12">
                                         <button @click="showCart" type="button" class="btn btn-outline-dark w-100">
                                             <i class="bi bi-cart3"></i> View Cart
                                         </button>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
@@ -59,8 +61,9 @@
 import { ref } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import { hostURL } from '@/stores/functions/axiosInstance';
+import useFunction from '@/stores/functions/useFunction';
 
-
+const fxn = useFunction.fx
 
 
 const emit = defineEmits(['showCart'])
@@ -79,10 +82,10 @@ function addToCart() {
     btnX.value.click()
 }
 
-function showCart() {
-    btnX.value.click()
-    emit('showCart')
-}
+// function showCart() {
+//     btnX.value.click()
+//     emit('showCart')
+// }
 
 
 const btnX: any = ref(null)

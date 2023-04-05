@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
+import cartModal from '@/components/modals/cartModal.vue';
+import { useImageSlides } from '@/stores/imageSlides'
+
+const images = useImageSlides()
 
 const route = useRoute()
 
@@ -24,13 +28,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <nav class="navbar fixed-top navbar-expand-lg"
+    <cartModal />
+
+    <nav class="navbar fixed-top navbar-expand-lg header-white"
         :class="{ 'header-white': scrollAxis > 50 || route.name != 'Home', 'shadow-sm': scrollAxis > 50 || route.name != 'Home' }">
         <div class="container-fluid">
             <div class="navbar-brand">
                 <RouterLink class="text-warning text-decoration-none header-logo d-none d-md-block" to="/">
-                    <img class="" src="@/assets/images/logo/logo2.png" v-if="scrollAxis < 50 && route.name == 'Home'">
-                    <img v-else src="@/assets/images/logo/logo1.png">
+                    <!-- <img class="" src="@/assets/images/logo/logo1.png" v-if="scrollAxis < 50 && route.name == 'Home'"> -->
+                    <img src="@/assets/images/logo/logo1.png">
                 </RouterLink>
 
                 <RouterLink class="text-warning text-decoration-none header-logo  d-md-none" to="/">
@@ -38,7 +44,21 @@ onMounted(() => {
                 </RouterLink>
                 <!-- <span v-if="route.name == 'Blog' || route.name == 'Blog_Details'">| Blog</span> -->
                 <!-- <span v-if="route.name == 'About'">| About Us</span> -->
+
             </div>
+
+
+            <!-- cart icon -->
+            <a v-if="images.cart.length" @click.prevent href="#" data-bs-toggle="modal" data-bs-target="#cartModal"
+                class="position-relative ">
+                <i class="bi bi-cart3"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark fw-light">
+                    {{ images.cart.length }}
+                    <span class="visually-hidden"></span>
+                </span>
+            </a>
+
+
             <button ref="toggler" class="navbar-toggler border-0 btn-sm" type="button" data-bs-toggle="collapse"
                 data-bs-target="#nav-link-lists" aria-controls="nav-link-lists" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -58,7 +78,8 @@ onMounted(() => {
                     </li>
 
                     <li class="nav-item me-lg-3 hover-tiltY">
-                        <RouterLink class="nav-link hash-link text-white" :to="{ path: '/home', hash: '#Services' }">
+                        <RouterLink class="nav-link hash-link text-white" :class="{ 'active': route.hash == '#Services' }"
+                            :to="{ path: '/home', hash: '#Services' }">
                             Services
                         </RouterLink>
                     </li>

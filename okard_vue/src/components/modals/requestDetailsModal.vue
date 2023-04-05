@@ -33,14 +33,14 @@
                                                     </td>
 
                                                     <td class="text-end text-nowrap">
-                                                        {{ item.total.toLocaleString() }}
+                                                        {{ fxn.AddCommas(item.total) }}
                                                     </td>
                                                 </tr>
                                                 <tr class="totalSpan">
                                                     <th colspan="2">TOTAL AMOUNT:</th>
 
                                                     <th class="text-end text-nowrap">
-                                                        N {{ requests.onBoard.totalPrice.toLocaleString() }}
+                                                        N {{ fxn.AddCommas(requests.onBoard.totalPrice) }}
                                                     </th>
                                                 </tr>
 
@@ -95,6 +95,9 @@ import { ref, computed } from 'vue';
 import { onBeforeRouteLeave } from 'vue-router';
 import { useRequests, } from '@/stores/admin/requests';
 import { hostURL } from '@/stores/functions/axiosInstance';
+import useFunction from '@/stores/functions/useFunction';
+
+const fxn = useFunction.fx
 
 const requests = useRequests()
 const btnX: any = ref(null)

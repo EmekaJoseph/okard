@@ -7,15 +7,15 @@
                     <div class="trans-lay">
                         <div class="container content-la">
                             <div class="row justify-content-center">
-                                <div class="col-md-10">
-                                    <p class="text-whit text-center hero-sub fs-24 fw-bold">
+                                <div class="col-md-10 writ-part">
+                                    <p class=" text-center hero-sub fs-24 fw-bold">
                                         OKARD HEIGHT GLOBAL VENTURES LIMITED
                                     </p>
                                     <h1 class="text-white text-center hero-heading">
                                         {{ slide.title }}
                                     </h1>
 
-                                    <div class="text-center text-light">
+                                    <div class="text-center text-light text-exp">
                                         <!-- We are BUILDING CONTRACTORS,  -->
                                         Production of building materials and general
                                         merchandise
@@ -57,6 +57,11 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 
 const imgArr = ref<any>([
     {
+        img: 'hero-image3.jpg',
+        title: 'Bulding Designs & Interior'
+    },
+
+    {
         img: 'hero-image.jpg',
         title: 'Bulding Construction'
     },
@@ -65,10 +70,7 @@ const imgArr = ref<any>([
         title: 'Real Estate Developers'
     },
 
-    {
-        img: 'hero-image3.jpg',
-        title: 'Bulding Designs & Interior'
-    },
+
 
     {
         img: 'hero-image4.jpg',
@@ -99,8 +101,8 @@ const imgArr = ref<any>([
 }
 
 .trans-lay {
-    background-color: rgba(13, 15, 21, 0.582);
-    /* background-color: rgba(13, 15, 21, 0.479); */
+    /* background-color: rgba(13, 15, 21, 0.267); */
+    /* background-color: rgba(13, 15, 21, 0.171); */
     /* min-height: inherit; */
     padding-top: 200px;
     padding-bottom: 100px;
@@ -135,6 +137,7 @@ const imgArr = ref<any>([
     margin-top: 1.5rem !important;
 }
 
+
 .fs-24 {
     font-size: 23px;
     margin-bottom: 1rem;
@@ -143,8 +146,7 @@ const imgArr = ref<any>([
 .hero-heading {
     animation-name: moveInRight;
     animation-duration: 3s;
-    /* text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4); */
-    /* text-shadow: 0px 2px 2px rgba(206, 33, 33, 0.4); */
+    /* text-shadow: 0px 2px 2px #f15825; */
 }
 
 .hero-sub {
@@ -152,14 +154,38 @@ const imgArr = ref<any>([
     /* font-weight: 400; */
     animation-name: moveInleft;
     animation-duration: 3s;
-    /* text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4); */
+    /* text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945); */
 }
+
+/* .text-exp {
+    text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
+
+} */
+
+.writ-part {
+    background-color: rgba(17, 17, 17, 0.425) !important;
+    padding-block: 20px;
+    border-radius: 30px;
+}
+
 
 
 @media (max-width: 994px) {
     .fs-24 {
-        font-size: 16px;
+        font-size: 17px;
         /* margin-bottom: 1rem; */
     }
+
+    .writ-part {
+        background-color: transparent !important;
+    }
+
+    .hero-heading {
+        text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
+    }
+
+    /* .hero-sub {
+        text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
+    } */
 }
 </style>

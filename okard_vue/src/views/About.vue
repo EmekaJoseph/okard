@@ -21,9 +21,8 @@
                             <div class="col-md-8 ">
                                 <section>
                                     <b>OKARD-HGV LIMITED</b> is an award winning building construction firm base in Lagos
-                                    State
-                                    and
-                                    serving clients throughout Nigeria. How work encompasses every aspect of Building
+                                    State and serving clients throughout Nigeria. Our work encompasses every aspect of
+                                    Building
                                     construction such as Real estate developing and sells, Designs, Construction management,
                                     Production and sells of buildings materials like Rebar, Aluminum roofing sheets, Tiles
                                     etc.

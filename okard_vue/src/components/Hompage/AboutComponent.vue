@@ -5,11 +5,12 @@
                 <div class="col-lg-8">
                     <div class="about-title text-center mb-5">
                         <h6 class="theme-text text-uppercase mb-0">Who We Are</h6>
-                        <h3 class="title-heading">We provide substantial and quality building materials for your building
-                            projects.</h3>
+                        <h3 class="title-heading">A building construction firm that deals with real estate
+                            developing and
+                            sells.</h3>
                         <div class="title-border"></div>
-                        <p class="text-muted pt-3 mx-md-5">Innovation, Creativity, Safety, Integrity, Entrepreneurship,
-                            Transparency, Accountability, and trust.</p>
+                        <!-- <p class="text-muted pt-3 mx-md-5">Innovation, Creativity, Safety, Integrity, Entrepreneurship,
+                            Transparency, Accountability, and trust.</p> -->
                     </div>
                     <!--end about-title-->
                 </div>

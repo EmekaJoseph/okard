@@ -9,7 +9,7 @@
               <h4 class="text-capitalize topix">Buy Building Materials</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
-                Our variety of available Materials, you can add as many as possible to CART and send us a request,
+                Buy Building Materials, you can add as many as possible to CART and send us a request,
                 we will reach as soon as possible.
               </p>
             </div>
@@ -53,7 +53,7 @@
                 <button @click="showCart" type="button" class="btn btn-light float-end m-0">
                   <i v-if="!images.cart.length" class="bi bi-cart3"></i>
                   <i v-else class="bi bi-cart-check-fill"></i>
-                  Go to Cart
+                  Cart
                   <span class="badge bg-dark"> {{ images.cart.length }}</span>
                 </button>
 
@@ -63,7 +63,7 @@
               <div class="col-12">
                 <div class="card h-100 border-0">
                   <div class="card-body">
-                    <div class="row g-2">
+                    <!-- <div class="row g-2">
                       <div v-for="(show, i) in gallery" :key="i" class="col-12 col-lg-4 col-md-4">
                         <div class="image-holder fill">
                           <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
@@ -71,7 +71,7 @@
                           <div class="btns-overlay">
                             <div class="top-btns">
                               <button @click="openRequestModal(show)" class="btn theme-btn small btn-sm me-2 py-0"><i
-                                  class="bi bi-info-circle"></i> details</button>
+                                  class="bi bi-info-circle"></i> info</button>
                               <button v-if="!show.inCart" @click="show.inCart = !show.inCart"
                                 class="btn btn-sm small btn-light py-0">
                                 <i class="bi bi-cart3"></i> Add to cart
@@ -87,14 +87,49 @@
                               <div @click="openRequestModal(show)" class=" text-uppercase fw-bold text-white">{{ show.name
                               }}</div>
                               <div v-if="show.price" class="text-white xsmall">N{{ show.price.toLocaleString() }}</div>
-                              <!-- <div @click="openRequestModal(show)" class="text-warning small hover-tiltX">
-                                more details..</div> -->
                             </div>
                           </div>
 
                         </div>
                       </div>
+                    </div> -->
+
+
+
+                    <div class="row g-2">
+                      <div v-for="(show, i) in gallery" :key="i" class="col-12 col-lg-4 col-md-4">
+                        <div class="card h-100 mt-lg-0 hover-tiltY">
+                          <div class="image-holder fill">
+                            <img class="img-fluid rounded-top" :src="`${hostURL}/slides/${show.img}`" alt="okard-hgv">
+                          </div>
+
+                          <div class=" card-body">
+                            <div class="text-uppercase" style="cursor: pointer;" @click="openRequestModal(show)">
+                              <b> {{ show.name }}</b>
+                            </div>
+                            <small>N{{ fxn.AddCommas(show.price) }}</small>
+
+                            <div class="col-12 mt-2">
+                              <div class="float-end" @click="show.inCart = !show.inCart">
+                                <button v-if="!show.inCart" class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
+                                  <i class="bi bi-square">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                </button>
+                                <button v-else class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
+                                  <i class="bi bi-check-square-fill">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                </button>
+                              </div>
+                              <div class="float-end me-2">
+                                <button @click="openRequestModal(show)"
+                                  class="btn btn-sm btn-outline-secondary small m-0 p-0 px-2">
+                                  <i class="bi bi-info-circle"> details</i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+
                   </div>
                 </div>
               </div>

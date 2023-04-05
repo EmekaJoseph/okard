@@ -9,7 +9,8 @@ import { RouterLink } from 'vue-router';
                 <div class="col-lg-7">
                     <div class="text-center mb-5">
                         <h6 class="theme-text mb-0 text-uppercase">Our Major Services</h6>
-                        <h3 class="title-heading text-capitalize">What can we do for you?</h3>
+                        <h3 class="title-heading text-capitalize">We provide housing solutions &amp; produce
+                            highest quality building materials</h3>
                         <div class="title-border"></div>
                         <!-- <p class="text-muted mt-3 mx-md-5">Select to continue</p> -->
                     </div>
@@ -20,11 +21,11 @@ import { RouterLink } from 'vue-router';
                 <div class="col-lg-3">
                     <RouterLink to="request_for_bill_of_quantity"
                         class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
-                        <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="01" class="img-fluid rounded-top">
+                        <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
-                            <div class="h6">
+                            <div class="h4">
                                 Request for Bill of Quantity. <br>
-                                <span class="s">(Building cost estimates) & Construction</span>
+                                <span class="small">(Building cost estimates) & Construction</span>
                             </div>
                         </div>
                     </RouterLink>
@@ -33,9 +34,9 @@ import { RouterLink } from 'vue-router';
                 <div class="col-lg-3">
                     <RouterLink to="request_for_building_plan"
                         class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
-                        <img src="@/assets/images/serv_buildingPlan.jpeg" alt="02" class="img-fluid rounded-top">
+                        <img src="@/assets/images/serv_buildingPlan.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
-                            <div class="h6">
+                            <div class="h4">
                                 Request for Building Plans &amp; Interior Designs
                             </div>
                         </div>
@@ -45,11 +46,11 @@ import { RouterLink } from 'vue-router';
                 <div class="col-lg-3">
                     <RouterLink to="buy_property"
                         class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
-                        <img src="@/assets/images/serv_property.jpeg" alt="03" class="img-fluid rounded-top">
+                        <img src="@/assets/images/serv_property.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body">
                             <div class="h4">
-                                Buy Properties
+                                Buy <br> Properties
                             </div>
                         </div>
                     </RouterLink>
@@ -59,7 +60,7 @@ import { RouterLink } from 'vue-router';
                 <div class="col-lg-3">
                     <RouterLink to="buy_building_materials"
                         class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
-                        <img src="@/assets/images/serv_materials.jpg" alt="03" class="img-fluid rounded-top">
+                        <img src="@/assets/images/serv_materials.jpg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4 ">
                                 Buy Building Materials

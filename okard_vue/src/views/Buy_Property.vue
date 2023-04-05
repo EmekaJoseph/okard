@@ -54,7 +54,7 @@
                 <button @click="showCart" type="button" class="btn btn-light float-end m-0">
                   <i v-if="!images.cart.length" class="bi bi-cart3"></i>
                   <i v-else class="bi bi-cart-check-fill"></i>
-                  Go to Cart
+                  Cart
                   <span class="badge bg-dark"> {{ images.cart.length }}</span>
                 </button>
               </div>
@@ -63,32 +63,35 @@
               <div class="col-12">
                 <div class="card h-100 border-0">
                   <div class="card-body">
-                    <div class="row g-2">
-                      <div v-for="(show, i) in gallery" :key="i" class="col-12 col-lg-4 col-md-4 ">
-                        <div class="image-holder fill">
-                          <img class="img-fluid" :src="`${hostURL}/slides/${show.img}`" alt="">
 
-                          <div class="btns-overlay">
-                            <div class="top-btns">
-                              <button @click="openRequestModal(show)" class="btn theme-btn small btn-sm me-2 py-0"><i
-                                  class="bi bi-info-circle"></i></button>
-                              <button v-if="!show.inCart" @click="show.inCart = !show.inCart"
-                                class="btn btn-sm small btn-light py-0">
-                                <i class="bi bi-cart3"></i> Add to cart
-                              </button>
-                              <button v-else @click="show.inCart = !show.inCart" class="btn btn-sm small btn-dark py-0">
-                                <i class="bi bi-cart3"></i> Remove
-                              </button>
-                            </div>
+                    <div class="row g-2">
+                      <div v-for="(show, i) in gallery" :key="i" class="col-12 col-lg-4 col-md-4">
+                        <div class="card h-100 mt-lg-0 hover-tiltY">
+                          <div class="image-holder fill">
+                            <img class="img-fluid rounded-top" :src="`${hostURL}/slides/${show.img}`" alt="okard-hgv">
                           </div>
 
+                          <div class=" card-body">
+                            <div class="text-uppercase" style="cursor: pointer;" @click="openRequestModal(show)">
+                              <b> {{ show.name }}</b>
+                            </div>
+                            <small>N{{ fxn.AddCommas(show.price) }}</small>
 
-                          <div class="details-overlay">
-                            <div class="bottom-text">
-                              <div @click="openRequestModal(show)" class=" text-uppercase fw-bold text-white">{{ show.name
-                              }}</div>
-                              <div v-if="show.price" class="text-white xsmall">N{{ show.price.toLocaleString() }}</div>
-                              <!-- <div class="text-white xsmall">{{ fxn.truncateStr(show.description, 20) }}</div> -->
+                            <div class="col-12 mt-2">
+                              <div class="float-end" @click="show.inCart = !show.inCart">
+                                <button v-if="!show.inCart" class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
+                                  <i class="bi bi-square">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                </button>
+                                <button v-else class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
+                                  <i class="bi bi-check-square-fill">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                </button>
+                              </div>
+                              <div class="float-end me-2">
+                                <button @click="openRequestModal(show)"
+                                  class="btn btn-sm btn-outline-secondary small m-0 p-0 px-2">
+                                  <i class="bi bi-info-circle"> details</i>
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>

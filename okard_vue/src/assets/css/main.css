@@ -42,6 +42,15 @@ $box-shadow-inset:            inset 0 1px 2px rgba($black, .075); */
     background-color: var(--theme-color-bg) !important;
 }
 
+.theme-btn-line {
+    color: var(--theme-color) !important;
+    border-color: var(--theme-color) !important;
+}
+
+/* .theme-btn-line:hover {
+    background-color: var(--theme-color2) !important;
+} */
+
 
 .action-section {
     padding-top: 100px;

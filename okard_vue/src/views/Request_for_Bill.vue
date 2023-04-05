@@ -6,7 +6,8 @@
         <div class="row justify-content-center gy-3">
           <div class="col-lg-10">
             <div class="text-center mb-5">
-              <h4 class="text-capitalize topix">Request for Bill of Quantity <br> (Building Cost Estimates)</h4>
+              <h4 class="text-capitalize topix">Request for Bill of Quantity <br> (Building Cost Estimates) &amp;
+                Construction</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
                 Request for a bill of Quantity, need cost estimates? fill the form below and let us do the calculation for

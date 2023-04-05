@@ -68,8 +68,7 @@ class AdminController extends BaseController
     public function passwordChange(Request $req)
     {
         $id = $req->input('id');
-        $table = DB::table('tbl_account');
-        $account = $table->find($id);
+        $account = DB::table('tbl_account')->find($id);
 
         $oldPass = $req->input('oldPass');
 
@@ -78,7 +77,7 @@ class AdminController extends BaseController
         }
         $newHash = Hash::make($req->input('newPass'));
 
-        $table->where('id',  $id)->update(['password' => $newHash]);
+        DB::table('tbl_account')->where('id',  $id)->update(['password' => $newHash]);
 
         return response()->json('success', 200);
     }
