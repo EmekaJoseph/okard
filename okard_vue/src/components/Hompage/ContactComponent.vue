@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="text-center mb-5">
-                        <h6 class="theme-text text-uppercase mb-0">Contact</h6>
+                        <h6 class="theme-text text-uppercase mb-0">Contact Us</h6>
                         <h3 class="text-capitalize">Let's here from you!</h3>
                         <div class="title-border"></div>
                         <p class="text-muted mt-3 mx-md-5">Have any questions for us? or you want to share some info?
@@ -14,67 +14,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="contact">
-                        <div class="text-center text-lg-start">
-                            <h5 class="title-heading">Contact Information:</h5>
-                            <p class="text-muted mt-4">You may also reach us on these contact channels: </p>
-                            <div class="contact-details mt-4 text-start">
-                                <div class="row row-cols-lg-1 row-cols-md-2 row-cols-1">
-                                    <div class="col">
-                                        <div class="text-muted">
-                                            <i class="f-19 bi bi-geo-alt"></i>&nbsp;
-                                            <span class="text-dark fs-6">{{ display.address }}</span>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="text-muted">
-                                            <i class="f-19 bi bi-telephone"></i>&nbsp;
-                                            <a class="text-dark fs-6 text-decoration-none" :href="'tel:' + display.phone">
-                                                {{ display.phone }}
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="text-muted">
-                                            <i class="f-19 bi bi-envelope"></i>&nbsp;
-                                            <span class="text-dark fs-6 ">{{ display.email }}
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <!-- <div class="col">
-                                        <div class="text-muted">
-                                            <i class="f-19 bi bi-whatsapp"></i>&nbsp;
-                                            <a class="text-dark fs-6 text-decoration-none"
-                                                href="'https://api.whatsapp.com/send?phone=+2348131048313&text=..'">+2348131048313</a>
-                                        </div>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="col-md-10">
-                        <fieldset class="border rounded-3 p-3">
-                            <legend class="text-muted float-none small p-0 px-2 w-auto">Social Media
-                            </legend>
-                            <div class="social-card">
-                                <a class="hover-tiltY" target="_blank"
-                                    href="https://api.whatsapp.com/send?phone=+234#######&text=__"><i
-                                        class="bi bi-whatsapp"></i></a>
-                                <a class="hover-tiltY" target="_blank" href="https://twitter.com/####"><i
-                                        class="bi bi-twitter"></i></a>
-                                <a class="hover-tiltY" target="_blank" href="https://www.linkedin.com/company/#####/"><i
-                                        class="bi bi-linkedin"></i></a>
-                                <a class="hover-tiltY" target="_blank" href="https://facebook.com/####"><i
-                                        class="bi bi-facebook"></i></a>
-                            </div>
-                        </fieldset>
-                    </div>
-
+                    <social_media_handles />
 
                 </div>
                 <!--edn col-->
@@ -134,6 +74,7 @@
 import { reactive, onMounted } from 'vue';
 import useFunction from '@/stores/functions/useFunction';
 import { messageNew, getContact } from '@/stores/functions/axiosInstance';
+import social_media_handles from '../social_media_handles.vue';
 
 
 onMounted(async () => {

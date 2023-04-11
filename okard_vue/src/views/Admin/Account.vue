@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-md-7">
+                <div class=" col-md-7">
                     <div class="card border-0">
                         <div class="card-header py-3 bg-white fw-bold border-0">Account Details:</div>
                         <div class="card-body p-4">
@@ -53,9 +53,36 @@
                                 </div>
 
                                 <div class="col-12">
+                                    <label>Whatsapp Number: (start with '+234..')</label>
+                                    <input v-model="contact.whatsapp" type="text" class="form-control form-control-lg">
+                                </div>
+
+                                <div class="col-12">
                                     <label>Email:</label>
                                     <input v-model="contact.email" type="text" class="form-control form-control-lg">
                                 </div>
+
+                                <div class="col-12">
+                                    <label>Facebook Link:</label>
+                                    <input v-model="contact.facebook" type="text" class="form-control form-control-lg">
+                                </div>
+
+                                <div class="col-12">
+                                    <label>Instagram Link:</label>
+                                    <input v-model="contact.instagram" type="text" class="form-control form-control-lg">
+                                </div>
+
+                                <div class="col-12">
+                                    <label>LinkedIn Link:</label>
+                                    <input v-model="contact.linkedin" type="text" class="form-control form-control-lg">
+                                </div>
+
+                                <div class="col-12">
+                                    <label>Twitter Link:</label>
+                                    <input v-model="contact.twitter" type="text" class="form-control form-control-lg">
+                                </div>
+
+
 
 
                                 <div class="col-12 mt-4">
@@ -134,6 +161,11 @@ const contact = reactive({
     address: '',
     phone: '',
     email: '',
+    whatsapp: '',
+    facebook: '',
+    linkedin: '',
+    instagram: '',
+    twitter: '',
     saving: false
 })
 
@@ -146,6 +178,12 @@ async function loadContact() {
     contact.email = data.email
     contact.phone = data.phone
     contact.address = data.address
+
+    contact.whatsapp = data.whatsapp
+    contact.facebook = data.facebook
+    contact.linkedin = data.linkedin
+    contact.instagram = data.instagram
+    contact.twitter = data.twitter
 }
 
 async function saveContact() {

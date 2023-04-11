@@ -9,7 +9,7 @@
             <div class="row gy-3">
                 <div class="col-md-6">
                     <div class="card w-100" style="min-height: 240px;">
-                        <div class="card-header fw-bold bg-white shadow-sm border-0 py-3">Request for Building
+                        <div class="card-header fw-bold border-0 py-3">Request for Building
                             Plan ({{ Planz.length }})</div>
                         <div class="card-body">
                             <div v-if="!Planz.length" class="text-center my-5 fs-6 text-muted2">No Reqests</div>
@@ -41,7 +41,7 @@
 
                 <div class="col-md-6">
                     <div class="card w-100" style="min-height: 240px;">
-                        <div class="card-header fw-bold bg-white shadow-sm border-0  py-3">Request for Bill of Qty
+                        <div class="card-header fw-bold  border-0  py-3">Request for Bill of Qty
                             ({{ Billz.length }})</div>
                         <div class="card-body">
                             <div v-if="!Billz.length" class="text-center my-5 fs-6 text-muted2">No Reqests</div>
@@ -71,11 +71,9 @@
                     </div>
                 </div>
 
-
-
                 <div class="col-md-6">
                     <div class="card w-100" style="min-height: 240px;">
-                        <div class="card-header fw-bold bg-white shadow-sm border-0  py-3">Buying Properties
+                        <div class="card-header fw-bold  border-0  py-3">Buying Properties
                             ({{ Propertyz.length }})</div>
                         <div class="card-body">
                             <div v-if="!Propertyz.length" class="text-center my-5 fs-6 text-muted2">No Reqests</div>
@@ -105,11 +103,9 @@
                     </div>
                 </div>
 
-
-
                 <div class="col-md-6">
                     <div class="card w-100" style="min-height: 240px;">
-                        <div class="card-header fw-bold bg-white shadow-sm border-0  py-3">Buying Materials
+                        <div class="card-header fw-bold  border-0  py-3">Buying Materials
                             ({{ Materialz.length }})</div>
                         <div class="card-body">
                             <div v-if="!Materialz.length" class="text-center my-5 fs-6 text-muted2 ">No Reqests</div>
@@ -138,11 +134,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
             </div>
 
 

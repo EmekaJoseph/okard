@@ -32,6 +32,10 @@ export const useImageSlides = defineStore('slides', () => {
   async function getImages() {
     let { data } = await getImageSlides();
     loading.value = false
+
+    data.forEach((img: { qty: number }) => {
+      img.qty = 1
+    });
     imageSlides.value = data
   }
 

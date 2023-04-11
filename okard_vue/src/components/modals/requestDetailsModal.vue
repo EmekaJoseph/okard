@@ -29,7 +29,7 @@
                                                     <td>
                                                         {{ item.name }}
                                                         <span v-if="item.location">, {{ item.location }}</span>.
-                                                        (x{{ item.qty }})
+                                                        ({{ item.qty }})
                                                     </td>
 
                                                     <td class="text-end text-nowrap">
@@ -37,7 +37,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr class="totalSpan">
-                                                    <th colspan="2">TOTAL AMOUNT:</th>
+                                                    <th colspan="2">TOTAL:</th>
 
                                                     <th class="text-end text-nowrap">
                                                         N {{ fxn.AddCommas(requests.onBoard.totalPrice) }}

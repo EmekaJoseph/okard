@@ -31,13 +31,17 @@
                 <legend class="text-muted float-none small p-0 px-2 w-auto">Social Media
                 </legend>
                 <div class="social-card">
-                    <a class="hover-tiltY" target="_blank" href="https://api.whatsapp.com/send?phone=+234#######&text=__"><i
+                    <a v-if="display.whatsapp" class="hover-tiltY" target="_blank"
+                        :href="'https://api.whatsapp.com/send?phone=' + display.whatsapp + '&text=__'"><i
                             class="bi bi-whatsapp"></i></a>
-                    <a class="hover-tiltY" target="_blank" href="https://twitter.com/####"><i class="bi bi-twitter"></i></a>
-                    <a class="hover-tiltY" target="_blank" href="https://www.linkedin.com/company/#####/"><i
+                    <a v-if="display.linkedin" class="hover-tiltY" target="_blank" :href="display.linkedin"><i
                             class="bi bi-linkedin"></i></a>
-                    <a class="hover-tiltY" target="_blank" href="https://facebook.com/####"><i
+                    <a v-if="display.facebook" class="hover-tiltY" target="_blank" :href="display.facebook"><i
                             class="bi bi-facebook"></i></a>
+                    <a v-if="display.instagram" class="hover-tiltY" target="_blank" :href="display.instagram"><i
+                            class="bi bi-instagram"></i></a>
+                    <a v-if="display.twitter" class="hover-tiltY" target="_blank" :href="display.twitter"><i
+                            class="bi bi-twitter"></i></a>
                 </div>
             </fieldset>
         </div>
@@ -53,6 +57,12 @@ onMounted(async () => {
     display.email = data.email
     display.phone = data.phone
     display.address = data.address
+
+    display.whatsapp = data.whatsapp
+    display.facebook = data.facebook
+    display.instagram = data.instagram
+    display.linkedin = data.linkedin
+    display.twitter = data.twitter
 })
 
 
@@ -60,6 +70,11 @@ const display = reactive({
     address: '',
     phone: '',
     email: '',
+    whatsapp: '',
+    facebook: '',
+    twitter: '',
+    instagram: '',
+    linkedin: '',
 })
 
 

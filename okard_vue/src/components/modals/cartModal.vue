@@ -6,7 +6,8 @@
                 <div class="modal-content">
                     <div class="modal-header border-0 bg-light">
                         <span class="fw-bold">
-                            <i class="bi bi-cart3"></i> Cart <span class="badge bg-secondary fw-light rounded px-2 m-0">
+                            Enquiry
+                            <span class="badge bg-secondary fw-light rounded px-2 m-0">
                                 {{ images.cart.length }}
                             </span>
                         </span>
@@ -33,6 +34,7 @@
                                                     <th>#</th>
                                                     <th>Name</th>
                                                     <th>Qty</th>
+                                                    <th class="text-end">Unit Price</th>
                                                     <th class="text-end">Price</th>
                                                     <th></th>
                                                 </tr>
@@ -44,7 +46,7 @@
                                                         <span v-if="item.location">, {{ item.location }}</span>.
                                                     </td>
 
-                                                    <td class="text-nowrap">
+                                                    <!-- <td class="text-nowrap">
                                                         <button @click="decQty(item)"
                                                             class="btn btn-light fs-5 m-0 p-0 me-1 p-0">
                                                             <i class="bi bi-caret-left-fill text-dark"></i>
@@ -56,9 +58,17 @@
                                                             class="btn btn-light fs-5 m-0 p-0 ms-1">
                                                             <i class="bi bi-caret-right-fill text-success"></i>
                                                         </button>
+                                                    </td> -->
+
+                                                    <td>
+                                                        <input style="width: 70px;" class="form-control-sm form-control"
+                                                            type="number" v-model="item.qty">
                                                     </td>
                                                     <td class="text-end text-nowrap">
-                                                        {{ (rowTotal(item)).toLocaleString() }}
+                                                        {{ fxn.AddCommas(item.price) }}
+                                                    </td>
+                                                    <td class="text-end text-nowrap">
+                                                        {{ (rowTotal(item)) }}
                                                     </td>
 
                                                     <td>
@@ -69,10 +79,10 @@
                                                 </tr>
 
                                                 <tr class="totalSpan">
-                                                    <th colspan="3">TOTAL:</th>
+                                                    <th colspan="4">TOTAL:</th>
 
                                                     <th class="text-end text-nowrap">
-                                                        N {{ totalPrice.toLocaleString() }}
+                                                        N {{ fxn.AddCommas(totalPrice) }}
                                                     </th>
                                                     <th></th>
                                                 </tr>
@@ -99,7 +109,7 @@
 
                             <div class="col-md-12">
                                 <button v-if="!field.isSending" @click="saveReq" type="button"
-                                    class="btn btn-lg theme-btn w-100">Submit
+                                    class="btn btn-lg theme-btn w-100">Make
                                     Enquriry</button>
                                 <button v-else type="button" class="btn btn-lg theme-btn w-100" disabled>Sending</button>
                             </div>
@@ -130,6 +140,10 @@ const field = reactive({
     isSending: false
 })
 
+const rowTotal = (item: any) => {
+    item.total = item.qty ? (item.price * item.qty) : item.price
+    return fxn.AddCommas(item.total)
+}
 
 const totalPrice = computed(() => {
     return images.cart.reduce((previous, current) => {
@@ -138,27 +152,21 @@ const totalPrice = computed(() => {
 })
 
 
-function decQty(item: any) {
-    if (item.qty) {
-        if (!(item.qty == 1)) {
-            item.qty--
-        }
-    }
-}
-
-const itemQty = (item: any) => {
-    item.qty = !item.qty ? 1 : item.qty
-    return item.qty
-}
+// function decQty(item: any) {
+//     if (item.qty) {
+//         if (!(item.qty == 1)) {
+//             item.qty--
+//         }
+//     }
+// }
 
 
-const rowTotal = (item: any) => {
-    item.total = item.qty ?
-        (item.price * item.qty)
-        : item.price
+// const itemQty = (item: any) => {
+//     item.qty = !item.qty ? 1 : item.qty
+//     return item.qty
+// }
 
-    return item.total
-}
+
 
 
 
@@ -175,13 +183,19 @@ function saveReq() {
         return;
     }
 
+    if (images.cart.some(x => x.qty == '')) {
+        fxn.Toast('Pls Specify quantity', 'warning')
+        return;
+    }
+
+
 
     // let imageIds = images.cart.map(x => x.id)
 
     let meappedReq = images.cart.map(x => (
         {
             name: x.name + `${x.location ? ', ' + x.location : ''}`,
-            qty: x.qty,
+            qty: !x.qty ? 1 : x.qty,
             total: x.total
         }
     ))
@@ -194,6 +208,7 @@ function saveReq() {
         type: images.cart[0].type,
         totalPrice: totalPrice.value
     }
+
     sendReq(obj);
 }
 

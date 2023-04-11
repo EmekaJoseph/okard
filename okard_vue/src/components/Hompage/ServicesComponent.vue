@@ -20,12 +20,13 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="request_for_bill_of_quantity"
-                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY ">
                         <img src="@/assets/images/serv_billOfQuantity.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4">
-                                Request for Bill of Quantity. <br>
-                                <span class="small">(Building cost estimates) & Construction</span>
+                                Request for Construction &amp; Bill of Quantity. <br>
+                                <span class="small">(Building cost estimates)</span>
+                                &nbsp;<i class="bi bi-arrow-right"></i>
                             </div>
                         </div>
                     </RouterLink>
@@ -33,24 +34,23 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="request_for_building_plan"
-                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
+                        class="card h-100  blog  rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_buildingPlan.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4">
-                                Request for Building Plans &amp; Interior Designs
+                                Request for Building Plans &amp; Interior Designs&nbsp;<i class="bi bi-arrow-right"></i>
                             </div>
                         </div>
                     </RouterLink>
                 </div>
 
                 <div class="col-lg-3">
-                    <RouterLink to="buy_property"
-                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
+                    <RouterLink to="buy_property" class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_property.jpeg" alt="okard-hgv" class="img-fluid rounded-top">
 
                         <div class="blog-content card-body">
                             <div class="h4">
-                                Buy <br> Properties
+                                Buy <br> Properties &nbsp;<i class="bi bi-arrow-right"></i>
                             </div>
                         </div>
                     </RouterLink>
@@ -59,11 +59,11 @@ import { RouterLink } from 'vue-router';
 
                 <div class="col-lg-3">
                     <RouterLink to="buy_building_materials"
-                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY shadow">
+                        class="card h-100 blog rounded-3 mt-4 mt-lg-0 service-card hover-tiltY">
                         <img src="@/assets/images/serv_materials.jpg" alt="okard-hgv" class="img-fluid rounded-top">
                         <div class="blog-content card-body">
                             <div class="h4 ">
-                                Buy Building Materials
+                                Buy Building Materials &nbsp;<i class="bi bi-arrow-right"></i>
                             </div>
                         </div>
                     </RouterLink>
@@ -76,6 +76,11 @@ import { RouterLink } from 'vue-router';
 </template>
 
 <style scoped>
+.card {
+    background-color: transparent;
+    /* border: none; */
+}
+
 .rounded-top {
     border-top-left-radius: .25rem !important;
     border-top-right-radius: .25rem !important;
@@ -180,13 +185,13 @@ h6 {
 
 @media (min-width: 994px) {
 
-    img {
+    /* img {
         filter: grayscale(100%);
     }
 
     .service-card:hover img {
         filter: grayscale(0%);
-    }
+    } */
 }
 
 .continue {

@@ -33,12 +33,12 @@
                                     <div class="col-7"></div>
                                     <div class="col-5 float-end">
                                         <button v-if="!item.inCart" @click="addToCart" type="button"
-                                            class="btn small btn-sm theme-btn-line w-100 ">
-                                            <i class="bi bi-square">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                            class="btn  theme-btn-line w-100 ">
+                                            <i class="bi bi-cart"></i> cart &nbsp; &nbsp;<i class="bi bi-square"></i>
                                         </button>
-                                        <button v-else @click="addToCart" type="button"
-                                            class="btn small btn-sm theme-btn-line w-100">
-                                            <i class="bi bi-check-square-fill">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                        <button v-else @click="addToCart" type="button" class="btn  theme-btn w-100">
+                                            <i class="bi bi-cart"></i> cart &nbsp; &nbsp;<i
+                                                class="bi bi-check-square-fill"></i>
                                         </button>
                                     </div>
                                     <!-- <div class="col-12">

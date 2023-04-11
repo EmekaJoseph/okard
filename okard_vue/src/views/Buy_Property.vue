@@ -6,11 +6,11 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <div class="text-center mb-5">
-              <h4 class="text-capitalize topix">Buy a Property</h4>
+              <h4 class="text-capitalize topix">Buy Properties</h4>
               <div class="title-border"></div>
               <p class="text-muted mt-3 mx-md-5">
-                Our variety of available Properties, you can add as many as possible to CART and send us a request,
-                we will reach as soon as possible.
+                <b>Make enquiry</b> by adding as many items as possible to CART and send us a request,
+                we will reach you as soon as possible.
               </p>
             </div>
           </div>
@@ -79,17 +79,16 @@
 
                             <div class="col-12 mt-2">
                               <div class="float-end" @click="show.inCart = !show.inCart">
-                                <button v-if="!show.inCart" class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
-                                  <i class="bi bi-square">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                <button v-if="!show.inCart" class="btn theme-btn-line small m-0 p-0 px-2 ">
+                                  <i class="bi bi-cart"></i> cart &nbsp; &nbsp;<i class="bi bi-square"></i>
                                 </button>
-                                <button v-else class="btn btn-sm theme-btn-line small m-0 p-0 px-2 ">
-                                  <i class="bi bi-check-square-fill">&nbsp;<i class="bi bi-cart"></i>cart</i>
+                                <button v-else class="btn theme-btn small m-0 p-0 px-2 ">
+                                  <i class="bi bi-cart"></i> cart &nbsp; &nbsp;<i class="bi bi-check-square-fill"></i>
                                 </button>
                               </div>
                               <div class="float-end me-2">
-                                <button @click="openRequestModal(show)"
-                                  class="btn btn-sm btn-outline-secondary small m-0 p-0 px-2">
-                                  <i class="bi bi-info-circle"> details</i>
+                                <button @click="openRequestModal(show)" class="btn btn-secondary small m-0 p-0 px-2">
+                                  <i class="bi bi-info-circle"> </i> details
                                 </button>
                               </div>
                             </div>

@@ -7,16 +7,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
-use Intervention\Image\ImageManagerStatic as Image;
-
-use App\Models\RequestModel;
-use App\Models\ImageSlideModel;
-use Illuminate\Support\Str;
-
 
 class AdminController extends BaseController
 {
@@ -121,7 +114,12 @@ class AdminController extends BaseController
         $data = [
             'address' => $req->input('address'),
             'phone' => $req->input('phone'),
+            'whatsapp' => $req->input('whatsapp'),
             'email' => $req->input('email'),
+            'facebook' => $req->input('facebook'),
+            'linkedin' => $req->input('linkedin'),
+            'instagram' => $req->input('instagram'),
+            'twitter' => $req->input('twitter'),
             'last_update' => Carbon::now()
         ];
 

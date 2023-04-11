@@ -2,12 +2,11 @@
     <div>
         <Carousel :autoplay="5000" :wrap-around="true">
             <Slide v-for="slide in imgArr" :key="slide">
-                <div class="hero w-100" id="Home"
-                    :style="{ 'background-image': `url(${hostURL}/slides/hero/${slide.img})` }">
+                <div class="hero" id="Home" :style="{ 'background-image': `url(${hostURL}/slides/hero/${slide.img})` }">
                     <div class="trans-lay">
                         <div class="container content-la">
                             <div class="row justify-content-center">
-                                <div class="col-md-10 writ-part">
+                                <div class="col-md-11 writ-part">
                                     <p class=" text-center hero-sub fs-24 fw-bold">
                                         OKARD HEIGHT GLOBAL VENTURES LIMITED
                                     </p>
@@ -16,15 +15,15 @@
                                     </h1>
 
                                     <div class="text-center text-light text-exp">
-                                        <!-- We are BUILDING CONTRACTORS,  -->
-                                        Production of building materials and general
-                                        merchandise
+                                        <!-- Production of building materials and general
+                                        merchandise -->
+                                        {{ slide.sub }}
                                     </div>
 
-                                    <div class="d-flex justify-content-center">
-                                        <router-link :to="{ path: '/', hash: '#Contact' }"
-                                            class="btn theme-btn mt-3 mt-lg-4 hover-tiltX border-0">
-                                            Connect With Us
+                                    <div class="d-flex justify-content-center d-lg-none">
+                                        <!-- <router-link :to="{ path: '/', hash: '#Contact' }" -->
+                                        <router-link to="/about" class="btn theme-btn mt-3 mt-lg-4 hover-tiltX border-0">
+                                            Read more..
                                         </router-link>
                                     </div>
                                 </div>
@@ -45,8 +44,39 @@
 
 <script lang="ts" setup>
 import { hostURL } from '@/stores/functions/axiosInstance';
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
+const imgArr = ref<any>([
+
+    {
+        img: 'hero-image.jpg',
+        title: 'Building Construction',
+        sub: 'Professional group of Engineers and Architects.'
+    },
+
+    {
+        img: 'hero-image2.jpg',
+        title: 'Real Estate Developers',
+        sub: 'Beautiful & Luxurious Residential Apartments & Commercial houses.'
+    },
+
+    {
+        img: 'hero-image3.jpg',
+        title: 'Building Designs & Interior',
+        sub: 'Professional Building designs & Interior designs'
+    },
+
+    {
+        img: 'hero-image4_new.jpg',
+        title: 'Bulding Materials Production & Sells',
+        sub: 'Strong & High Quality Building Materials.'
+    },
+
+
+
+])
+
 
 // onMounted(() => {
 //     // randomizeImage()
@@ -54,30 +84,6 @@ import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 // })
 
 // const imgArr = ref<any>(['hero-image.jpg', 'hero-image2.jpg', 'hero-image3.jpg', 'hero-image4.jpg'])
-
-const imgArr = ref<any>([
-    {
-        img: 'hero-image3.jpg',
-        title: 'Bulding Designs & Interior'
-    },
-
-    {
-        img: 'hero-image.jpg',
-        title: 'Bulding Construction'
-    },
-    {
-        img: 'hero-image2.jpg',
-        title: 'Real Estate Developers'
-    },
-
-
-
-    {
-        img: 'hero-image4.jpg',
-        title: 'Bulding Materials Production & Sells'
-    },
-
-])
 
 
 // const randomizeImage = () => {
@@ -95,9 +101,9 @@ const imgArr = ref<any>([
     /* overflow: hidden; */
     margin-top: -1px;
     height: 100vh;
-    /* background: url("@/assets/images/hero-image.jpg"); */
-    background-size: cover;
-    background-position: center center;
+    width: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
 }
 
 .trans-lay {
@@ -151,6 +157,7 @@ const imgArr = ref<any>([
 
 .hero-sub {
     color: #f15825;
+    text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
     /* font-weight: 400; */
     animation-name: moveInleft;
     animation-duration: 3s;
@@ -180,12 +187,18 @@ const imgArr = ref<any>([
         background-color: transparent !important;
     }
 
-    .hero-heading {
+    .hero-heading,
+    .text-exp {
         text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
     }
 
-    /* .hero-sub {
-        text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945);
-    } */
+    .hero-sub {
+        /* text-shadow: 0px 2px 2px rgba(17, 17, 17, 0.945); */
+        background-color: white;
+        text-shadow: none;
+        font-size: 15px !important;
+        border-radius: 2px;
+        padding-block: 3px;
+    }
 }
 </style>

@@ -59,13 +59,14 @@
                                 <div class="col-md-7">
                                     <div class="card border-0 p-3 ms-lg-4">
                                         <h4 class="about-title">History</h4>
-                                        <p class="mt-4 pt-3 text-muted mb-2"><em>Lorem Ipsum has been the industry's
-                                                standard dummy text ever make a type since the 1500s.</em></p>
+                                        <!-- <p class="mt-4 pt-3 text-muted mb-2"><em>Lorem Ipsum has been the industry's
+                                                standard dummy text ever make a type since the 1500s.</em></p> -->
                                         <p class="text-muted">
-                                            When an unknown printer took a galley of type and scrambled it to make a
-                                            type specimen book. Lorem Ipsum has been the industry's standard dummy text
-                                            ever since unknown printer took a galley of
-                                            type and it to make a type specimen book.
+                                            OKARD-HGV LIMITED was established in 2015 by a Building engineer. Over the
+                                            years, the company has undertaken many challenging building construction
+                                            projects and accumulated skills, known-how and experience in designs and build
+                                            solution, project materials services, building trades and related engineering
+                                            works.
                                         </p>
                                     </div>
                                     <!--end card-->

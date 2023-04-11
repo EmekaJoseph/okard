@@ -153,6 +153,11 @@ onMounted(() => {
 
 
 @media (max-width: 994px) {
+
+    .navbar-nav {
+        margin-top: 20px;
+    }
+
     .nav-item {
         margin-bottom: 10px;
         margin-left: 10px;
