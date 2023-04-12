@@ -29,7 +29,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   linkActiveClass: 'active',
   routes: [
-    { path: '/', name: 'Building materials Producton & General merchandise', alias: '/home', component: HomeView },
+    { path: '/', name: 'Real Estate Developers, Production of building materials and general merchandise.', alias: '/home', component: HomeView },
 
     { path: '/about', name: 'About', component: AboutView },
 

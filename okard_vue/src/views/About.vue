@@ -20,12 +20,12 @@
 
                             <div class="col-md-8 ">
                                 <section>
-                                    <b>OKARD-HGV LIMITED</b> is an award winning building construction firm based in Lagos
-                                    State and serving clients throughout Nigeria. Our work encompasses every aspect of
+                                    <b>OKARD-HGV LIMITED</b> is an award winning building construction firm based in
+                                    Nigeria and serving clients throughout Federation. Our work encompasses every aspect of
                                     Building construction such as Real estate developing and sells, Building Designs and
                                     bill of quantity, Interior designs and decoration, Construction management, Production
                                     and sells of buildings materials such as Rebar, Aluminum roofing sheets, Tiles etc.
-                                    OKARD-HGV LIMITED provide housing solutions for people and produce highest quality
+                                    OKARD-HGV LIMITED provides housing solutions for people and produce highest quality
                                     building materials, in order to provide standardized buildings, secure human lives, and
                                     most importantly ensure customer's satisfaction.Our aim is to be the best in building
                                     construction and provide a quality building materials; ensuring to meet our customers
@@ -34,7 +34,7 @@
 
                                 <section>
                                     <div class="title">Who We Are</div>
-                                    We are a wide building construction firm that deals in real estate developing and
+                                    We are a wide building construction firm that specialised in real estate developing and
                                     sells, Building designs and bill of quantity, Interior designs and decoration, Building
                                     construction and management; renders housing services by helping our clients build and
                                     construct their dream home without stress. We also sell already built houses to take off
@@ -46,7 +46,7 @@
 
                                 <section>
                                     <div class="title">Our Core Services:</div>
-                                    We provide top- notch services.We deal in real estate developing and selling of
+                                    We provide top- notch services. We deal in real estate developing and selling of
                                     residential and commercial houses, provide housing solutions to people.We render
                                     construction services to our clients with excellence performance to satisfy their
                                     needs.We provide and sell quality building materials such as: Rebar, Aluminum roofing

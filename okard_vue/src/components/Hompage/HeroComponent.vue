@@ -56,20 +56,20 @@ const imgArr = ref<any>([
     },
 
     {
-        img: 'hero-image2.jpg',
+        img: 'hero-image2_new.jpg',
         title: 'Real Estate Developers',
         sub: 'Beautiful & Luxurious Residential Apartments & Commercial houses.'
     },
 
     {
-        img: 'hero-image3.jpg',
+        img: 'hero-image3_new.jpg',
         title: 'Building Designs & Interior',
         sub: 'Professional Building designs & Interior designs'
     },
 
     {
         img: 'hero-image4_new.jpg',
-        title: 'Bulding Materials Production & Sells',
+        title: 'Building Materials Production & Sells',
         sub: 'Strong & High Quality Building Materials.'
     },
 
